@@ -19,6 +19,8 @@ See [`mac-migration-plan-claude.md`](../mac-migration-plan-claude.md) for the fu
 | **Editor** | Neovim | Neovim (unchanged) |
 | **Packages** | zypper | Homebrew |
 | **Docker** | Docker | OrbStack |
+| **Focus indicator** | Hyprland built-in | [JankyBorders](https://github.com/FelixKratz/JankyBorders) |
+| **Workspace swipe** | — | [SwipeAeroSpace](https://github.com/MediosZ/SwipeAeroSpace) |
 | **Theme** | Catppuccin Mocha | Catppuccin Mocha |
 
 **Modifier key:** `alt` (Option) in AeroSpace mirrors `Super` (Windows key) in Hyprland. See [keybindings](#keybindings).
@@ -72,6 +74,10 @@ brew services restart sketchybar
 ```
 
 If icons look wrong, confirm `JetBrainsMono Nerd Font` is installed (it should be — it's in the Brewfile as `font-jetbrains-mono-nerd-font`).
+
+### SwipeAeroSpace
+Grant Accessibility permission when prompted on first launch, or manually:
+`System Settings → Privacy & Security → Accessibility → SwipeAeroSpace`
 
 ### Kitty
 Copy your config from the Linux dotfiles repo:
@@ -142,6 +148,17 @@ These apps have no Homebrew cask. See the migration plan for details.
 | Region → file | `Cmd+Shift+4` | `Super+Shift+Print` |
 | Region → clipboard | `alt+shift+s` (AeroSpace) | `Super+Print` |
 | Screen recording | `Cmd+Shift+5` | `Super+Shift+R` |
+
+## Further Reading
+
+AeroSpace community write-ups that informed this config:
+
+- [imfing.com — AeroSpace tiling window manager](https://imfing.com/til/aerospace-tiling-window-manager/)
+- [vinayakg.dev — Tiling manager AeroSpace on macOS](https://vinayakg.dev/blog/tiling-manager-aerospace-mac-os) — layout normalization, balance-sizes
+- [jneidel.com — AeroSpace window management guide](https://jneidel.com/guide/aerospace-window-management/) — comprehensive reference
+- [ryan.himmelwright.net — Been using AeroSpace WM](https://ryan.himmelwright.net/post/been-using-aerospace-wm/) — JankyBorders, multi-monitor tips
+- [roguelazer.com — AeroSpace](https://www.roguelazer.com/blog/2026-02-aerospace/) — SwipeAeroSpace discovery
+- [danieltenner.com — Omarchy on macOS: AeroSpace + Karabiner](https://danieltenner.com/omarchy-on-macos-aerospace-karabiner-setup-guide-for-claude-code/) — JankyBorders Catppuccin colours, service-mode patterns
 
 ## Directory Structure
 

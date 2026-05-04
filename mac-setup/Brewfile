@@ -3,6 +3,10 @@
 # Usage: brew bundle --file=Brewfile
 # =============================================================================
 
+# === Custom taps ===
+tap "FelixKratz/formulae"   # JankyBorders
+tap "mediosz/tap"           # SwipeAeroSpace
+
 # === Shell ===
 brew "zsh"
 brew "starship"
@@ -128,6 +132,8 @@ cask "kitty"
 cask "aerospace"
 cask "karabiner-elements"
 cask "sketchybar"
+brew "borders"           # JankyBorders — coloured focus border for active window
+cask "swipeaerospace"    # 3-finger trackpad swipe for AeroSpace workspace switching
 cask "raycast"
 cask "maccy"             # fallback clipboard manager if not using Raycast
 
