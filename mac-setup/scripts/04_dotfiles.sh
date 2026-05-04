@@ -11,7 +11,8 @@ log "--- [Phase 4: Dotfiles & Config] ---"
 # -----------------------------------------------------------------------------
 backup_and_remove() {
     local target="$1"
-    local backup="${target}.backup.$(date +%Y%m%d-%H%M%S)"
+    local backup
+    backup="${target}.backup.$(date +%Y%m%d-%H%M%S)"
     warn "Backing up '${target}' → '${backup}'"
     mv "$target" "$backup"
 }
