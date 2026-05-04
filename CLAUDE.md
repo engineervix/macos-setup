@@ -8,9 +8,9 @@ A collection of machine setup resources for Victor Miti's development environmen
 
 | Directory | Purpose |
 | :--- | :--- |
-| `opensuse-setup/` | Automated setup for openSUSE Tumbleweed + Hyprland (work Linux machine) |
-| `dotfiles/` | Shared config files symlinked into `~/.config` on Linux (zshrc, kitty, hypr, waybar, rofi, starship, etc.) |
-| `mac-setup/` | Automated setup for macOS (personal Mac) — mirrors the Linux setup as closely as possible |
+| `_references/my-linux-setup/opensuse-setup/` | Automated setup for openSUSE Tumbleweed + Hyprland (work Linux machine) |
+| `_references/my-linux-setup/dotfiles/` | Shared config files symlinked into `~/.config` on Linux (zshrc, kitty, hypr, waybar, rofi, starship, etc.) |
+| current working dir | Automated setup for macOS (personal Mac) — mirrors the Linux setup as closely as possible |
 | `mac-migration-plan-claude.md` | Full strategy doc: tool-by-tool Linux→Mac mapping, rationale, and implementation order |
 
 ## Linux setup (opensuse-setup + dotfiles)
@@ -25,9 +25,9 @@ A collection of machine setup resources for Victor Miti's development environmen
 - **Modifier key:** `Super` (Windows key) — used for all Hyprland bindings
 - The `dotfiles/` repo is symlinked, not copied — `dotfiles/install.sh` creates the symlinks
 
-## Mac setup (mac-setup/)
+## Mac setup
 
-Written in one session. **Not yet tested on a real Mac.** Review `REVIEW.md` before running.
+Written in several sessions. **Not yet tested on a real Mac.** Review `REVIEW.md` before running.
 
 - **WM:** AeroSpace — modifier key is `alt` (Option), mirroring `Super` on Linux
 - **Focus indicator:** JankyBorders — Catppuccin Mocha coloured border on focused window; launched from AeroSpace `after-startup-command`
@@ -37,7 +37,7 @@ Written in one session. **Not yet tested on a real Mac.** Review `REVIEW.md` bef
 - **Clipboard:** Raycast built-in (also Maccy as fallback) — replaces cliphist
 - **Packages:** Homebrew + `Brewfile` (mirrors zypper)
 - **Docker:** OrbStack (drop-in CLI replacement)
-- **Shell config:** `mac-setup/conf/zshrc` — Mac-specific file, symlinked to `~/.zshrc`
+- **Shell config:** `conf/zshrc` — Mac-specific file, symlinked to `~/.zshrc`
   - Based on `dotfiles/.zshrc` but Mac-only (no platform guards needed)
   - Replaces OhMyZsh + Powerlevel10k (current Mac state) with Starship
   - All CLI replacement aliases already existed in the Mac zshrc but were commented out
@@ -66,6 +66,6 @@ Written in one session. **Not yet tested on a real Mac.** Review `REVIEW.md` bef
 
 - Run `lefthook install` once after cloning to activate pre-commit hooks (ggshield secret scan + ShellCheck on staged `.sh` files).
 - The migration plan (`mac-migration-plan-claude.md`) is the source of truth for strategy decisions. Update it when decisions change.
-- `mac-setup/REVIEW.md` tracks open questions and items needing verification after the initial session.
-- The Linux dotfiles `.zshrc` is at `dotfiles/.zshrc` — if you add a new cross-platform function there, also add it to `mac-setup/conf/zshrc`.
+- `REVIEW.md` tracks open questions and items needing verification after the initial session.
+- The Linux dotfiles `.zshrc` is at `dotfiles/.zshrc` — if you add a new cross-platform function there, also add it to `conf/zshrc`.
 - The Mac `.zshrc` has three Mac-only functions not in the Linux dotfiles: `compress_audio`, `days_until`, `wget_entire_site`. These are worth promoting to the shared dotfiles eventually.
