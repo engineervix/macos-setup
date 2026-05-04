@@ -4,7 +4,8 @@
 # =============================================================================
 
 # === Custom taps ===
-tap "FelixKratz/formulae"   # JankyBorders
+tap "FelixKratz/formulae"   # JankyBorders + SketchyBar
+tap "nikitabobko/tap"       # AeroSpace
 tap "mediosz/tap"           # SwipeAeroSpace
 
 # === Shell ===
@@ -131,7 +132,7 @@ cask "font-fantasque-sans-mono-nerd-font"
 cask "kitty"
 cask "aerospace"
 cask "karabiner-elements"
-cask "sketchybar"
+brew "sketchybar"
 brew "borders"           # JankyBorders — coloured focus border for active window
 cask "swipeaerospace"    # 3-finger trackpad swipe for AeroSpace workspace switching
 cask "maccy"             # clipboard manager (complements Spotlight clipboard history)
