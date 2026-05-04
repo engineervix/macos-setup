@@ -84,13 +84,19 @@ else
 fi
 
 # -----------------------------------------------------------------------------
-# SketchyBar — start the service
+# SketchyBar — config symlink + service start
 # -----------------------------------------------------------------------------
+log "Symlinking SketchyBar config..."
+mkdir -p "$HOME/.config"
+link "${SCRIPT_DIR}/conf/sketchybar" "$HOME/.config/sketchybar"
+
+# Ensure plugins are executable after symlinking
+chmod +x "$HOME/.config/sketchybar/plugins/"*.sh 2>/dev/null || true
+
 log "Starting SketchyBar service..."
 if brew list sketchybar &>/dev/null; then
     brew services start sketchybar 2>/dev/null || true
-    info "SketchyBar started. Configure it manually with the Catppuccin preset."
-    info "See: https://github.com/catppuccin/sketchybar"
+    info "SketchyBar started with Catppuccin Mocha config."
 else
     warn "SketchyBar not installed — skipping service start."
 fi

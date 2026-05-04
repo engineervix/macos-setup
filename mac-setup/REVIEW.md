@@ -116,7 +116,7 @@ SCRIPT_DIR="$(pwd)" source scripts/01_preflight.sh
 
 ## Known gaps
 
-- **SketchyBar configuration** — the script only starts the service; the Catppuccin theme and module setup are entirely manual. This is a significant chunk of work.
+- **SketchyBar configuration** — `conf/sketchybar/` now contains a full Catppuccin Mocha config with AeroSpace workspace integration, front-app name, clock, network, volume, and battery. Symlinked by `04_dotfiles.sh`. Verify the font name (`JetBrainsMono Nerd Font`) matches what Homebrew installs.
 - **Neovim** — cloned on first run; Lazy.nvim will pull plugins on first `nvim` launch. This takes a few minutes and requires internet.
 - **GPG/keyring** — `gnupg` and `pinentry-mac` are in the Brewfile but GPG key import and keychain setup are not automated.
 - **SSH keys** — the Linux zshrc uses `keychain` for SSH agent management. The Mac zshrc omits this entirely (macOS handles SSH keys via the system Keychain). If you need `ssh-add`, configure it manually or add to `.zshrc.local`.

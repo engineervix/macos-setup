@@ -39,7 +39,7 @@ The script runs four modular phases in sequence:
 | 1 | `01_preflight.sh` | Checks Xcode CLI tools; applies macOS system defaults |
 | 2 | `02_homebrew.sh` | Installs Homebrew; runs `Brewfile` |
 | 3 | `03_tooling.sh` | Installs Volta/Node/npm, Rustup, Go tools, pipx packages, Neovim config, fzf, git-delta |
-| 4 | `04_dotfiles.sh` | Symlinks `zshrc` and `aerospace.toml`; starts SketchyBar service |
+| 4 | `04_dotfiles.sh` | Symlinks `zshrc`, `aerospace.toml`, and SketchyBar config; starts SketchyBar service |
 
 Safe to re-run — all steps are idempotent.
 
@@ -60,19 +60,18 @@ These steps require a GUI or credentials and cannot be automated.
 ### Raycast
 1. Disable Spotlight: `System Settings → Keyboard → Keyboard Shortcuts → Spotlight`
 2. Bind Raycast to `Cmd+Space`
-3. Enable **Clipboard History** extension → set hotkey to `alt+h`
+3. Enable **Clipboard History** extension → set hotkey to `cmd+shift+v` (`alt+h` is taken by AeroSpace focus-left)
 4. Install extensions: GitHub, GitLab, brew, Docker
 
 ### SketchyBar
-Apply the [Catppuccin Mocha preset](https://github.com/catppuccin/sketchybar) and configure modules to mirror Waybar:
+Config is provided in `conf/sketchybar/` and symlinked by the install script. It shows AeroSpace workspace indicators and active app name on the left, and clock, network, volume, and battery on the right — all Catppuccin Mocha.
 
-| Position | Module |
-| :--- | :--- |
-| Left | Aerospace workspaces |
-| Centre | Active window title |
-| Right | Clock, network, battery, CPU, memory, volume |
+If the bar doesn't appear after install:
+```bash
+brew services restart sketchybar
+```
 
-> **Note:** Stats.app (already installed) covers the right-side modules with zero config and works as a simpler interim.
+If icons look wrong, confirm `JetBrainsMono Nerd Font` is installed (it should be — it's in the Brewfile as `font-jetbrains-mono-nerd-font`).
 
 ### Kitty
 Copy your config from the Linux dotfiles repo:
@@ -120,23 +119,28 @@ These apps have no Homebrew cask. See the migration plan for details.
 | :--- | :--- | :--- |
 | Launch terminal | `alt+q` | `Super+Q` |
 | Close window | `alt+c` | `Super+C` |
+| App launcher (Raycast) | `alt+r` | `Super+R` |
+| File manager (Finder) | `alt+e` | `Super+E` |
 | Toggle float | `alt+v` | `Super+V` |
 | Switch workspace | `alt+1-0` | `Super+1-0` |
 | Move to workspace | `alt+shift+1-0` | `Super+Shift+1-0` |
 | Previous workspace | `alt+tab` | `Super+Tab` |
+| Move workspace to next monitor | `alt+shift+tab` | `Super+Shift+Right` |
 | Move focus | `alt+hjkl` / `alt+arrows` | `Super+arrows` |
 | Move window | `alt+shift+hjkl` | `Super+Shift+hjkl` |
 | Resize mode | `alt+w` | `Super+W` |
+| Screenshot → clipboard | `alt+shift+s` | `Super+Print` |
+| Service mode (reload / reset / join) | `alt+shift+;` | — |
 
 ### Raycast / Screenshots
 
 | Action | macOS | Linux equivalent |
 | :--- | :--- | :--- |
-| App launcher | `Cmd+Space` | `Super+R` |
-| Clipboard history | `alt+h` | `Super+H` |
+| App launcher | `Cmd+Space` or `alt+r` | `Super+R` |
+| Clipboard history | `cmd+shift+v` (set in Raycast) | `Super+H` |
 | Full screenshot → file | `Cmd+Shift+3` | `Print` |
 | Region → file | `Cmd+Shift+4` | `Super+Shift+Print` |
-| Region → clipboard | `Cmd+Ctrl+Shift+4` | `Super+Print` |
+| Region → clipboard | `alt+shift+s` (AeroSpace) | `Super+Print` |
 | Screen recording | `Cmd+Shift+5` | `Super+Shift+R` |
 
 ## Directory Structure
@@ -147,7 +151,16 @@ mac-setup/
 ├── Brewfile              Homebrew package manifest
 ├── conf/
 │   ├── zshrc             Shell config → symlinked to ~/.zshrc
-│   └── aerospace.toml    AeroSpace config → symlinked to ~/.aerospace.toml
+│   ├── aerospace.toml    AeroSpace config → symlinked to ~/.aerospace.toml
+│   └── sketchybar/       SketchyBar config → symlinked to ~/.config/sketchybar/
+│       ├── sketchybarrc
+│       └── plugins/
+│           ├── aerospace.sh
+│           ├── battery.sh
+│           ├── clock.sh
+│           ├── front_app.sh
+│           ├── network.sh
+│           └── volume.sh
 ├── scripts/
 │   ├── 01_preflight.sh
 │   ├── 02_homebrew.sh

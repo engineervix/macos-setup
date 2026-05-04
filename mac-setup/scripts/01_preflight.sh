@@ -56,6 +56,8 @@ defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 # --- Animation & responsiveness ---
 # Disable window open/close animations
 defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
+# Allow dragging any part of a window with ctrl+cmd (useful with tiling WM)
+defaults write -g NSWindowShouldDragOnGesture -bool true
 # Speed up Mission Control animation
 defaults write com.apple.dock expose-animation-duration -float 0.1
 # Disable the "Are you sure you want to open this application?" dialog
