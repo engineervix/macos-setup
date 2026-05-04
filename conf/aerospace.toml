@@ -21,8 +21,8 @@ exec-on-workspace-change = ['/bin/bash', '-c',
 start-at-login = true
 auto-reload-config = true
 
-# Mouse lazily follows the focused monitor (useful with multiple displays)
-on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+# Mouse lazily follows any focus change (mirrors Hyprland's follow_mouse = 1)
+on-focus-changed = ['move-mouse window-lazy-center']
 
 # Prevent accidentally hidden apps from disappearing behind tiled windows
 automatically-unhide-macos-hidden-apps = true
@@ -54,7 +54,7 @@ cmd-alt-h = []
 # --- Launch & close ---
 alt-q = 'exec-and-forget open -a Kitty'    # Super+Q → terminal
 alt-c = 'close'                             # Super+C → kill window
-alt-r = 'exec-and-forget open -a Raycast'  # Super+R → app launcher
+alt-r = 'exec-and-forget osascript -e "tell application \"System Events\" to keystroke space using {command down}"'  # Super+R → Spotlight
 alt-e = 'exec-and-forget open -a Finder'   # Super+E → file manager
 
 # --- Screenshot to clipboard (mirrors Super+Print → grim -g slurp | wl-copy) ---
