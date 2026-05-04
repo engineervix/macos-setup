@@ -29,9 +29,9 @@ These casks may have different names or may not exist — verify with `brew sear
 
 - ~~`cask "sketchybar"`~~ — **resolved**: sketchybar is a formula not a cask; changed to `brew "sketchybar"` under `tap "FelixKratz/formulae"`
 - ~~`cask "aerospace"`~~ — **resolved**: lives in `nikitabobko/tap`; tap added to Brewfile
-- `cask "aldente"` — verify cask exists: `brew search aldente`
-- `cask "mullvad-vpn"` — verify: `brew search mullvad`
-- `cask "ungoogled-chromium"` — may require a tap: `brew search ungoogled-chromium`
+- ~~`cask "aldente"`~~ — **resolved**: cask exists
+- ~~`cask "mullvad-vpn"`~~ — **resolved**: cask exists
+- ~~`cask "ungoogled-chromium"`~~ — **resolved**: cask exists, no tap needed
 
 To check any cask before installing: `brew info --cask <name>`
 
@@ -114,14 +114,14 @@ SCRIPT_DIR="$(pwd)" source scripts/01_preflight.sh
 
 ## Known gaps
 
-- **SketchyBar font** — config is in `conf/sketchybar/` and symlinked automatically. Verify the font name (`JetBrainsMono Nerd Font`) matches what Homebrew registers for `font-jetbrains-mono-nerd-font` (run `fc-list | grep JetBrains` after install).
+- ~~**SketchyBar font**~~ — **resolved**: `JetBrainsMono Nerd Font` confirmed registered by `fc-list`; matches exactly what `sketchybarrc` uses.
 - **Neovim** — cloned on first run; Lazy.nvim will pull plugins on first `nvim` launch. This takes a few minutes and requires internet.
 - **GPG/keyring** — `gnupg` and `pinentry-mac` are in the Brewfile but GPG key import and keychain setup are not automated.
 - **SSH keys** — the Linux zshrc uses `keychain` for SSH agent management. The Mac zshrc omits this entirely (macOS handles SSH keys via the system Keychain). If you need `ssh-add`, configure it manually or add to `.zshrc.local`.
 - **pyenv Python version** — the script installs pyenv but not a specific Python version. You must run `pyenv install <version> && pyenv global <version>` manually.
 - **virtualenvwrapper** — depends on a pyenv-managed Python being set as global. Run the virtualenvwrapper setup after pyenv is configured.
-- **Starship config** — `04_dotfiles.sh` tries to symlink from `~/dotfiles/.config/starship.toml`. If the Linux dotfiles repo isn't cloned on the Mac, this symlink is skipped. Copy or clone manually.
-- **Kitty config** — same as Starship; tries to symlink from `~/dotfiles/.config/kitty`. Requires the dotfiles repo to be present.
+- ~~**Starship config**~~ — **resolved**: `04_dotfiles.sh` now clones `engineervix/dotfiles.git` to `~/dotfiles` automatically before symlinking.
+- ~~**Kitty config**~~ — **resolved**: same as above.
 
 ---
 
