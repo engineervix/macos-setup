@@ -1,11 +1,11 @@
 # macOS Developer Setup
 
-![macOS](https://img.shields.io/badge/macOS-%23000000?style=for-the-badge&logo=apple&logoColor=white)
+![macOS](https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=macos&logoColor=F0F0F0)
 ![Bash Script](https://img.shields.io/badge/bash_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white)
 
 Automated setup script for macOS, establishing a development environment that mirrors my openSUSE Tumbleweed / Hyprland setup as closely as possible — same shell stack, same theme, same muscle memory.
 
-See [`mac-migration-plan-claude.md`](../mac-migration-plan-claude.md) for the full rationale and tool-by-tool mapping.
+See [`mac-migration-plan.md`](./mac-migration-plan.md) for the full rationale and tool-by-tool mapping.
 
 ## Stack
 
@@ -29,7 +29,7 @@ See [`mac-migration-plan-claude.md`](../mac-migration-plan-claude.md) for the fu
 
 ```bash
 git clone <this-repo>
-cd mac-setup
+# cd into the cloned repo directory
 chmod +x install.sh scripts/*.sh
 ./install.sh
 ```
@@ -163,7 +163,7 @@ AeroSpace community write-ups that informed this config:
 ## Directory Structure
 
 ```
-mac-setup/
+.
 ├── install.sh            Orchestrator
 ├── Brewfile              Homebrew package manifest
 ├── conf/

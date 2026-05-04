@@ -59,7 +59,7 @@ info "  5. git configured with delta"
 info "  6. zshrc, aerospace.toml written and symlinked"
 info "  7. SketchyBar service started"
 echo
-warn "Manual steps still required (see mac-migration-plan-claude.md):"
+warn "Manual steps still required (see mac-migration-plan.md):"
 warn "  - Karabiner-Elements: configure Caps Lock remap via the GUI"
 warn "  - Raycast: set Cmd+Space, enable clipboard history (alt+h)"
 warn "  - SketchyBar: apply Catppuccin theme and configure modules"
