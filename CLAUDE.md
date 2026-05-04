@@ -1,6 +1,6 @@
-# CLAUDE.md — unix-setup
+# unix-setup
 
-Context for Claude Code sessions working in this repository.
+Context for agent sessions working in this repository.
 
 ## What this repo is
 
