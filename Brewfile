@@ -106,6 +106,7 @@ brew "unpaper"
 # === Image & media ===
 brew "imagemagick"
 brew "ffmpeg"
+brew "mpv"
 brew "yt-dlp"
 brew "exiftool"
 
