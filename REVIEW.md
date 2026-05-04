@@ -6,16 +6,16 @@ Everything in this directory was written in a single session without being run o
 
 ## What was produced
 
-| File | Status |
-| :--- | :--- |
-| `install.sh` | Written, syntax-checked, not tested |
-| `Brewfile` | Written from installed package inventory, not tested |
-| `scripts/01_preflight.sh` | Written, syntax-checked, not tested |
-| `scripts/02_homebrew.sh` | Written, syntax-checked, not tested |
-| `scripts/03_tooling.sh` | Written, syntax-checked, not tested |
-| `scripts/04_dotfiles.sh` | Written, syntax-checked, not tested |
-| `conf/zshrc` | Written, syntax-checked, not tested as a live shell |
-| `conf/aerospace.toml` | Written, not verified against real AeroSpace |
+| File                      | Status                                               |
+| :------------------------ | :--------------------------------------------------- |
+| `install.sh`              | Written, syntax-checked, not tested                  |
+| `Brewfile`                | Written from installed package inventory, not tested |
+| `scripts/01_preflight.sh` | Written, syntax-checked, not tested                  |
+| `scripts/02_homebrew.sh`  | Written, syntax-checked, not tested                  |
+| `scripts/03_tooling.sh`   | Written, syntax-checked, not tested                  |
+| `scripts/04_dotfiles.sh`  | Written, syntax-checked, not tested                  |
+| `conf/zshrc`              | Written, syntax-checked, not tested as a live shell  |
+| `conf/aerospace.toml`     | Written, not verified against real AeroSpace         |
 
 The `Brewfile` was built from the output of `brew list --formula` and `brew list --cask` on the current Mac, plus additions from the Linux setup. It reflects what _should_ be installed, not necessarily what exact cask/formula names Homebrew uses today.
 
@@ -24,6 +24,7 @@ The `Brewfile` was built from the output of `brew list --formula` and `brew list
 ## Items needing verification before running
 
 ### Brewfile cask names
+
 These casks may have different names or may not exist — verify with `brew search` before running:
 
 - `cask "kiro"` — AWS's Kiro IDE; Homebrew cask may not exist yet (it's a newer product)
@@ -36,51 +37,68 @@ These casks may have different names or may not exist — verify with `brew sear
 To check any cask before installing: `brew info --cask <name>`
 
 ### Homebrew taps
+
 Some casks may live in third-party taps. If `brew bundle` fails for a cask, you may need to add a tap first:
+
 ```bash
 # Example for AeroSpace (if it's tap-only):
 brew tap nikitabobko/tap
 brew install --cask nikitabobko/tap/aerospace
 ```
+
 Adding a `tap` line to the Brewfile handles this automatically.
 
 ### zshrc: GDAL path
+
 The zshrc has:
+
 ```zsh
 export GDAL_LIBRARY_PATH="$(brew --prefix gdal)/lib/libgdal.dylib"
 ```
+
 This evaluates `brew --prefix gdal` each time the shell starts. If GDAL is not installed yet when the shell first loads (e.g., between Homebrew install and Brewfile run), it will silently fail. After the full setup, open a new terminal and verify:
+
 ```bash
 echo $GDAL_LIBRARY_PATH
 ls "$GDAL_LIBRARY_PATH"
 ```
 
 ### zshrc: Perl local::lib
+
 ```zsh
 eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
 ```
+
 This will fail silently if `$HOME/perl5` doesn't exist. That's fine — it only matters if you use Perl. Verify after setup if you use Perl packages.
 
 ### zshrc: Kiro integration
+
 ```zsh
 [[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
 ```
+
 This only runs when the terminal is Kiro, so it's a no-op in Kitty. If Kiro is not in PATH, it fails silently. No action needed unless you actively use Kiro.
 
 ### zshrc: Antigravity PATH
+
 ```zsh
 export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
 ```
+
 This path is hardcoded based on what was in the current Mac zshrc. If Antigravity is not installed, this silently adds a non-existent directory to PATH (harmless). Re-install Antigravity via its own installer if needed.
 
 ### Android SDK paths
+
 The zshrc sets `ANDROID_HOME` and `ANDROID_SDK_ROOT` to `~/Android/Sdk`. Android Studio creates this on first launch. The paths will fail silently until Android Studio is set up — harmless.
 
 ### git-delta: dark mode assumption
+
 `03_tooling.sh` runs:
+
 ```bash
 git config --global delta.dark true
 ```
+
 If you use a light theme terminal, change this to `delta.light true` or remove it to let delta auto-detect.
 
 ---
@@ -108,6 +126,7 @@ source scripts/04_dotfiles.sh
 
 Note: Sourcing directly means `log`/`warn`/`info`/`error` functions need to be defined first.
 The proper way to run a single phase:
+
 ```bash
 SCRIPT_DIR="$(pwd)" source scripts/01_preflight.sh
 ```

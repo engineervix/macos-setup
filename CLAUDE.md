@@ -6,12 +6,12 @@ Context for Claude Code sessions working in this repository.
 
 A collection of machine setup resources for Victor Miti's development environments:
 
-| Directory | Purpose |
-| :--- | :--- |
-| `_references/my-linux-setup/opensuse-setup/` | Automated setup for openSUSE Tumbleweed + Hyprland (work Linux machine) |
-| `_references/my-linux-setup/dotfiles/` | Shared config files symlinked into `~/.config` on Linux (zshrc, kitty, hypr, waybar, rofi, starship, etc.) |
-| current working dir | Automated setup for macOS (personal Mac) — mirrors the Linux setup as closely as possible |
-| `mac-migration-plan.md` | Full strategy doc: tool-by-tool Linux→Mac mapping, rationale, and implementation order |
+| Directory                                    | Purpose                                                                                                    |
+| :------------------------------------------- | :--------------------------------------------------------------------------------------------------------- |
+| `_references/my-linux-setup/opensuse-setup/` | Automated setup for openSUSE Tumbleweed + Hyprland (work Linux machine)                                    |
+| `_references/my-linux-setup/dotfiles/`       | Shared config files symlinked into `~/.config` on Linux (zshrc, kitty, hypr, waybar, rofi, starship, etc.) |
+| current working dir                          | Automated setup for macOS (personal Mac) — mirrors the Linux setup as closely as possible                  |
+| `mac-migration-plan.md`                      | Full strategy doc: tool-by-tool Linux→Mac mapping, rationale, and implementation order                     |
 
 ## Linux setup (opensuse-setup + dotfiles)
 
