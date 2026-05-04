@@ -4,7 +4,6 @@ Mapping my openSUSE Tumbleweed / Hyprland setup to macOS, prioritising muscle-me
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
 - [Guiding Principles](#guiding-principles)
 - [Stack Mapping](#stack-mapping)
@@ -53,19 +52,19 @@ Mapping my openSUSE Tumbleweed / Hyprland setup to macOS, prioritising muscle-me
 
 ## Stack Mapping
 
-| Linux | macOS Equivalent | Notes |
-|-------|-----------------|-------|
-| Hyprland | Aerospace | Same workspace/keybinding philosophy |
-| Waybar | SketchyBar | Fully scriptable, Catppuccin-ready |
-| Rofi | Spotlight (built-in) | Native macOS launcher; no install needed |
+| Linux    | macOS Equivalent            | Notes                                                       |
+| -------- | --------------------------- | ----------------------------------------------------------- |
+| Hyprland | Aerospace                   | Same workspace/keybinding philosophy                        |
+| Waybar   | SketchyBar                  | Fully scriptable, Catppuccin-ready                          |
+| Rofi     | Spotlight (built-in)        | Native macOS launcher; no install needed                    |
 | cliphist | Maccy + Spotlight clipboard | Maccy for hotkey access; Spotlight ⌘4 for cross-device sync |
-| Kitty | Kitty | Unchanged — native macOS support |
-| Dunst | macOS native | Not customisable at daemon level |
-| hyprlock | macOS native | Not customisable |
-| swayosd | macOS native OSD | Volume/brightness pills built-in |
-| zypper | Homebrew | `brew bundle` = reproducible Brewfile |
-| Docker | OrbStack | Drop-in CLI replacement, much lighter |
-| wlogout | macOS power menu | No equivalent needed |
+| Kitty    | Kitty                       | Unchanged — native macOS support                            |
+| Dunst    | macOS native                | Not customisable at daemon level                            |
+| hyprlock | macOS native                | Not customisable                                            |
+| swayosd  | macOS native OSD            | Volume/brightness pills built-in                            |
+| zypper   | Homebrew                    | `brew bundle` = reproducible Brewfile                       |
+| Docker   | OrbStack                    | Drop-in CLI replacement, much lighter                       |
+| wlogout  | macOS power menu            | No equivalent needed                                        |
 
 ---
 
@@ -262,32 +261,32 @@ These cannot be managed by Homebrew. Document them here so nothing gets forgotte
 
 ### App Store
 
-| App | Notes |
-|-----|-------|
+| App   | Notes                                                          |
+| ----- | -------------------------------------------------------------- |
 | Xcode | Install first; then run `xcode-select --install` for CLI tools |
 
 ### Free — manual download
 
-| App | Source | Notes |
-|-----|--------|-------|
-| Sweet Home 3D | sweethome3d.com | No cask available |
-| Vital | vital.audio | Free synth plugin; account required for download |
+| App           | Source          | Notes                                            |
+| ------------- | --------------- | ------------------------------------------------ |
+| Sweet Home 3D | sweethome3d.com | No cask available                                |
+| Vital         | vital.audio     | Free synth plugin; account required for download |
 
 ### Account required
 
-| App | Source | Notes |
-|-----|--------|-------|
-| Ableton Live 12 Lite | ableton.com | Lite license comes with hardware; activate via Ableton account |
-| Splice INSTRUMENT | splice.com | Plugin manager; requires Splice account |
-| Antigravity | custom | Installed to `~/.antigravity/antigravity/bin/` via its own installer; re-run the original install script and ensure the PATH entry is in `.zshrc` |
+| App                  | Source      | Notes                                                                                                                                             |
+| -------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Ableton Live 12 Lite | ableton.com | Lite license comes with hardware; activate via Ableton account                                                                                    |
+| Splice INSTRUMENT    | splice.com  | Plugin manager; requires Splice account                                                                                                           |
+| Antigravity          | custom      | Installed to `~/.antigravity/antigravity/bin/` via its own installer; re-run the original install script and ensure the PATH entry is in `.zshrc` |
 
 ### Commercial / licensed
 
-| App | Notes |
-|-----|-------|
-| Microsoft 365 (Word, Excel, PowerPoint, Outlook, OneNote, OneDrive) | Sign in via microsoft.com or Mac App Store with work/personal account |
-| BricsCAD | bricsys.com — commercial CAD; requires license key |
-| NTFS for Mac | Commercial (Paragon NTFS or similar); required for read/write on NTFS drives |
+| App                                                                 | Notes                                                                        |
+| ------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| Microsoft 365 (Word, Excel, PowerPoint, Outlook, OneNote, OneDrive) | Sign in via microsoft.com or Mac App Store with work/personal account        |
+| BricsCAD                                                            | bricsys.com — commercial CAD; requires license key                           |
+| NTFS for Mac                                                        | Commercial (Paragon NTFS or similar); required for read/write on NTFS drives |
 
 ---
 
@@ -295,17 +294,17 @@ These cannot be managed by Homebrew. Document them here so nothing gets forgotte
 
 Config file lives at `~/.aerospace.toml`. Target keybinding map:
 
-| Hyprland | Aerospace | Action |
-|----------|-----------|--------|
-| `Super+Q` | `alt+q` | Launch Kitty |
-| `Super+C` | `alt+c` | Close window |
-| `Super+V` | `alt+v` | Toggle float |
-| `Super+1-0` | `alt+1-0` | Switch workspace |
-| `Super+Shift+1-0` | `alt+shift+1-0` | Move window to workspace |
-| `Super+Tab` | `alt+tab` | Previous workspace |
-| `Super+arrow keys` | `alt+arrows` | Move focus |
-| `Super+Shift+hjkl` | `alt+shift+hjkl` | Move window |
-| `Super+W` | `alt+w` | Enter resize mode |
+| Hyprland           | Aerospace        | Action                   |
+| ------------------ | ---------------- | ------------------------ |
+| `Super+Q`          | `alt+q`          | Launch Kitty             |
+| `Super+C`          | `alt+c`          | Close window             |
+| `Super+V`          | `alt+v`          | Toggle float             |
+| `Super+1-0`        | `alt+1-0`        | Switch workspace         |
+| `Super+Shift+1-0`  | `alt+shift+1-0`  | Move window to workspace |
+| `Super+Tab`        | `alt+tab`        | Previous workspace       |
+| `Super+arrow keys` | `alt+arrows`     | Move focus               |
+| `Super+Shift+hjkl` | `alt+shift+hjkl` | Move window              |
+| `Super+W`          | `alt+w`          | Enter resize mode        |
 
 ### Starter `~/.aerospace.toml`
 
@@ -403,16 +402,16 @@ Replaces Waybar. Hides the native macOS menu bar.
 
 Target modules (mirrors Waybar layout):
 
-| Position | Module | Notes |
-|----------|--------|-------|
-| Left | Aerospace workspaces | Active workspace highlight |
-| Centre | Active window title | Truncated to ~50 chars |
-| Right | Clock | HH:MM:SS format |
-| Right | Network | Up/down indicator |
-| Right | Battery | % + charging state |
-| Right | CPU | Usage % |
-| Right | Memory | Usage % |
-| Right | Volume | Level + mute state |
+| Position | Module               | Notes                      |
+| -------- | -------------------- | -------------------------- |
+| Left     | Aerospace workspaces | Active workspace highlight |
+| Centre   | Active window title  | Truncated to ~50 chars     |
+| Right    | Clock                | HH:MM:SS format            |
+| Right    | Network              | Up/down indicator          |
+| Right    | Battery              | % + charging state         |
+| Right    | CPU                  | Usage %                    |
+| Right    | Memory               | Usage %                    |
+| Right    | Volume               | Level + mute state         |
 
 Catppuccin Mocha colours: use the community `catppuccin/sketchybar` preset.
 
@@ -459,6 +458,7 @@ The current Mac `.zshrc` (OhMyZsh + Powerlevel10k) already has all the right CLI
 3. Add the missing init calls (starship, fzf, zoxide)
 4. Preserve all the Mac-specific paths and env vars
 5. Remove iTerm2 shell integration line (switching to Kitty)
+
 ### What to remove
 
 ```zsh
@@ -590,15 +590,15 @@ tar_max() {
 
 ## Phase 9 — Development Tools
 
-| Tool | Mac setup |
-|------|-----------|
-| Docker / Compose | OrbStack (CLI-compatible, `docker` and `docker compose` work unchanged) |
-| AWS CLI | `brew install awscli` |
-| Heroku CLI | `brew install heroku` |
-| pyenv + virtualenvwrapper | `brew install pyenv`, then pip install virtualenvwrapper |
-| Volta (Node) | `curl https://get.volta.sh | bash` (same as Linux) |
-| Rustup | `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh` (same as Linux) |
-| Go | `brew install go` |
+| Tool                      | Mac setup                                                               |
+| ------------------------- | ----------------------------------------------------------------------- | --------------------- |
+| Docker / Compose          | OrbStack (CLI-compatible, `docker` and `docker compose` work unchanged) |
+| AWS CLI                   | `brew install awscli`                                                   |
+| Heroku CLI                | `brew install heroku`                                                   |
+| pyenv + virtualenvwrapper | `brew install pyenv`, then pip install virtualenvwrapper                |
+| Volta (Node)              | `curl https://get.volta.sh                                              | bash` (same as Linux) |
+| Rustup                    | `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs              | sh` (same as Linux)   |
+| Go                        | `brew install go`                                                       |
 
 All global npm packages (prettier, eslint, typescript, pyright, etc.) reinstall via `volta install` after Volta is set up.
 
@@ -606,25 +606,25 @@ All global npm packages (prettier, eslint, typescript, pyright, etc.) reinstall 
 
 ## What Cannot Be Replicated
 
-| Feature | Reason |
-|---------|--------|
-| Custom hyprlock lockscreen | macOS lock screen is not user-customisable |
+| Feature                    | Reason                                       |
+| -------------------------- | -------------------------------------------- |
+| Custom hyprlock lockscreen | macOS lock screen is not user-customisable   |
 | Dunst notification styling | macOS notification daemon is not replaceable |
-| swayosd OSD | macOS has a fixed native OSD |
-| GPU screen recorder script | Use macOS built-in `Cmd+Shift+5` |
-| Monitor hot-plug scripts | macOS handles display changes automatically |
-| Wayland-native clipboard | Maccy + Spotlight clipboard (⌘Space → ⌘4) |
+| swayosd OSD                | macOS has a fixed native OSD                 |
+| GPU screen recorder script | Use macOS built-in `Cmd+Shift+5`             |
+| Monitor hot-plug scripts   | macOS handles display changes automatically  |
+| Wayland-native clipboard   | Maccy + Spotlight clipboard (⌘Space → ⌘4)    |
 
 ---
 
 ## Screenshot Keybindings (macOS native, no setup needed)
 
-| Action | macOS | Linux equivalent |
-|--------|-------|-----------------|
-| Full screenshot → file | `Cmd+Shift+3` | `Print` |
-| Selection → file | `Cmd+Shift+4` | `Super+Shift+Print` |
-| Selection → clipboard | `Cmd+Ctrl+Shift+4` | `Super+Print` |
-| Screen recording UI | `Cmd+Shift+5` | `Super+Shift+R` |
+| Action                 | macOS              | Linux equivalent    |
+| ---------------------- | ------------------ | ------------------- |
+| Full screenshot → file | `Cmd+Shift+3`      | `Print`             |
+| Selection → file       | `Cmd+Shift+4`      | `Super+Shift+Print` |
+| Selection → clipboard  | `Cmd+Ctrl+Shift+4` | `Super+Print`       |
+| Screen recording UI    | `Cmd+Shift+5`      | `Super+Shift+R`     |
 
 ---
 
