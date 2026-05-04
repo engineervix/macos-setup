@@ -27,13 +27,6 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 # Prevent accidentally hidden apps from disappearing behind tiled windows
 automatically-unhide-macos-hidden-apps = true
 
-# Flatten nested containers and fix orientation mismatches automatically
-enable-normalization-flatten-containers = true
-enable-normalization-opposite-orientation-for-nested-containers = true
-
-# Visual breathing room when using accordion layout
-accordion-padding = 30
-
 # Keep workspaces 1-10 alive even when empty (requires config-version = 2)
 persistent-workspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
 
