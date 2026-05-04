@@ -30,6 +30,8 @@ A collection of machine setup resources for Victor Miti's development environmen
 Written in one session. **Not yet tested on a real Mac.** Review `REVIEW.md` before running.
 
 - **WM:** AeroSpace — modifier key is `alt` (Option), mirroring `Super` on Linux
+- **Focus indicator:** JankyBorders — Catppuccin Mocha coloured border on focused window; launched from AeroSpace `after-startup-command`
+- **Workspace swipe:** SwipeAeroSpace — restores 3-finger trackpad swipe; needs Accessibility permission (manual)
 - **Status bar:** SketchyBar (mirrors Waybar layout)
 - **Launcher:** Raycast on `Cmd+Space` (also `alt+r`) — replaces Rofi
 - **Clipboard:** Raycast built-in (also Maccy as fallback) — replaces cliphist
@@ -43,16 +45,15 @@ Written in one session. **Not yet tested on a real Mac.** Review `REVIEW.md` bef
 ### Key decisions
 
 - `alt` not `cmd` as AeroSpace modifier — `cmd` conflicts with standard macOS shortcuts (Cmd+C, Cmd+V, Cmd+H, Cmd+W, etc.)
-- Stats.app (already installed) as zero-config interim for SketchyBar right-side modules
 - Brewfile is the canonical list of everything — run `brew bundle` to sync
 - `conf/` files are symlinked, not copied — edit in repo, changes are live immediately
 - The Mac `zshrc` preserves all Mac-specific paths: Homebrew, GNU coreutils/sed, PostgreSQL@16, Android SDK, GDAL, Perl, Antigravity, Kiro
 
 ### What the script automates vs. what's manual
 
-**Automated:** Homebrew, all packages, Volta/Node/npm globals, Rustup, Go tools, pipx, Neovim clone, git-delta config, fzf keybindings, macOS defaults, zshrc + aerospace.toml symlinks, SketchyBar service start.
+**Automated:** Homebrew, all packages, Volta/Node/npm globals, Rustup, Go tools, pipx, Neovim clone, git-delta config, fzf keybindings, macOS defaults, zshrc + aerospace.toml symlinks, SketchyBar service start (Catppuccin Mocha config included), JankyBorders launch via AeroSpace startup.
 
-**Manual:** Karabiner-Elements GUI config, Raycast setup, SketchyBar Catppuccin theme, Kitty config copy, VS Code Settings Sync, pyenv Python install, all licensed/manual app installs (Office 365, Ableton, Vital, Splice, BricsCAD, NTFS for Mac, Sweet Home 3D, Antigravity).
+**Manual:** Karabiner-Elements GUI config, Raycast setup, SwipeAeroSpace Accessibility permission, Kitty config copy, VS Code Settings Sync, pyenv Python install, all licensed/manual app installs (Office 365, Ableton, Vital, Splice, BricsCAD, NTFS for Mac, Sweet Home 3D, Antigravity).
 
 ## Conventions
 
@@ -63,6 +64,7 @@ Written in one session. **Not yet tested on a real Mac.** Review `REVIEW.md` bef
 
 ## Working in this repo
 
+- Run `lefthook install` once after cloning to activate pre-commit hooks (ggshield secret scan + ShellCheck on staged `.sh` files).
 - The migration plan (`mac-migration-plan-claude.md`) is the source of truth for strategy decisions. Update it when decisions change.
 - `mac-setup/REVIEW.md` tracks open questions and items needing verification after the initial session.
 - The Linux dotfiles `.zshrc` is at `dotfiles/.zshrc` — if you add a new cross-platform function there, also add it to `mac-setup/conf/zshrc`.
