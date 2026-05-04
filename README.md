@@ -40,8 +40,8 @@ The script runs four modular phases in sequence:
 | :---- | :---------------- | :-------------------------------------------------------------------------------------- |
 | 1     | `01_preflight.sh` | Checks Xcode CLI tools; applies macOS system defaults                                   |
 | 2     | `02_homebrew.sh`  | Installs Homebrew; runs `Brewfile`                                                      |
-| 3     | `03_tooling.sh`   | Installs Volta/Node/npm, Rustup, Go tools, pipx packages, Neovim config, fzf, git-delta |
-| 4     | `04_dotfiles.sh`  | Symlinks `zshrc`, `aerospace.toml`, and SketchyBar config; starts SketchyBar service    |
+| 3     | `03_tooling.sh`   | Installs Volta/Node/npm, Rustup, Claude Code, Go tools, pipx packages, Neovim config, fzf, git-delta |
+| 4     | `04_dotfiles.sh`  | Clones dotfiles repo; symlinks `zshrc`, `aerospace.toml`, Starship, Kitty, and SketchyBar config; starts SketchyBar service |
 
 Safe to re-run — all steps are idempotent.
 
@@ -90,13 +90,7 @@ Grant Accessibility permission when prompted on first launch, or manually:
 
 ### Kitty
 
-Copy your config from the Linux dotfiles repo:
-
-```bash
-cp -r ~/dotfiles/.config/kitty ~/.config/kitty
-```
-
-If the font doesn't render, change `kitty.conf`:
+Config is symlinked automatically from `~/dotfiles/.config/kitty`. If the font doesn't render, change `kitty.conf`:
 
 ```
 font_family JetBrainsMonoNL NFM

@@ -66,32 +66,29 @@ mkdir -p "$HOME/.config"
 link "${SCRIPT_DIR}/conf/karabiner" "$HOME/.config/karabiner"
 
 # -----------------------------------------------------------------------------
-# Starship — symlink from dotfiles repo if available, else note manual step
+# Dotfiles repo — clone if not already present
 # -----------------------------------------------------------------------------
-DOTFILES_STARSHIP="$HOME/dotfiles/.config/starship.toml"
-if [ -f "$DOTFILES_STARSHIP" ]; then
-    mkdir -p "$HOME/.config"
-    link "$DOTFILES_STARSHIP" "$HOME/.config/starship.toml"
-    info "Starship config linked from dotfiles repo."
+DOTFILES_DIR="$HOME/dotfiles"
+log "Ensuring dotfiles repo is available..."
+if [ ! -d "$DOTFILES_DIR/.git" ]; then
+    git clone https://github.com/engineervix/dotfiles.git "$DOTFILES_DIR"
+    info "Cloned dotfiles repo to ${DOTFILES_DIR}."
 else
-    warn "starship.toml not found at ${DOTFILES_STARSHIP}"
-    warn "Copy it manually: cp ~/dotfiles/.config/starship.toml ~/.config/starship.toml"
+    info "Dotfiles repo already present at ${DOTFILES_DIR}."
 fi
 
 # -----------------------------------------------------------------------------
-# Kitty — symlink from dotfiles repo if available
+# Starship
 # -----------------------------------------------------------------------------
-DOTFILES_KITTY="$HOME/dotfiles/.config/kitty"
-if [ -d "$DOTFILES_KITTY" ]; then
-    mkdir -p "$HOME/.config"
-    link "$DOTFILES_KITTY" "$HOME/.config/kitty"
-    info "Kitty config linked from dotfiles repo."
-    warn "If fonts don't render correctly in Kitty, change kitty.conf:"
-    warn "  font_family JetBrainsMonoNL NFM"
-else
-    warn "Kitty config not found at ${DOTFILES_KITTY}"
-    warn "Copy it manually: cp -r ~/dotfiles/.config/kitty ~/.config/kitty"
-fi
+mkdir -p "$HOME/.config"
+link "$DOTFILES_DIR/.config/starship.toml" "$HOME/.config/starship.toml"
+
+# -----------------------------------------------------------------------------
+# Kitty
+# -----------------------------------------------------------------------------
+link "$DOTFILES_DIR/.config/kitty" "$HOME/.config/kitty"
+warn "If fonts don't render correctly in Kitty, change kitty.conf:"
+warn "  font_family JetBrainsMonoNL NFM"
 
 # -----------------------------------------------------------------------------
 # SketchyBar — config symlink + service start
