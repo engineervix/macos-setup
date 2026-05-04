@@ -605,6 +605,7 @@ Run through these after each phase to confirm nothing is broken before moving on
 - [ ] `alt+h/j/k/l` moves focus; `alt+shift+h/j/k/l` moves windows
 - [ ] Kitty launches via `alt+q` with Catppuccin Mocha theme and correct font
 - [ ] Spotlight opens on `Cmd+Space` and `alt+r`; Maccy clipboard history on `cmd+shift+v`
+- [ ] Caps Lock sends Escape when tapped and Control when held (Karabiner active)
 - [ ] SketchyBar shows workspaces, clock, CPU, memory, battery
 - [ ] `ll`, `cat`, `find`, `rg` aliases all resolve correctly in a new shell
 - [ ] `docker ps` and `docker compose` work via OrbStack

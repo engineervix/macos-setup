@@ -57,8 +57,13 @@ These steps require a GUI or credentials and cannot be automated.
 
 ### Karabiner-Elements
 
-- Remap Caps Lock: **Escape** when tapped, **Ctrl** when held
-- GUI only — no config file to write
+The Caps Lock remap (Escape when tapped, Ctrl when held) is configured automatically via `conf/karabiner/karabiner.json`, symlinked by the install script.
+
+After install you must grant three permissions manually — Karabiner won't function without them:
+
+1. **System Extension:** `System Settings → Login Items & Extensions → Driver Extensions` → approve `org.pqrs.Karabiner-DriverKit-VirtualHIDDevice`
+2. **Accessibility:** `System Settings → Privacy & Security → Accessibility` → enable Karabiner-Elements
+3. **Login Items:** confirm background services are enabled in `System Settings → General → Login Items`
 
 ### Maccy (Clipboard Manager)
 
@@ -181,6 +186,8 @@ AeroSpace community write-ups that informed this config:
 ├── conf/
 │   ├── zshrc             Shell config → symlinked to ~/.zshrc
 │   ├── aerospace.toml    AeroSpace config → symlinked to ~/.aerospace.toml
+│   ├── karabiner/        Karabiner-Elements config → symlinked to ~/.config/karabiner/
+│   │   └── karabiner.json
 │   └── sketchybar/       SketchyBar config → symlinked to ~/.config/sketchybar/
 │       ├── sketchybarrc
 │       └── plugins/
