@@ -11,7 +11,7 @@ A collection of machine setup resources for Victor Miti's development environmen
 | `_references/my-linux-setup/opensuse-setup/` | Automated setup for openSUSE Tumbleweed + Hyprland (work Linux machine) |
 | `_references/my-linux-setup/dotfiles/` | Shared config files symlinked into `~/.config` on Linux (zshrc, kitty, hypr, waybar, rofi, starship, etc.) |
 | current working dir | Automated setup for macOS (personal Mac) — mirrors the Linux setup as closely as possible |
-| `mac-migration-plan-claude.md` | Full strategy doc: tool-by-tool Linux→Mac mapping, rationale, and implementation order |
+| `mac-migration-plan.md` | Full strategy doc: tool-by-tool Linux→Mac mapping, rationale, and implementation order |
 
 ## Linux setup (opensuse-setup + dotfiles)
 
@@ -65,7 +65,7 @@ Written in several sessions. **Not yet tested on a real Mac.** Review `REVIEW.md
 ## Working in this repo
 
 - Run `lefthook install` once after cloning to activate pre-commit hooks (ggshield secret scan + ShellCheck on staged `.sh` files).
-- The migration plan (`mac-migration-plan-claude.md`) is the source of truth for strategy decisions. Update it when decisions change.
+- The migration plan (`mac-migration-plan.md`) is the source of truth for strategy decisions. Update it when decisions change.
 - `REVIEW.md` tracks open questions and items needing verification after the initial session.
 - The Linux dotfiles `.zshrc` is at `dotfiles/.zshrc` — if you add a new cross-platform function there, also add it to `conf/zshrc`.
 - The Mac `.zshrc` has three Mac-only functions not in the Linux dotfiles: `compress_audio`, `days_until`, `wget_entire_site`. These are worth promoting to the shared dotfiles eventually.
