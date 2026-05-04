@@ -2,6 +2,44 @@
 
 Mapping my openSUSE Tumbleweed / Hyprland setup to macOS, prioritising muscle-memory continuity.
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Guiding Principles](#guiding-principles)
+- [Stack Mapping](#stack-mapping)
+- [Phase 1 — Homebrew & Core CLI](#phase-1--homebrew--core-cli)
+  - [Brewfile (target)](#brewfile-target)
+  - [Shell aliases to change](#shell-aliases-to-change)
+- [Manual & Licensed Installs](#manual--licensed-installs)
+  - [App Store](#app-store)
+  - [Free — manual download](#free--manual-download)
+  - [Account required](#account-required)
+  - [Commercial / licensed](#commercial--licensed)
+- [Phase 2 — Aerospace (Tiling WM)](#phase-2--aerospace-tiling-wm)
+  - [Starter `~/.aerospace.toml`](#starter-aerospacetoml)
+- [Phase 3 — Karabiner-Elements](#phase-3--karabiner-elements)
+  - [System tweak: disable window animations](#system-tweak-disable-window-animations)
+- [Phase 4 — SketchyBar](#phase-4--sketchybar)
+- [Phase 5 — Spotlight + Maccy](#phase-5--spotlight--maccy)
+- [Phase 6 — Kitty (unchanged)](#phase-6--kitty-unchanged)
+- [Phase 7 — Shell & Dotfiles](#phase-7--shell--dotfiles)
+  - [Current state of the Mac zshrc](#current-state-of-the-mac-zshrc)
+  - [What to remove](#what-to-remove)
+  - [macOS-specific block (add inside the OS guard in `.zshrc`)](#macos-specific-block-add-inside-the-os-guard-in-zshrc)
+  - [Init calls to add (outside the OS guard — these work on both platforms)](#init-calls-to-add-outside-the-os-guard--these-work-on-both-platforms)
+  - [Mac-only functions to keep (not in Linux dotfiles)](#mac-only-functions-to-keep-not-in-linux-dotfiles)
+  - [tar_max is already Mac-aware](#tar_max-is-already-mac-aware)
+- [Phase 8 — Neovim & Editors](#phase-8--neovim--editors)
+- [Phase 9 — Development Tools](#phase-9--development-tools)
+- [What Cannot Be Replicated](#what-cannot-be-replicated)
+- [Screenshot Keybindings (macOS native, no setup needed)](#screenshot-keybindings-macos-native-no-setup-needed)
+- [Verification Checklist](#verification-checklist)
+- [Rollback](#rollback)
+- [Implementation Order](#implementation-order)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ---
 
 ## Guiding Principles
