@@ -22,7 +22,7 @@ fi
 
 if ! volta list node 2>/dev/null | grep -q 'node'; then
     log "Installing Node.js LTS and npm via Volta..."
-    volta install node@lts
+    volta install node
     volta install npm@latest
 fi
 
