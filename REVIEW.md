@@ -28,25 +28,13 @@ The `Brewfile` was built from the output of `brew list --formula` and `brew list
 These casks may have different names or may not exist — verify with `brew search` before running:
 
 - `cask "kiro"` — AWS's Kiro IDE; Homebrew cask may not exist yet (it's a newer product)
-- `cask "sketchybar"` — verify current cask name: `brew search sketchybar`
-- `cask "aerospace"` — verify: `brew search aerospace` (may be `nikitabobko/tap/aerospace`)
+- ~~`cask "sketchybar"`~~ — **resolved**: sketchybar is a formula not a cask; changed to `brew "sketchybar"` under `tap "FelixKratz/formulae"`
+- ~~`cask "aerospace"`~~ — **resolved**: lives in `nikitabobko/tap`; tap added to Brewfile
 - `cask "aldente"` — verify cask exists: `brew search aldente`
 - `cask "mullvad-vpn"` — verify: `brew search mullvad`
 - `cask "ungoogled-chromium"` — may require a tap: `brew search ungoogled-chromium`
 
 To check any cask before installing: `brew info --cask <name>`
-
-### Homebrew taps
-
-Some casks may live in third-party taps. If `brew bundle` fails for a cask, you may need to add a tap first:
-
-```bash
-# Example for AeroSpace (if it's tap-only):
-brew tap nikitabobko/tap
-brew install --cask nikitabobko/tap/aerospace
-```
-
-Adding a `tap` line to the Brewfile handles this automatically.
 
 ### zshrc: GDAL path
 
