@@ -29,8 +29,6 @@ fi
 log "Installing global npm packages..."
 if ! volta list 2>/dev/null | grep -q 'prettier'; then
     volta install \
-        @google/gemini-cli \
-        @marp-team/marp-cli \
         commit-and-tag-version \
         doctoc \
         eslint \
