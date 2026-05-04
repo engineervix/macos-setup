@@ -8,16 +8,12 @@ PLUGIN_DIR="$CONFIG_DIR/plugins"
 
 # Catppuccin Mocha palette (0xAARRGGBB)
 BAR_COLOR=0xee1e1e2e   # base, 93% opacity
-ITEM_BG=0x44313244     # surface0, 27% opacity (inactive workspace)
 ACTIVE_BG=0xff313244   # surface0, opaque (active workspace)
 TEXT=0xffcdd6f4        # text
 SUBTEXT=0xffa6adc8     # subtext0
 BLUE=0xff89b4fa
-MAUVE=0xffcba6f7
 PEACH=0xfffab387
 GREEN=0xffa6e3a1
-YELLOW=0xfff9e2af
-RED=0xfff38ba8
 
 FONT="JetBrainsMono Nerd Font"
 
