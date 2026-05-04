@@ -33,8 +33,8 @@ Written in several sessions. **Not yet tested on a real Mac.** Review `REVIEW.md
 - **Focus indicator:** JankyBorders — Catppuccin Mocha coloured border on focused window; launched from AeroSpace `after-startup-command`
 - **Workspace swipe:** SwipeAeroSpace — restores 3-finger trackpad swipe; needs Accessibility permission (manual)
 - **Status bar:** SketchyBar (mirrors Waybar layout)
-- **Launcher:** Raycast on `Cmd+Space` (also `alt+r`) — replaces Rofi
-- **Clipboard:** Raycast built-in (also Maccy as fallback) — replaces cliphist
+- **Launcher:** Spotlight on `Cmd+Space` (also `alt+r`) — replaces Rofi
+- **Clipboard:** Maccy — replaces cliphist; Spotlight clipboard history (⌘Space 4) also available
 - **Packages:** Homebrew + `Brewfile` (mirrors zypper)
 - **Docker:** OrbStack (drop-in CLI replacement)
 - **Shell config:** `conf/zshrc` — Mac-specific file, symlinked to `~/.zshrc`
@@ -53,7 +53,7 @@ Written in several sessions. **Not yet tested on a real Mac.** Review `REVIEW.md
 
 **Automated:** Homebrew, all packages, Volta/Node/npm globals, Rustup, Go tools, pipx, Neovim clone, git-delta config, fzf keybindings, macOS defaults, zshrc + aerospace.toml symlinks, SketchyBar service start (Catppuccin Mocha config included), JankyBorders launch via AeroSpace startup.
 
-**Manual:** Karabiner-Elements GUI config, Raycast setup, SwipeAeroSpace Accessibility permission, Kitty config copy, VS Code Settings Sync, pyenv Python install, all licensed/manual app installs (Office 365, Ableton, Vital, Splice, BricsCAD, NTFS for Mac, Sweet Home 3D, Antigravity).
+**Manual:** Karabiner-Elements GUI config, Maccy hotkey setup, SwipeAeroSpace Accessibility permission, Kitty config copy, VS Code Settings Sync, pyenv Python install, all licensed/manual app installs (Office 365, Ableton, Vital, Splice, BricsCAD, NTFS for Mac, Sweet Home 3D, Antigravity).
 
 ## Conventions
 

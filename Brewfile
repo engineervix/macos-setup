@@ -134,8 +134,7 @@ cask "karabiner-elements"
 cask "sketchybar"
 brew "borders"           # JankyBorders — coloured focus border for active window
 cask "swipeaerospace"    # 3-finger trackpad swipe for AeroSpace workspace switching
-cask "raycast"
-cask "maccy"             # fallback clipboard manager if not using Raycast
+cask "maccy"             # clipboard manager (complements Spotlight clipboard history)
 
 # === Browsers ===
 cask "google-chrome"

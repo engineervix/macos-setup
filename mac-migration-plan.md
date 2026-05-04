@@ -19,8 +19,8 @@ Mapping my openSUSE Tumbleweed / Hyprland setup to macOS, prioritising muscle-me
 |-------|-----------------|-------|
 | Hyprland | Aerospace | Same workspace/keybinding philosophy |
 | Waybar | SketchyBar | Fully scriptable, Catppuccin-ready |
-| Rofi | Raycast | Also replaces cliphist |
-| cliphist | Raycast (built-in) | Clipboard history included free |
+| Rofi | Spotlight (built-in) | Native macOS launcher; no install needed |
+| cliphist | Maccy + Spotlight clipboard | Maccy for hotkey access; Spotlight ⌘4 for cross-device sync |
 | Kitty | Kitty | Unchanged — native macOS support |
 | Dunst | macOS native | Not customisable at daemon level |
 | hyprlock | macOS native | Not customisable |
@@ -161,8 +161,7 @@ cask "kitty"
 cask "aerospace"
 cask "karabiner-elements"
 cask "sketchybar"
-cask "raycast"
-cask "maccy"             # fallback clipboard manager if not using Raycast
+cask "maccy"             # clipboard manager (complements Spotlight clipboard history)
 
 # === Browsers ===
 cask "google-chrome"
@@ -385,15 +384,13 @@ Catppuccin Mocha colours: use the community `catppuccin/sketchybar` preset.
 
 ---
 
-## Phase 5 — Raycast
+## Phase 5 — Spotlight + Maccy
 
-Replaces Rofi + cliphist.
+Replaces Rofi + cliphist. No additional install needed for Spotlight — it's built into macOS.
 
-- Disable macOS Spotlight shortcut (`System Settings → Keyboard → Keyboard Shortcuts → Spotlight`) and bind Raycast to `Cmd+Space` — the natural Mac launcher muscle memory
-- Also bind to `alt+r` for consistency with the Linux `Super+R` feel when in Aerospace-land
-- Enable Clipboard History extension → set hotkey to `alt+h` (mirrors `Super+H`)
-- Enable Window Management extension as a lightweight fallback to Aerospace
-- Install extensions: GitHub, GitLab, brew, Docker
+- `Cmd+Space` opens Spotlight; `alt+r` in AeroSpace also triggers it (via osascript keystroke)
+- Spotlight browse modes: Apps (⌘1), Files (⌘2), Actions (⌘3), Clipboard (⌘4)
+- Maccy is installed via Brewfile — set hotkey to `cmd+shift+v` in its preferences (`alt+h` is taken by AeroSpace focus-left)
 
 ---
 
@@ -585,7 +582,7 @@ All global npm packages (prettier, eslint, typescript, pyright, etc.) reinstall 
 | swayosd OSD | macOS has a fixed native OSD |
 | GPU screen recorder script | Use macOS built-in `Cmd+Shift+5` |
 | Monitor hot-plug scripts | macOS handles display changes automatically |
-| Wayland-native clipboard | Not applicable; Raycast covers the use case |
+| Wayland-native clipboard | Maccy + Spotlight clipboard (⌘Space → ⌘4) |
 
 ---
 
@@ -607,7 +604,7 @@ Run through these after each phase to confirm nothing is broken before moving on
 - [ ] Aerospace tiles windows and `alt+1-0` switches workspaces correctly
 - [ ] `alt+h/j/k/l` moves focus; `alt+shift+h/j/k/l` moves windows
 - [ ] Kitty launches via `alt+q` with Catppuccin Mocha theme and correct font
-- [ ] Raycast opens on `Cmd+Space`; clipboard history on `alt+h`
+- [ ] Spotlight opens on `Cmd+Space` and `alt+r`; Maccy clipboard history on `cmd+shift+v`
 - [ ] SketchyBar shows workspaces, clock, CPU, memory, battery
 - [ ] `ll`, `cat`, `find`, `rg` aliases all resolve correctly in a new shell
 - [ ] `docker ps` and `docker compose` work via OrbStack

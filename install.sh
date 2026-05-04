@@ -61,7 +61,7 @@ info "  7. SketchyBar service started"
 echo
 warn "Manual steps still required (see mac-migration-plan.md):"
 warn "  - Karabiner-Elements: configure Caps Lock remap via the GUI"
-warn "  - Raycast: set Cmd+Space, enable clipboard history (alt+h)"
+warn "  - Maccy: set hotkey (suggested: cmd+shift+v) and configure history size"
 warn "  - Kitty: copy ~/.config/kitty from Linux dotfiles"
 warn "  - VS Code: sign in to Settings Sync"
 warn "  - pyenv: install your Python version (pyenv install <version>)"

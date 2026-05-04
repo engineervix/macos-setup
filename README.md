@@ -13,7 +13,7 @@ See [`mac-migration-plan.md`](./mac-migration-plan.md) for the full rationale an
 | :------------------ | :---------------- | :---------------------------------------------------------- |
 | **Window Manager**  | Hyprland          | [AeroSpace](https://github.com/nikitabobko/AeroSpace)       |
 | **Status Bar**      | Waybar            | [SketchyBar](https://github.com/FelixKratz/SketchyBar)      |
-| **Launcher**        | Rofi              | [Raycast](https://www.raycast.com/)                         |
+| **Launcher**        | Rofi              | Spotlight (built-in)                                        |
 | **Terminal**        | Kitty             | Kitty (unchanged)                                           |
 | **Shell**           | Zsh + Starship    | Zsh + Starship (unchanged)                                  |
 | **Editor**          | Neovim            | Neovim (unchanged)                                          |
@@ -60,12 +60,11 @@ These steps require a GUI or credentials and cannot be automated.
 - Remap Caps Lock: **Escape** when tapped, **Ctrl** when held
 - GUI only — no config file to write
 
-### Raycast
+### Maccy (Clipboard Manager)
 
-1. Disable Spotlight: `System Settings → Keyboard → Keyboard Shortcuts → Spotlight`
-2. Bind Raycast to `Cmd+Space`
-3. Enable **Clipboard History** extension → set hotkey to `cmd+shift+v` (`alt+h` is taken by AeroSpace focus-left)
-4. Install extensions: GitHub, GitLab, brew, Docker
+Maccy is installed by the Brewfile. On first launch, set a hotkey in Maccy preferences — suggested `cmd+shift+v` (`alt+h` is taken by AeroSpace focus-left). Adjust history size and ignored apps to taste.
+
+Spotlight also has built-in clipboard history (`Cmd+Space` then `⌘4`), synced across devices via iCloud.
 
 ### SketchyBar
 
@@ -137,7 +136,7 @@ These apps have no Homebrew cask. See the migration plan for details.
 | :----------------------------------- | :------------------------ | :------------------ |
 | Launch terminal                      | `alt+q`                   | `Super+Q`           |
 | Close window                         | `alt+c`                   | `Super+C`           |
-| App launcher (Raycast)               | `alt+r`                   | `Super+R`           |
+| App launcher (Spotlight)             | `alt+r`                   | `Super+R`           |
 | File manager (Finder)                | `alt+e`                   | `Super+E`           |
 | Toggle float                         | `alt+v`                   | `Super+V`           |
 | Switch workspace                     | `alt+1-0`                 | `Super+1-0`         |
@@ -150,16 +149,17 @@ These apps have no Homebrew cask. See the migration plan for details.
 | Screenshot → clipboard               | `alt+shift+s`             | `Super+Print`       |
 | Service mode (reload / reset / join) | `alt+shift+;`             | —                   |
 
-### Raycast / Screenshots
+### Spotlight / Maccy / Screenshots
 
-| Action                 | macOS                          | Linux equivalent    |
-| :--------------------- | :----------------------------- | :------------------ |
-| App launcher           | `Cmd+Space` or `alt+r`         | `Super+R`           |
-| Clipboard history      | `cmd+shift+v` (set in Raycast) | `Super+H`           |
-| Full screenshot → file | `Cmd+Shift+3`                  | `Print`             |
-| Region → file          | `Cmd+Shift+4`                  | `Super+Shift+Print` |
-| Region → clipboard     | `alt+shift+s` (AeroSpace)      | `Super+Print`       |
-| Screen recording       | `Cmd+Shift+5`                  | `Super+Shift+R`     |
+| Action                 | macOS                           | Linux equivalent    |
+| :--------------------- | :------------------------------ | :------------------ |
+| App launcher           | `Cmd+Space` or `alt+r`          | `Super+R`           |
+| Clipboard history      | `cmd+shift+v` (set in Maccy)    | `Super+H`           |
+| Spotlight clipboard    | `Cmd+Space` → `⌘4`             | —                   |
+| Full screenshot → file | `Cmd+Shift+3`                   | `Print`             |
+| Region → file          | `Cmd+Shift+4`                   | `Super+Shift+Print` |
+| Region → clipboard     | `alt+shift+s` (AeroSpace)       | `Super+Print`       |
+| Screen recording       | `Cmd+Shift+5`                   | `Super+Shift+R`     |
 
 ## Further Reading
 
