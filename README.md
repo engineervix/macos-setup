@@ -7,6 +7,31 @@ Automated setup script for macOS, establishing a development environment that mi
 
 See [`mac-migration-plan.md`](./mac-migration-plan.md) for the full rationale and tool-by-tool mapping.
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Stack](#stack)
+- [Installation](#installation)
+- [Prerequisites](#prerequisites)
+- [Post-Installation](#post-installation)
+  - [Karabiner-Elements](#karabiner-elements)
+  - [Maccy (Clipboard Manager)](#maccy-clipboard-manager)
+  - [SketchyBar](#sketchybar)
+  - [SwipeAeroSpace](#swipeaerospace)
+  - [Kitty](#kitty)
+  - [pyenv](#pyenv)
+  - [VS Code](#vs-code)
+  - [Neovim](#neovim)
+- [Manual Installs](#manual-installs)
+- [Keybindings](#keybindings)
+  - [AeroSpace (Window Manager)](#aerospace-window-manager)
+  - [Spotlight / Maccy / Screenshots](#spotlight--maccy--screenshots)
+- [Further Reading](#further-reading)
+- [Directory Structure](#directory-structure)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Stack
 
 | Component           | Linux             | macOS                                                       |

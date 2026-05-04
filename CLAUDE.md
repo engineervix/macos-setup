@@ -2,6 +2,20 @@
 
 Context for agent sessions working in this repository.
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [What this repo is](#what-this-repo-is)
+- [Linux setup (opensuse-setup + dotfiles)](#linux-setup-opensuse-setup--dotfiles)
+- [Mac setup](#mac-setup)
+  - [Key decisions](#key-decisions)
+  - [What the script automates vs. what's manual](#what-the-script-automates-vs-whats-manual)
+- [Conventions](#conventions)
+- [Working in this repo](#working-in-this-repo)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## What this repo is
 
 A collection of machine setup resources for Victor Miti's development environments:

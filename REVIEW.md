@@ -2,6 +2,24 @@
 
 Everything in this directory was written in a single session without being run on a real Mac. Read this before executing anything.
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [What was produced](#what-was-produced)
+- [Items needing verification before running](#items-needing-verification-before-running)
+  - [Brewfile cask names](#brewfile-cask-names)
+  - [zshrc: GDAL path](#zshrc-gdal-path)
+  - [zshrc: Perl local::lib](#zshrc-perl-locallib)
+  - [zshrc: Antigravity PATH](#zshrc-antigravity-path)
+  - [Android SDK paths](#android-sdk-paths)
+  - [git-delta: dark mode assumption](#git-delta-dark-mode-assumption)
+- [Testing order (recommended)](#testing-order-recommended)
+- [Known gaps](#known-gaps)
+- [Items to consider adjusting](#items-to-consider-adjusting)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ---
 
 ## What was produced
