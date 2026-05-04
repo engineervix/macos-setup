@@ -161,6 +161,7 @@ cask "meld"              # visual diff
 # === System utilities ===
 cask "stats"             # menu bar system monitor
 cask "aldente"           # battery charge limiter
+cask "localsend"         # local network file sharing
 cask "tailscale"
 cask "mullvad-vpn"
 
