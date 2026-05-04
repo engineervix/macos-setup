@@ -148,7 +148,6 @@ cask "visual-studio-code"
 cask "zed"
 cask "sublime-text"
 cask "android-studio"
-cask "kiro"
 
 # === Communication ===
 cask "slack"

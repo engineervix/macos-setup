@@ -174,8 +174,6 @@ cask "visual-studio-code"
 cask "zed"
 cask "sublime-text"
 cask "android-studio"
-cask "kiro"              # AWS AI IDE
-
 # === Communication ===
 cask "slack"
 cask "zoom"
@@ -423,8 +421,6 @@ The current Mac `.zshrc` (OhMyZsh + Powerlevel10k) already has all the right CLI
 3. Add the missing init calls (starship, fzf, zoxide)
 4. Preserve all the Mac-specific paths and env vars
 5. Remove iTerm2 shell integration line (switching to Kitty)
-6. Keep Kiro shell integration if continuing to use Kiro
-
 ### What to remove
 
 ```zsh
@@ -475,9 +471,6 @@ if [[ "$(uname)" == "Darwin" ]]; then
 
   # Antigravity
   export PATH="/Users/victor/.antigravity/antigravity/bin:$PATH"
-
-  # Kiro IDE integration (keep if using Kiro)
-  [[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
 
   # Remove xdg-open alias — macOS `open` is native
   unalias open 2>/dev/null

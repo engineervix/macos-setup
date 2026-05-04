@@ -47,7 +47,7 @@ Written in several sessions. **Not yet tested on a real Mac.** Review `REVIEW.md
 - `alt` not `cmd` as AeroSpace modifier — `cmd` conflicts with standard macOS shortcuts (Cmd+C, Cmd+V, Cmd+H, Cmd+W, etc.)
 - Brewfile is the canonical list of everything — run `brew bundle` to sync
 - `conf/` files are symlinked, not copied — edit in repo, changes are live immediately
-- The Mac `zshrc` preserves all Mac-specific paths: Homebrew, GNU coreutils/sed, PostgreSQL@16, Android SDK, GDAL, Perl, Antigravity, Kiro
+- The Mac `zshrc` preserves all Mac-specific paths: Homebrew, GNU coreutils/sed, PostgreSQL@16, Android SDK, GDAL, Perl, Antigravity
 
 ### What the script automates vs. what's manual
 

@@ -94,9 +94,6 @@ eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
 # =============== Antigravity ===============
 export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
 
-# =============== Kiro IDE integration ===============
-[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
-
 # =============== Virtualenvwrapper ===============
 export WORKON_HOME="$HOME/.virtualenvs"
 export VIRTUALENVWRAPPER_PYTHON="$HOMEBREW_PREFIX/bin/python3"

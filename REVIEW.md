@@ -27,7 +27,6 @@ The `Brewfile` was built from the output of `brew list --formula` and `brew list
 
 These casks may have different names or may not exist — verify with `brew search` before running:
 
-- `cask "kiro"` — AWS's Kiro IDE; Homebrew cask may not exist yet (it's a newer product)
 - ~~`cask "sketchybar"`~~ — **resolved**: sketchybar is a formula not a cask; changed to `brew "sketchybar"` under `tap "FelixKratz/formulae"`
 - ~~`cask "aerospace"`~~ — **resolved**: lives in `nikitabobko/tap`; tap added to Brewfile
 - `cask "aldente"` — verify cask exists: `brew search aldente`
@@ -58,14 +57,6 @@ eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
 ```
 
 This will fail silently if `$HOME/perl5` doesn't exist. That's fine — it only matters if you use Perl. Verify after setup if you use Perl packages.
-
-### zshrc: Kiro integration
-
-```zsh
-[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
-```
-
-This only runs when the terminal is Kiro, so it's a no-op in Kitty. If Kiro is not in PATH, it fails silently. No action needed unless you actively use Kiro.
 
 ### zshrc: Antigravity PATH
 
