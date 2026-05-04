@@ -53,7 +53,7 @@ echo
 info "Automated steps done:"
 info "  1. macOS system defaults applied"
 info "  2. Homebrew installed and Brewfile packages installed"
-info "  3. Volta, Node, npm packages, Rustup, pipx packages set up"
+info "  3. Volta, Node, npm packages, Rustup, Claude Code, pipx packages set up"
 info "  4. Neovim config cloned"
 info "  5. git configured with delta"
 info "  6. zshrc, aerospace.toml, SketchyBar and Karabiner-Elements configs symlinked"

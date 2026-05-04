@@ -59,6 +59,16 @@ else
 fi
 
 # =============================================================================
+# Claude Code
+# =============================================================================
+log "Installing Claude Code..."
+if ! command -v claude &>/dev/null; then
+    curl -fsSL https://claude.ai/install.sh | bash
+else
+    info "Claude Code already installed."
+fi
+
+# =============================================================================
 # Go tools (gopls — golangci-lint is in Brewfile)
 # =============================================================================
 log "Installing Go tools..."
