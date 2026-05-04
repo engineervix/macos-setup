@@ -6,6 +6,11 @@
 
 log "--- [Phase 1: Preflight] ---"
 
+# Xcode full app (required before CLI tools)
+if ! [ -d "/Applications/Xcode.app" ]; then
+    error "Xcode is not installed. Install it from the Mac App Store, open it once to accept the license, then re-run this script."
+fi
+
 # Xcode CLI tools
 if ! xcode-select -p &>/dev/null; then
     log "Installing Xcode Command Line Tools..."
