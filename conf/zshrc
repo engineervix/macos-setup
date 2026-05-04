@@ -125,7 +125,6 @@ alias du='duf'
 alias top='btop'
 alias cd='z'
 alias ts='date +"%Y-%m-%d-%H-%M-%S"'
-alias trash='trash'
 alias pipup='pip install --upgrade pip'
 alias google-chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 
