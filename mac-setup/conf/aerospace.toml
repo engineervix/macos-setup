@@ -3,43 +3,86 @@
 # Docs: https://nikitabobko.github.io/AeroSpace/guide
 # =============================================================================
 
+config-version = 2
+
 after-login-command = []
-after-startup-command = []
+after-startup-command = [
+    # SketchyBar detects if already running, so safe to always include
+    'exec-and-forget sketchybar'
+]
+
+# Notify SketchyBar when the active workspace changes
+exec-on-workspace-change = ['/bin/bash', '-c',
+    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
+]
 
 start-at-login = true
+auto-reload-config = true
 
-# Use alt as the main modifier (mirrors Super/Windows key on Linux)
+# Mouse lazily follows the focused monitor (useful with multiple displays)
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+# Prevent accidentally hidden apps from disappearing behind tiled windows
+automatically-unhide-macos-hidden-apps = true
+
+# Keep workspaces 1-10 alive even when empty (requires config-version = 2)
+persistent-workspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+
+[key-mapping]
+preset = 'qwerty'
+
+# Gaps mirror Hyprland: gaps_in = 5, gaps_out = 10
+[gaps]
+inner.horizontal = 5
+inner.vertical   = 5
+outer.left       = 10
+outer.bottom     = 10
+outer.top        = 10
+outer.right      = 10
+
+# =============================================================================
+# Main binding mode
+# =============================================================================
 [mode.main.binding]
 
+# Suppress "hide application" — hits by accident constantly
+cmd-h     = []
+cmd-alt-h = []
+
 # --- Launch & close ---
-alt-q = 'exec-and-forget open -a Kitty'   # Super+Q → launch terminal
-alt-c = 'close'                            # Super+C → kill active window
+alt-q = 'exec-and-forget open -a Kitty'    # Super+Q → terminal
+alt-c = 'close'                             # Super+C → kill window
+alt-r = 'exec-and-forget open -a Raycast'  # Super+R → app launcher
+alt-e = 'exec-and-forget open -a Finder'   # Super+E → file manager
+
+# --- Screenshot to clipboard (mirrors Super+Print → grim -g slurp | wl-copy) ---
+alt-shift-s = 'exec-and-forget screencapture -i -c'
 
 # --- Layout ---
 alt-v = 'layout floating tiling'           # Super+V → toggle float
-alt-p = 'layout tiles horizontal vertical' # Super+P → pseudo/cycle layout
+alt-p = 'layout tiles horizontal vertical' # Super+P → cycle tile layout
 
 # --- Focus ---
-alt-h = 'focus left'
-alt-j = 'focus down'
-alt-k = 'focus up'
-alt-l = 'focus right'
+alt-h     = 'focus left'
+alt-j     = 'focus down'
+alt-k     = 'focus up'
+alt-l     = 'focus right'
 alt-left  = 'focus left'
 alt-down  = 'focus down'
 alt-up    = 'focus up'
 alt-right = 'focus right'
 
 # --- Move windows ---
-alt-shift-h = 'move left'
-alt-shift-j = 'move down'
-alt-shift-k = 'move up'
-alt-shift-l = 'move right'
+alt-shift-h     = 'move left'
+alt-shift-j     = 'move down'
+alt-shift-k     = 'move up'
+alt-shift-l     = 'move right'
 alt-shift-left  = 'move left'
 alt-shift-down  = 'move down'
 alt-shift-up    = 'move up'
 alt-shift-right = 'move right'
 
-# --- Workspaces (Super+1-0) ---
+# --- Workspaces (alt+1-0) ---
 alt-1 = 'workspace 1'
 alt-2 = 'workspace 2'
 alt-3 = 'workspace 3'
@@ -51,7 +94,7 @@ alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
 alt-0 = 'workspace 10'
 
-# --- Move window to workspace (Super+Shift+1-0) ---
+# --- Move window to workspace (alt+shift+1-0) ---
 alt-shift-1 = 'move-node-to-workspace 1'
 alt-shift-2 = 'move-node-to-workspace 2'
 alt-shift-3 = 'move-node-to-workspace 3'
@@ -64,20 +107,43 @@ alt-shift-9 = 'move-node-to-workspace 9'
 alt-shift-0 = 'move-node-to-workspace 10'
 
 # --- Workspace navigation ---
-alt-tab = 'workspace-back-and-forth'       # Super+Tab → toggle last workspace
+alt-tab       = 'workspace-back-and-forth'                     # Super+Tab → toggle last workspace
+alt-shift-tab = 'move-workspace-to-monitor --wrap-around next' # send workspace to next monitor
 
-# --- Resize mode (Super+W) ---
-alt-w = 'mode resize'
+# --- Mode switches ---
+alt-w               = 'mode resize'
+alt-shift-semicolon = 'mode service'
 
+# =============================================================================
+# Resize mode — enter with alt-w, exit with enter/esc
+# =============================================================================
 [mode.resize.binding]
-h = 'resize width -50'
-j = 'resize height +50'
-k = 'resize height -50'
-l = 'resize width +50'
-minus     = 'resize smart -50'
-equal     = 'resize smart +50'
+h     = 'resize width -50'
+j     = 'resize height +50'
+k     = 'resize height -50'
+l     = 'resize width +50'
+left  = 'resize width -50'
+down  = 'resize height +50'
+up    = 'resize height -50'
+right = 'resize width +50'
+minus = 'resize smart -50'
+equal = 'resize smart +50'
 enter = 'mode main'
 esc   = 'mode main'
+
+# =============================================================================
+# Service mode — enter with alt-shift-;, exit with esc
+# For less-common operations: reload config, reset layout, join windows
+# =============================================================================
+[mode.service.binding]
+esc       = ['reload-config', 'mode main']
+r         = ['flatten-workspace-tree', 'mode main']          # reset layout
+f         = ['layout floating tiling', 'mode main']          # toggle float
+backspace = ['close-all-windows-but-current', 'mode main']
+alt-shift-h = ['join-with left',  'mode main']
+alt-shift-j = ['join-with down',  'mode main']
+alt-shift-k = ['join-with up',    'mode main']
+alt-shift-l = ['join-with right', 'mode main']
 
 # =============================================================================
 # App → workspace assignments (mirrors Hyprland rules.conf)
