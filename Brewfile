@@ -176,6 +176,7 @@ cask "musescore"
 # === R & data science ===
 cask "r"
 cask "rstudio"
+cask "mactex-no-gui"
 
 # === Java (required for Android dev) ===
 cask "zulu@17"
