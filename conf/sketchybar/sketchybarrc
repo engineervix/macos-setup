@@ -20,11 +20,17 @@ FONT="JetBrainsMono Nerd Font"
 # =============================================================================
 # Bar
 # =============================================================================
+# y_offset: push bar just below the native menu bar (tune to match exact menu bar height)
+# height=30: tall enough for 15pt/14pt fonts + 26px item backgrounds, while staying compact
+# margin=16: left/right inset so the bar doesn't span edge-to-edge
+# corner_radius=15: half of height → pill shape
 sketchybar \
     --bar \
         position=top \
-        height=36 \
-        y_offset=24 \
+        height=30 \
+        y_offset=8 \
+        margin=16 \
+        corner_radius=15 \
         blur_radius=20 \
         color=$BAR_COLOR \
         border_width=0 \
@@ -36,8 +42,8 @@ sketchybar \
 sketchybar --default \
     padding_left=4 \
     padding_right=4 \
-    icon.font="$FONT:Bold:14.0" \
-    label.font="$FONT:Regular:13.0" \
+    icon.font="$FONT:Bold:15.0" \
+    label.font="$FONT:Regular:14.0" \
     icon.color=$TEXT \
     label.color=$TEXT \
     icon.padding_left=6 \
@@ -60,7 +66,7 @@ for sid in 1 2 3 4 5 6 7 8 9 10; do
             icon="$sid" \
             label.drawing=off \
             icon.color=$SUBTEXT \
-            icon.font="$FONT:Bold:13.0" \
+            icon.font="$FONT:Bold:14.0" \
             icon.padding_left=8 \
             icon.padding_right=8 \
             background.color=$ACTIVE_BG \
@@ -87,7 +93,7 @@ sketchybar \
     --set front_app \
         icon.drawing=off \
         label.color=$BLUE \
-        label.font="$FONT:SemiBold:13.0" \
+        label.font="$FONT:SemiBold:14.0" \
         label.padding_left=2 \
         label.padding_right=6 \
         background.drawing=off \
