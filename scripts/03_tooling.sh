@@ -103,6 +103,18 @@ mkdir -p "$HOME/.zfunc"
 poetry completions zsh > "$HOME/.zfunc/_poetry" 2>/dev/null || true
 
 # =============================================================================
+# Perl local::lib (needed by LaTeX tools and other Perl-based utilities)
+# =============================================================================
+log "Setting up Perl local::lib..."
+if ! perl -I"$HOME/perl5/lib/perl5" -Mlocal::lib &>/dev/null; then
+    PERL_MM_OPT="INSTALL_BASE=$HOME/perl5" \
+    PERL_MB_OPT="--install_base=$HOME/perl5" \
+        cpanm local::lib
+else
+    info "Perl local::lib already configured."
+fi
+
+# =============================================================================
 # FZF keybindings & completions
 # =============================================================================
 log "Setting up fzf keybindings..."
