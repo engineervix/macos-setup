@@ -21,6 +21,6 @@ log "Updating Homebrew..."
 brew update
 
 log "Running Brewfile..."
-brew bundle --file="${SCRIPT_DIR}/Brewfile" --no-lock
+HOMEBREW_BUNDLE_NO_LOCK=1 brew bundle --file="${SCRIPT_DIR}/Brewfile" -v
 
 log "Homebrew setup complete."
