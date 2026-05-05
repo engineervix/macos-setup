@@ -117,3 +117,4 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,linux,windows,vim,visualstudiocode,dotenv
+conf/karabiner/automatic_backups/
