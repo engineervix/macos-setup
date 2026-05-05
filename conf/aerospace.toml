@@ -9,8 +9,8 @@ after-login-command = []
 after-startup-command = [
     # SketchyBar detects if already running, so safe to always include
     'exec-and-forget sketchybar',
-    # JankyBorders — Catppuccin Mocha: Blue active, Surface1 inactive
-    'exec-and-forget borders active_color=0xff89b4fa inactive_color=0xff45475a style=round width=5.0 hidpi=on',
+    # JankyBorders — config in ~/.config/borders/bordersrc
+    'exec-and-forget borders',
 ]
 
 # Notify SketchyBar when the active workspace changes

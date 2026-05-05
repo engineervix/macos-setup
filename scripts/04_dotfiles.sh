@@ -91,6 +91,21 @@ warn "If fonts don't render correctly in Kitty, change kitty.conf:"
 warn "  font_family JetBrainsMonoNL NFM"
 
 # -----------------------------------------------------------------------------
+# JankyBorders — config symlink + service start
+# -----------------------------------------------------------------------------
+log "Symlinking JankyBorders config..."
+mkdir -p "$HOME/.config/borders"
+link "${SCRIPT_DIR}/conf/borders/bordersrc" "$HOME/.config/borders/bordersrc"
+
+log "Starting JankyBorders service..."
+if brew list borders &>/dev/null; then
+    brew services start borders 2>/dev/null || true
+    info "JankyBorders started."
+else
+    warn "JankyBorders not installed — skipping service start."
+fi
+
+# -----------------------------------------------------------------------------
 # SketchyBar — config symlink + service start
 # -----------------------------------------------------------------------------
 log "Symlinking SketchyBar config..."

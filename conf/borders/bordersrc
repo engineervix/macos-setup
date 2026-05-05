@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+options=(
+    style=round
+    width=5.0
+    hidpi=on
+    active_color=0xff89b4fa    # Catppuccin Mocha Blue
+    inactive_color=0xff45475a  # Catppuccin Mocha Surface1
+)
+
+borders "${options[@]}"
