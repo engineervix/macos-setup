@@ -3,7 +3,7 @@
 # Hides workspaces that have no windows; shows and highlights the focused one.
 # Invoked with $1 = workspace id, $FOCUSED_WORKSPACE set by the event trigger.
 
-OCCUPIED=$(aerospace list-workspaces --occupied 2>/dev/null)
+OCCUPIED=$(aerospace list-workspaces --monitor all --empty no 2>/dev/null)
 
 if [ "$1" = "$FOCUSED_WORKSPACE" ]; then
     sketchybar --set "$NAME" \
