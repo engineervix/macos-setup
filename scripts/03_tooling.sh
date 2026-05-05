@@ -58,6 +58,13 @@ else
     source "$HOME/.cargo/env"
 fi
 
+# Ensure cargo is available in this session
+# source "$HOME/.cargo/env"
+# We need this for the Neovim setup
+if ! command -v tree-sitter &>/dev/null; then
+    cargo install tree-sitter-cli
+fi
+
 # =============================================================================
 # Claude Code
 # =============================================================================
