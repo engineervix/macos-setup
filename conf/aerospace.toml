@@ -19,7 +19,6 @@ exec-on-workspace-change = ['/bin/bash', '-c',
 ]
 
 start-at-login = true
-auto-reload-config = true
 
 # Mouse lazily follows any focus change (mirrors Hyprland's follow_mouse = 1)
 on-focus-changed = ['move-mouse window-lazy-center']
