@@ -7,6 +7,7 @@
 tap "FelixKratz/formulae"   # JankyBorders + SketchyBar
 tap "nikitabobko/tap"       # AeroSpace
 tap "mediosz/tap"           # SwipeAeroSpace
+tap "hashicorp/tap"         # Terraform
 
 # === Shell ===
 brew "zsh"
@@ -59,16 +60,21 @@ brew "pinentry-mac"      # GPG pinentry for macOS Keychain
 brew "trivy"             # vulnerability scanner
 
 # === Dev utilities ===
+brew "cmake"             # build system (required for YouCompleteMe)
 brew "just"              # task runner
 brew "httpie"            # HTTP client
 brew "yq"                # YAML processor
 brew "jq"                # JSON processor
 brew "tmux"              # for SSH sessions / remote work
 brew "vim"               # fallback editor
+brew "presenterm"        # terminal slideshow tool
+brew "ccusage"           # CLI tool for analyzing Claude Code usage from local JSONL files
+brew "ctop"              # Top-like interface for container metrics
 
 # === Languages & runtimes ===
 brew "go"
 brew "ruby"
+brew "cpanminus"          # non-interactive CPAN client (used to bootstrap local::lib)
 brew "deno"
 brew "pyenv"
 # Volta (Node): installed via curl script in 03_tooling.sh
@@ -91,7 +97,7 @@ brew "postgresql@16"
 # === Cloud & infra ===
 brew "awscli"
 brew "azure-cli"
-brew "terraform"
+brew "hashicorp/tap/terraform"
 brew "rclone"
 
 # === Document & PDF processing ===
@@ -163,7 +169,7 @@ cask "meld"              # visual diff
 cask "stats"             # menu bar system monitor
 cask "aldente"           # battery charge limiter
 cask "localsend"         # local network file sharing
-cask "tailscale"
+cask "tailscale-app"
 cask "mullvad-vpn"
 
 # === Creative & media ===
@@ -175,7 +181,7 @@ cask "blender"
 cask "musescore"
 
 # === R & data science ===
-cask "r"
+cask "r-app"
 cask "rstudio"
 cask "mactex-no-gui"
 
