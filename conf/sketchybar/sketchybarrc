@@ -24,6 +24,7 @@ sketchybar \
     --bar \
         position=top \
         height=36 \
+        y_offset=24 \
         blur_radius=20 \
         color=$BAR_COLOR \
         border_width=0 \
