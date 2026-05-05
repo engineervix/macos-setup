@@ -109,6 +109,57 @@ else
 fi
 
 # -----------------------------------------------------------------------------
+# Vim configuration
+# -----------------------------------------------------------------------------
+log "Configuring Vim..."
+wget https://raw.githubusercontent.com/engineervix/opensuse-setup/0123da14/conf/vimrc -O "$HOME/.vimrc"
+
+# Install vim-plug
+log "Installing vim-plug plugin manager..."
+if [ ! -f "$HOME/.vim/autoload/plug.vim" ]; then
+    curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    log "vim-plug installed successfully"
+else
+    info "vim-plug already installed, skipping..."
+fi
+
+# Install vim plugins
+log "Installing vim plugins (this may take a few minutes)..."
+info "Note: YouCompleteMe will compile in the background - this is normal and may take some time"
+
+# Install plugins in a more controlled way
+if vim --not-a-term -c 'PlugInstall --sync | qa!' > /tmp/vim-plug-install.log 2>&1; then
+    log "Vim plugins installed successfully"
+
+    # Check if YouCompleteMe needs manual compilation (fallback)
+    if [ -d "$HOME/.vim/plugged/YouCompleteMe" ] && [ ! -f "$HOME/.vim/plugged/YouCompleteMe/third_party/ycmd/ycm_core.so" ]; then
+        log "Compiling YouCompleteMe manually..."
+        (
+            cd "$HOME/.vim/plugged/YouCompleteMe" || exit
+            if python3 install.py > /tmp/ycm-install.log 2>&1; then
+                log "YouCompleteMe compiled successfully"
+            else
+                warn "YouCompleteMe compilation had issues - check /tmp/ycm-install.log"
+                warn "You may need to install additional development packages"
+            fi
+        )
+    fi
+
+    # Install Go binaries for vim-go
+    if [ -d "$HOME/.vim/plugged/vim-go" ]; then
+        log "Installing vim-go binaries..."
+        vim --not-a-term -c 'GoUpdateBinaries | qa!' > /tmp/vim-go-install.log 2>&1 || \
+            warn "vim-go binaries may need manual install - run ':GoUpdateBinaries' in vim"
+    fi
+else
+    warn "Some vim plugins may not have installed correctly - check /tmp/vim-plug-install.log"
+    warn "You can manually run ':PlugInstall' in vim to retry"
+fi
+
+log "Vim setup completed! Use ':NERDTree' to open file explorer, ':Files' for fuzzy finding."
+
+# -----------------------------------------------------------------------------
 # Set zsh as the default shell (it already is on macOS 10.15+, but be sure)
 # -----------------------------------------------------------------------------
 ZSH_PATH="$(brew --prefix)/bin/zsh"
