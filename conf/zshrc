@@ -329,3 +329,6 @@ eval "$(starship init zsh)"
 # =============== Local / Secret Config ===============
 # Keep secrets and machine-specific config in .zshrc.local (not tracked by git)
 [ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
+
+# Added by Antigravity
+export PATH="/Users/victor/.antigravity/antigravity/bin:$PATH"
