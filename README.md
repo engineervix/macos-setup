@@ -3,7 +3,7 @@
 ![macOS](https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=macos&logoColor=F0F0F0)
 ![Bash Script](https://img.shields.io/badge/bash_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white)
 
-Automated setup script for macOS, establishing a development environment that mirrors my openSUSE Tumbleweed / Hyprland setup as closely as possible — same shell stack, same theme, same muscle memory.
+Automated setup script for macOS, establishing a development environment that _attempts_ to mirror my [openSUSE Tumbleweed](https://github.com/engineervix/opensuse-setup) / [Hyprland](https://github.com/engineervix/dotfiles) setup as closely as possible — same shell stack, same theme, same muscle memory.
 
 See [`docs/notes/mac-migration-plan.md`](./docs/notes/mac-migration-plan.md) for the full rationale and tool-by-tool mapping.
 
