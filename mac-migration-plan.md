@@ -195,7 +195,6 @@ cask "font-fantasque-sans-mono-nerd-font"
 # === Terminal & WM ===
 cask "kitty"
 cask "aerospace"
-cask "karabiner-elements"
 cask "sketchybar"
 cask "maccy"             # clipboard manager (complements Spotlight clipboard history)
 
