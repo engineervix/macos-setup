@@ -322,9 +322,6 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND='fd --type d --hidden --follow --exclude .git'
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border --info=inline'
 
-# =============== Zoxide ===============
-eval "$(zoxide init zsh)"
-
 # =============== Starship ===============
 eval "$(starship init zsh)"
 
@@ -340,3 +337,6 @@ eval "$(starship init zsh)"
 
 # Added by Antigravity
 export PATH="/Users/victor/.antigravity/antigravity/bin:$PATH"
+
+# =============== Zoxide ===============
+eval "$(zoxide init zsh)"
