@@ -31,16 +31,16 @@ nav_order: 2
 
 ## What was produced
 
-| File                      | Status                                               |
-| :------------------------ | :--------------------------------------------------- |
-| `install.sh`              | Written, syntax-checked, not tested                  |
-| `Brewfile`                | Written from installed package inventory, not tested |
-| `scripts/01_preflight.sh` | Written, syntax-checked, not tested                  |
-| `scripts/02_homebrew.sh`  | Written, syntax-checked, not tested                  |
-| `scripts/03_tooling.sh`   | Written, syntax-checked, not tested                  |
-| `scripts/04_dotfiles.sh`  | Written, syntax-checked, not tested                  |
-| `conf/zshrc`              | Written, syntax-checked, not tested as a live shell  |
-| `conf/aerospace.toml`     | Written, not verified against real AeroSpace         |
+| File                      | Status   |
+| :------------------------ | :------- |
+| `install.sh`              | Tested   |
+| `Brewfile`                | Tested   |
+| `scripts/01_preflight.sh` | Tested   |
+| `scripts/02_homebrew.sh`  | Tested   |
+| `scripts/03_tooling.sh`   | Tested   |
+| `scripts/04_dotfiles.sh`  | Tested   |
+| `conf/zshrc`              | Tested   |
+| `conf/aerospace.toml`     | Verified |
 
 The `Brewfile` was built from the output of `brew list --formula` and `brew list --cask` on the current Mac, plus additions from the Linux setup. It reflects what _should_ be installed, not necessarily what exact cask/formula names Homebrew uses today.
 

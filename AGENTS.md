@@ -1,4 +1,4 @@
-# unix-setup
+# macos-setup
 
 Context for agent sessions working in this repository.
 
@@ -41,7 +41,7 @@ A collection of machine setup resources for Victor Miti's development environmen
 
 ## Mac setup
 
-Written in several sessions. **Not yet tested on a real Mac.** Review `docs/notes/review.md` before running.
+Tested and iteratively updated on a real Mac. See `docs/notes/review.md` for known quirks and open items.
 
 - **WM:** AeroSpace — modifier key is `alt` (Option), mirroring `Super` on Linux
 - **Focus indicator:** JankyBorders — Catppuccin Mocha coloured border on focused window; launched from AeroSpace `after-startup-command`
