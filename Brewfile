@@ -115,6 +115,7 @@ brew "ffmpeg"
 brew "mpv"
 brew "yt-dlp"
 brew "exiftool"
+cask "keycastr"          # show keystrokes on screen during recordings
 
 # === Geospatial (GIS) ===
 brew "gdal"
