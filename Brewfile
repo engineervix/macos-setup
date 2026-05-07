@@ -138,7 +138,6 @@ cask "font-fantasque-sans-mono-nerd-font"
 # === Terminal & WM ===
 cask "kitty"
 cask "aerospace"
-cask "karabiner-elements"
 brew "sketchybar"
 brew "borders"           # JankyBorders — coloured focus border for active window
 cask "swipeaerospace"    # 3-finger trackpad swipe for AeroSpace workspace switching

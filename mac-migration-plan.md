@@ -17,8 +17,7 @@ Mapping my openSUSE Tumbleweed / Hyprland setup to macOS, prioritising muscle-me
   - [Commercial / licensed](#commercial--licensed)
 - [Phase 2 — Aerospace (Tiling WM)](#phase-2--aerospace-tiling-wm)
   - [Starter `~/.aerospace.toml`](#starter-aerospacetoml)
-- [Phase 3 — Karabiner-Elements](#phase-3--karabiner-elements)
-  - [System tweak: disable window animations](#system-tweak-disable-window-animations)
+- [System tweak: disable window animations](#system-tweak-disable-window-animations)
 - [Phase 4 — SketchyBar](#phase-4--sketchybar)
 - [Phase 5 — Spotlight + Maccy](#phase-5--spotlight--maccy)
 - [Phase 6 — Kitty (unchanged)](#phase-6--kitty-unchanged)
@@ -376,15 +375,7 @@ run = 'move-node-to-workspace 3'
 
 ---
 
-## Phase 3 — Karabiner-Elements
-
-Remap Caps Lock to `Escape` when tapped, `Ctrl` when held — same ergonomics as Linux.
-
-Optionally: remap the right `Option` key to behave as a `Hyper` key (Ctrl+Alt+Shift+Cmd) for conflict-free global shortcuts.
-
-Config lives at `~/.config/karabiner/karabiner.json` and is managed via the GUI — no need to hand-edit JSON.
-
-### System tweak: disable window animations
+## System tweak: disable window animations
 
 macOS animations can feel sluggish compared to Hyprland. Run once to disable them:
 
@@ -636,7 +627,6 @@ Run through these after each phase to confirm nothing is broken before moving on
 - [ ] `alt+h/j/k/l` moves focus; `alt+shift+h/j/k/l` moves windows
 - [ ] Kitty launches via `alt+q` with Catppuccin Mocha theme and correct font
 - [ ] Spotlight opens on `Cmd+Space` and `alt+r`; Maccy clipboard history on `cmd+shift+v`
-- [ ] Caps Lock sends Escape when tapped and Control when held (Karabiner active)
 - [ ] SketchyBar shows workspaces, clock, CPU, memory, battery
 - [ ] `ll`, `cat`, `find`, `rg` aliases all resolve correctly in a new shell
 - [ ] `docker ps` and `docker compose` work via OrbStack
@@ -651,7 +641,6 @@ Since this is a fresh Mac setup, rollback is straightforward:
 
 - **Aerospace**: quit the app and remove `~/.aerospace.toml` — macOS reverts to native Mission Control
 - **SketchyBar**: `brew services stop sketchybar` and re-enable the native menu bar (`System Settings → Control Centre`)
-- **Karabiner**: quit the app — all key remaps are immediately undone
 - **Homebrew packages**: `brew uninstall <package>` or `brew bundle cleanup` against the Brewfile
 - **Shell changes**: the OS-guard block in `.zshrc` is self-contained — remove it to revert
 
@@ -664,8 +653,7 @@ Since this is a fresh Mac setup, rollback is straightforward:
 3. [ ] Create and run `Brewfile`
 4. [ ] Install Volta, Rustup via curl scripts
 5. [ ] Install global npm packages via Volta (`prettier`, `eslint`, `typescript`, `pyright`, etc.)
-6. [ ] Configure Karabiner-Elements (Caps Lock remap)
-7. [ ] Configure Aerospace (`~/.aerospace.toml`)
+6. [ ] Configure Aerospace (`~/.aerospace.toml`)
 8. [ ] Configure Raycast (hotkeys, clipboard history)
 9. [ ] Configure SketchyBar (Catppuccin theme + modules) — use Stats.app in the meantime
 10. [ ] Copy Kitty config; fix font name if needed (`JetBrainsMonoNL NFM`)

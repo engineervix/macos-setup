@@ -65,9 +65,9 @@ Written in several sessions. **Not yet tested on a real Mac.** Review `REVIEW.md
 
 ### What the script automates vs. what's manual
 
-**Automated:** Homebrew, all packages, Volta/Node/npm globals, Rustup, Claude Code (native installer), Go tools, pipx, Neovim clone, dotfiles repo clone (starship + Kitty configs symlinked), git-delta config, fzf keybindings, macOS defaults, zshrc + aerospace.toml + SketchyBar + Karabiner-Elements config symlinks, SketchyBar service start (Catppuccin Mocha config included), JankyBorders launch via AeroSpace startup.
+**Automated:** Homebrew, all packages, Volta/Node/npm globals, Rustup, Claude Code (native installer), Go tools, pipx, Neovim clone, dotfiles repo clone (starship + Kitty configs symlinked), git-delta config, fzf keybindings, macOS defaults, zshrc + aerospace.toml + SketchyBar config symlinks, SketchyBar service start (Catppuccin Mocha config included), JankyBorders launch via AeroSpace startup.
 
-**Manual:** Karabiner-Elements permission grants (System Extension, Accessibility, Login Items), Maccy hotkey setup, SwipeAeroSpace Accessibility permission, VS Code Settings Sync, pyenv Python install, all licensed/manual app installs (Office 365, Ableton, Vital, Splice, BricsCAD, NTFS for Mac, Sweet Home 3D, Antigravity).
+**Manual:** Maccy hotkey setup, SwipeAeroSpace Accessibility permission, VS Code Settings Sync, pyenv Python install, all licensed/manual app installs (Office 365, Ableton, Vital, Splice, BricsCAD, NTFS for Mac, Sweet Home 3D, Antigravity).
 
 ## Conventions
 

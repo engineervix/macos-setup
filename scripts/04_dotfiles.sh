@@ -57,15 +57,6 @@ log "Symlinking Aerospace config..."
 link "${SCRIPT_DIR}/conf/aerospace.toml" "$HOME/.aerospace.toml"
 
 # -----------------------------------------------------------------------------
-# Karabiner-Elements
-# Symlink the whole directory — karabiner.json must not itself be a symlink
-# or Karabiner-Elements won't detect changes and auto-reload.
-# -----------------------------------------------------------------------------
-log "Symlinking Karabiner-Elements config..."
-mkdir -p "$HOME/.config"
-link "${SCRIPT_DIR}/conf/karabiner" "$HOME/.config/karabiner"
-
-# -----------------------------------------------------------------------------
 # Dotfiles repo — clone if not already present
 # -----------------------------------------------------------------------------
 DOTFILES_DIR="$HOME/dotfiles"
