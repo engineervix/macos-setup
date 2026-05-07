@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 # =============== Keybindings ===============
 bindkey -e  # emacs key bindings
 # Word movement (both Ctrl+Arrow and Alt+Arrow codes for Kitty on macOS)
@@ -82,14 +83,15 @@ export ANDROID_SDK_ROOT="$HOME/Android/Sdk"
 export PATH="$PATH:$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/platform-tools"
 
 # =============== GDAL ===============
-export GDAL_LIBRARY_PATH="$(brew --prefix gdal)/lib/libgdal.dylib"
+GDAL_LIBRARY_PATH="$(brew --prefix gdal)/lib/libgdal.dylib"
+export GDAL_LIBRARY_PATH
 
 # =============== Homebrew C headers (some Python packages need these) ===============
 export CFLAGS="-I/opt/homebrew/include"
 export LDFLAGS="${LDFLAGS} -L/opt/homebrew/lib"
 
 # =============== Perl ===============
-eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
+eval "$(perl "-I${HOME}/perl5/lib/perl5" "-Mlocal::lib=${HOME}/perl5")"
 
 # =============== Antigravity ===============
 export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
@@ -101,7 +103,7 @@ export VIRTUALENVWRAPPER_PYTHON="$HOMEBREW_PREFIX/bin/python3"
 
 # =============== Completions ===============
 FPATH="$(brew --prefix)/share/zsh-completions:$FPATH"
-fpath=(~/.zfunc $fpath)
+fpath=(~/.zfunc "${fpath[@]}")
 
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
@@ -143,8 +145,8 @@ function git_main_branch() {
   command git rev-parse --git-dir &>/dev/null || return
   local ref
   for ref in refs/{heads,remotes/{origin,upstream}}/{main,trunk,mainline,default,stable,master}; do
-    if command git show-ref -q --verify $ref; then
-      echo ${ref:t}
+    if command git show-ref -q --verify "$ref"; then
+      echo "${ref:t}"
       return 0
     fi
   done
@@ -176,7 +178,8 @@ function ggp() {
   if [[ "$#" != 0 ]] && [[ "$#" != 1 ]]; then
     git push origin "${*}"
   else
-    [[ "$#" == 0 ]] && local b="$(git_current_branch)"
+    local b
+    [[ "$#" == 0 ]] && b="$(git_current_branch)"
     git push origin "${b:=$1}"
   fi
 }
@@ -191,7 +194,7 @@ alias dcud='docker compose up -d'
 alias dcd='docker compose down'
 
 # =============== Custom Functions ===============
-mkcd() { mkdir -p "$1" && cd "$1"; }
+mkcd() { mkdir -p "$1" && cd "$1" || return; }
 
 extract() {
     if [ -f "$1" ]; then
@@ -229,7 +232,7 @@ grep_this() {
 }
 
 mkdir_date() {
-  mkdir -p $(date '+%Y-%h-%d-%a')
+  mkdir -p "$(date '+%Y-%h-%d-%a')"
 }
 
 kill_spaces() {
@@ -238,14 +241,14 @@ kill_spaces() {
 
 encrypt_pdf() {
   encrypted_pdf="${1%.pdf}.128.pdf"
-  pdftk "$1" output ${encrypted_pdf} owner_pw "$2" allow printing verbose
+  pdftk "$1" output "${encrypted_pdf}" owner_pw "$2" allow printing verbose
   mv -v "$1" "${1%.pdf}_src.pdf"
-  mv -v ${encrypted_pdf} "${encrypted_pdf%.128.pdf}.pdf"
+  mv -v "${encrypted_pdf}" "${encrypted_pdf%.128.pdf}.pdf"
 }
 
 split_pdf() {
   split_files="${1%.pdf}_%02d.pdf"
-  pdftk "$1" burst output ${split_files} verbose
+  pdftk "$1" burst output "${split_files}" verbose
 }
 
 grep_pdf() {
@@ -294,13 +297,16 @@ compress_audio() {
 }
 
 days_until() {
-  local date_cmd=$(command -v gdate || command -v date)
-  local target=$($date_cmd -d "$1" +%s 2>/dev/null)
+  local date_cmd
+  date_cmd="$(command -v gdate || command -v date)"
+  local target
+  target="$($date_cmd -d "$1" +%s 2>/dev/null)"
   if [ -z "$target" ]; then
     echo "Error: invalid date format"
     return 1
   fi
-  local now=$($date_cmd +%s)
+  local now
+  now="$($date_cmd +%s)"
   echo "$target $now" | awk '{diff=($1-$2)/86400; printf "%.0f days from now\n", diff}'
 }
 
@@ -309,6 +315,7 @@ wget_entire_site() {
 }
 
 # =============== FZF ===============
+# shellcheck source=/dev/null
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
