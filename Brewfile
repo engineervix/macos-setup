@@ -147,15 +147,15 @@ cask "maccy"             # clipboard manager (complements Spotlight clipboard hi
 # === Browsers ===
 cask "google-chrome"
 cask "brave-browser"
-cask "firefox"
+# cask "firefox"
 cask "ungoogled-chromium"
 
 # === Editors & IDEs ===
 brew "neovim"
 cask "visual-studio-code"
 cask "zed"
-cask "sublime-text"
-cask "android-studio"
+# cask "sublime-text"
+# cask "android-studio"
 
 # === Communication ===
 cask "slack"
@@ -182,8 +182,8 @@ cask "musescore"
 
 # === R & data science ===
 cask "r-app"
-cask "rstudio"
-cask "mactex-no-gui"
+# cask "rstudio"
+# cask "mactex-no-gui"
 
 # === Java (required for Android dev) ===
 cask "zulu@17"
