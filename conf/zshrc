@@ -108,10 +108,11 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 autoload -Uz compinit
-for dump in ~/.zcompdump(N.mh+24); do
+if [[ ! -f ~/.zcompdump ]] || [[ -n "$(find ~/.zcompdump -mmin +1440 2>/dev/null)" ]]; then
   compinit
-done
-compinit -C
+else
+  compinit -C
+fi
 
 # =============== Aliases ===============
 # General

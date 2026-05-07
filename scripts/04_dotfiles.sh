@@ -156,16 +156,18 @@ if vim --not-a-term -c 'PlugInstall --sync | qa!' > /tmp/vim-plug-install.log 2>
     # Install Go binaries for vim-go directly — avoids vim async job hang
     if command -v go &>/dev/null; then
         log "Installing vim-go binaries via go install..."
-        go install golang.org/x/tools/gopls@latest \
-            golang.org/x/tools/cmd/goimports@latest \
-            github.com/go-delve/delve/cmd/dlv@latest \
-            github.com/fatih/gomodifytags@latest \
-            github.com/josharian/impl@latest \
-            github.com/cweill/gotests/gotests@latest \
-            github.com/davidrjenni/reftools/cmd/fillstruct@latest \
-            honnef.co/go/tools/cmd/staticcheck@latest > /tmp/vim-go-install.log 2>&1 && \
-            log "vim-go binaries installed successfully" || \
+        if go install golang.org/x/tools/gopls@latest \
+                golang.org/x/tools/cmd/goimports@latest \
+                github.com/go-delve/delve/cmd/dlv@latest \
+                github.com/fatih/gomodifytags@latest \
+                github.com/josharian/impl@latest \
+                github.com/cweill/gotests/gotests@latest \
+                github.com/davidrjenni/reftools/cmd/fillstruct@latest \
+                honnef.co/go/tools/cmd/staticcheck@latest > /tmp/vim-go-install.log 2>&1; then
+            log "vim-go binaries installed successfully"
+        else
             warn "Some vim-go binaries failed to install - check /tmp/vim-go-install.log"
+        fi
     else
         warn "go not found — skipping vim-go binaries (run ':GoUpdateBinaries' in vim later)"
     fi
