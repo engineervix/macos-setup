@@ -6,7 +6,7 @@ nav_order: 2
 
 # Review Notes
 
-> [!NOTE]
+{: .warning }
 > Ongoing notes on setup quirks, known gaps, and items needing manual verification.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
