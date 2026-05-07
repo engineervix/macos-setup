@@ -21,13 +21,16 @@ BUILTIN_Y_OFFSET=0    # aerospace-builtin.toml: outer.top=40  (0+30+10)
 CONF_DIR="$(dirname "$(realpath "${CONFIG_DIR}")")"
 
 DISPLAY_COUNT=$(sketchybar --query displays 2>/dev/null | grep -c '"DirectDisplayID"' || echo 1)
+# AppleBacklightDisplay > 0 means the built-in panel is powered on (lid open).
+# Zero means clamshell mode — external display only, even though count is 1.
+BUILTIN_ACTIVE=$(ioreg -r -c AppleBacklightDisplay 2>/dev/null | grep -c "AppleBacklightDisplay")
 
-if [ "$DISPLAY_COUNT" -gt 1 ]; then
-    Y_OFFSET=$EXTERNAL_Y_OFFSET
-    AEROSPACE_CONF="$CONF_DIR/aerospace.toml"
-else
+if [ "$BUILTIN_ACTIVE" -gt 0 ] && [ "$DISPLAY_COUNT" -le 1 ]; then
     Y_OFFSET=$BUILTIN_Y_OFFSET
     AEROSPACE_CONF="$CONF_DIR/aerospace-builtin.toml"
+else
+    Y_OFFSET=$EXTERNAL_Y_OFFSET
+    AEROSPACE_CONF="$CONF_DIR/aerospace.toml"
 fi
 
 sketchybar --bar y_offset="$Y_OFFSET"
