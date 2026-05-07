@@ -99,6 +99,7 @@ brew "awscli"
 brew "azure-cli"
 brew "hashicorp/tap/terraform"
 brew "rclone"
+brew "restic"
 
 # === Document & PDF processing ===
 brew "pandoc"
