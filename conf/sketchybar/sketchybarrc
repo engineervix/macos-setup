@@ -101,6 +101,20 @@ sketchybar \
     --subscribe front_app front_app_switched
 
 # =============================================================================
+# Display profile — adapts bar offset and AeroSpace gaps per display config
+# =============================================================================
+sketchybar \
+    --add item display_profile left \
+    --set display_profile \
+        drawing=off \
+        script="$PLUGIN_DIR/display_profile.sh" \
+    --subscribe display_profile display_change
+
+# Apply the correct profile on startup (overrides initial y_offset set above,
+# and points ~/.aerospace.toml at the right config for the current display set)
+"$PLUGIN_DIR/display_profile.sh"
+
+# =============================================================================
 # Force initial run of all scripts
 # =============================================================================
 sketchybar --update

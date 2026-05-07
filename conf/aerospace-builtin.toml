@@ -1,6 +1,10 @@
 # =============================================================================
-# AeroSpace config — mirrors Hyprland keybindings ($mainMod = alt)
-# Docs: https://nikitabobko.github.io/AeroSpace/guide
+# AeroSpace config — built-in display profile (no external monitor)
+# Managed by conf/sketchybar/plugins/display_profile.sh — do not symlink
+# directly; the script switches ~/.aerospace.toml to point here automatically.
+#
+# Keep all keybindings/rules in sync with aerospace.toml.
+# Only [gaps] outer.top differs between the two profiles.
 # =============================================================================
 
 config-version = 2
@@ -38,10 +42,10 @@ inner.horizontal = 10
 inner.vertical   = 10
 outer.left       = 10
 outer.bottom     = 10
-# 8px y_offset + 30px SketchyBar + 4px breathing room = 42 (external monitor profile)
-# Tune EXTERNAL_Y_OFFSET in display_profile.sh and keep this in sync:
-#   outer.top = EXTERNAL_Y_OFFSET + 30 + 4
-outer.top        = 42
+# 0px y_offset + 30px SketchyBar + 10px breathing room = 40 (built-in profile)
+# Tune BUILTIN_Y_OFFSET in display_profile.sh and keep this in sync:
+#   outer.top = BUILTIN_Y_OFFSET + 30 + breathing_room
+outer.top        = 40
 outer.right      = 10
 
 # =============================================================================
