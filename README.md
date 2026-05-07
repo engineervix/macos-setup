@@ -22,6 +22,7 @@ See [`mac-migration-plan.md`](./mac-migration-plan.md) for the full rationale an
   - [pyenv](#pyenv)
   - [VS Code](#vs-code)
   - [Neovim](#neovim)
+  - [UK External Keyboard (e.g. Logitech K270)](#uk-external-keyboard-eg-logitech-k270)
 - [Manual Installs](#manual-installs)
 - [Keybindings](#keybindings)
   - [AeroSpace (Window Manager)](#aerospace-window-manager)
@@ -125,6 +126,23 @@ Sign in to **Settings Sync** to restore extensions and keybindings.
 
 On first launch, Lazy.nvim will install plugins automatically.
 
+### UK External Keyboard (e.g. Logitech K270)
+
+The built-in **British PC** input source swaps the `\` and `` ` `` keys, making the keyboard unusable. The fix is a custom keyboard layout from [GeorgeColdham/Mac-Uk-Keyboard-Layouts](https://github.com/GeorgeColdham/Mac-Uk-Keyboard-Layouts).
+
+1. Clone the repo and copy the layouts to the system keyboard directory:
+
+   ```bash
+   git clone https://github.com/GeorgeColdham/Mac-Uk-Keyboard-Layouts.git /tmp/Mac-Uk-Keyboard-Layouts
+   sudo cp /tmp/Mac-Uk-Keyboard-Layouts/layouts/* /Library/Keyboard\ Layouts/
+   ```
+
+2. Go to **System Settings → Keyboard → Input Sources**, click `+`, scroll to **Others** at the bottom, and add the layout from there.
+
+3. Enable **Show Input menu in menu bar** so you can quickly switch between the external UK layout and the built-in keyboard layout.
+
+Log out and back in if the layout doesn't appear under Others.
+
 ## Manual Installs
 
 These apps have no Homebrew cask. See the migration plan for details.
@@ -210,3 +228,5 @@ AeroSpace community write-ups that informed this config:
 ├── README.md
 └── REVIEW.md             Session notes and items needing manual verification
 ```
+
+
