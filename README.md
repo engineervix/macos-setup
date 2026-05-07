@@ -5,7 +5,7 @@
 
 Automated setup script for macOS, establishing a development environment that mirrors my openSUSE Tumbleweed / Hyprland setup as closely as possible — same shell stack, same theme, same muscle memory.
 
-See [`mac-migration-plan.md`](./mac-migration-plan.md) for the full rationale and tool-by-tool mapping.
+See [`docs/notes/mac-migration-plan.md`](./docs/notes/mac-migration-plan.md) for the full rationale and tool-by-tool mapping.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -226,7 +226,15 @@ AeroSpace community write-ups that informed this config:
 │   ├── 03_tooling.sh
 │   └── 04_dotfiles.sh
 ├── README.md
-└── REVIEW.md             Session notes and items needing manual verification
+└── docs/
+    ├── _config.yml       Jekyll / GitHub Pages config
+    ├── Gemfile
+    ├── index.md
+    ├── cheatsheets/
+    │   └── aerospace-cheatsheet.html
+    └── notes/
+        ├── mac-migration-plan.md  Strategy doc: tool-by-tool Linux→Mac mapping
+        └── review.md              Pre-run checklist and known gaps
 ```
 
 

@@ -1,3 +1,9 @@
+---
+title: Mac Migration Plan
+parent: Notes
+nav_order: 1
+---
+
 # Mac Migration Plan
 
 Mapping my openSUSE Tumbleweed / Hyprland setup to macOS, prioritising muscle-memory continuity.

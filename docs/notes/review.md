@@ -1,6 +1,13 @@
+---
+title: Review Notes
+parent: Notes
+nav_order: 2
+---
+
 # Review Notes
 
-Everything in this directory was written in a single session without being run on a real Mac. Read this before executing anything.
+> [!NOTE]
+> Ongoing notes on setup quirks, known gaps, and items needing manual verification.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->

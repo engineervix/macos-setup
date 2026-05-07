@@ -9,4 +9,5 @@ permalink: /
 
 Mac setup notes and quick-reference cheatsheets.
 
-[Cheatsheets]({{ site.baseurl }}/cheatsheets){: .btn .btn-primary }
+[Cheatsheets]({{ site.baseurl }}/cheatsheets){: .btn .btn-primary .mr-2 }
+[Notes]({{ site.baseurl }}/notes){: .btn }
