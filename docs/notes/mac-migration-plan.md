@@ -6,7 +6,7 @@ nav_order: 1
 
 # Mac Migration Plan
 
-Mapping my openSUSE Tumbleweed / Hyprland setup to macOS, prioritising muscle-memory continuity.
+Mapping my [openSUSE Tumbleweed](https://github.com/engineervix/opensuse-setup) / [Hyprland](https://github.com/engineervix/dotfiles) setup to macOS, prioritising muscle-memory continuity.
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
