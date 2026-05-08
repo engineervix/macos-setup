@@ -7,15 +7,18 @@
 
 # ── Tune these values for your setup ─────────────────────────────────────────
 # Keep in sync with aerospace.toml [gaps] outer.top:
-#   outer.top = [{ monitor."built-in" = BUILTIN_Y_OFFSET+30+10 }, EXTERNAL_Y_OFFSET+30+4]
+#   outer.top = Y_OFFSET + bar_height(30) + breathing_room
+#   built-in only:      0 + 30 + 15 = 45  (bar flush with menu bar; needs more breathing room)
+#   external/clamshell: 8 + 30 +  4 = 42  (bar floats 8px; visual separation already provided)
 EXTERNAL_Y_OFFSET=8   # → outer.top = 42 for external/clamshell
-BUILTIN_Y_OFFSET=0    # → outer.top = 40 for built-in only
+BUILTIN_Y_OFFSET=0    # → outer.top = 45 for built-in only
 # ─────────────────────────────────────────────────────────────────────────────
 
-DISPLAY_COUNT=$(sketchybar --query displays 2>/dev/null | grep -c '"DirectDisplayID"' || echo 1)
-# AppleBacklightDisplay > 0 means the built-in panel is powered on (lid open).
-# Zero means clamshell mode — external display only, even though count is 1.
-BUILTIN_ACTIVE=$(ioreg -r -c AppleBacklightDisplay 2>/dev/null | grep -c "AppleBacklightDisplay")
+# Use aerospace list-monitors — reliable on Apple Silicon (ioreg backlight class absent).
+# "built-in only" = one monitor whose name contains "Built-in".
+MONITOR_LIST=$(aerospace list-monitors 2>/dev/null)
+DISPLAY_COUNT=$(echo "$MONITOR_LIST" | wc -l | tr -d ' ')
+BUILTIN_ACTIVE=$(echo "$MONITOR_LIST" | grep -ci "built-in")
 
 if [ "$BUILTIN_ACTIVE" -gt 0 ] && [ "$DISPLAY_COUNT" -le 1 ]; then
     Y_OFFSET=$BUILTIN_Y_OFFSET

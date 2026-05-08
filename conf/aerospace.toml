@@ -35,11 +35,11 @@ inner.horizontal = 10
 inner.vertical   = 10
 outer.left       = 10
 outer.bottom     = 10
-# Per-monitor top gap accounts for SketchyBar height (30px) + y_offset + breathing room:
-#   built-in only:       0px y_offset + 30px bar + 10px breathing = 40
-#   external/clamshell:  8px y_offset + 30px bar +  4px breathing = 42
-# Tune EXTERNAL_Y_OFFSET / BUILTIN_Y_OFFSET in display_profile.sh to match.
-outer.top        = [{ monitor."built-in" = 40 }, 42]
+# Per-monitor top gap = Y_OFFSET + bar_height(30) + breathing_room.
+# Keep in sync with BUILTIN_Y_OFFSET / EXTERNAL_Y_OFFSET in display_profile.sh.
+#   built-in only:      0 + 30 + 15 = 45  (15px gap — bar is flush, needs more breathing room)
+#   external/clamshell: 8 + 30 +  4 = 42  (4px gap — floating bar already has visual separation)
+outer.top        = [{ monitor."built-in" = 45 }, 42]
 outer.right      = 10
 
 # =============================================================================
