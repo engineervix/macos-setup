@@ -50,6 +50,7 @@ PATH="$HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin:$PATH"
 
 # =============== Paths ===============
 export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
 
 # =============== Volta ===============
 export VOLTA_HOME="$HOME/.volta"
