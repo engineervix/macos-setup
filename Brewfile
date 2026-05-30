@@ -68,6 +68,7 @@ brew "jq"                # JSON processor
 brew "tmux"              # for SSH sessions / remote work
 brew "vim"               # fallback editor
 brew "presenterm"        # terminal slideshow tool
+brew "d2"                # diagram scripting language
 brew "ccusage"           # CLI tool for analyzing Claude Code usage from local JSONL files
 brew "ctop"              # Top-like interface for container metrics
 
