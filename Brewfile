@@ -8,6 +8,7 @@ tap "FelixKratz/formulae"   # JankyBorders + SketchyBar
 tap "nikitabobko/tap"       # AeroSpace
 tap "mediosz/tap"           # SwipeAeroSpace
 tap "hashicorp/tap"         # Terraform
+tap "chrismytton/formula"   # shoreman
 
 # === Shell ===
 brew "zsh"
@@ -60,17 +61,18 @@ brew "pinentry-mac"      # GPG pinentry for macOS Keychain
 brew "trivy"             # vulnerability scanner
 
 # === Dev utilities ===
-brew "cmake"             # build system (required for YouCompleteMe)
-brew "just"              # task runner
-brew "httpie"            # HTTP client
-brew "yq"                # YAML processor
-brew "jq"                # JSON processor
-brew "tmux"              # for SSH sessions / remote work
-brew "vim"               # fallback editor
-brew "presenterm"        # terminal slideshow tool
-brew "d2"                # diagram scripting language
-brew "ccusage"           # CLI tool for analyzing Claude Code usage from local JSONL files
-brew "ctop"              # Top-like interface for container metrics
+brew "cmake"                        # build system (required for YouCompleteMe)
+brew "just"                         # task runner
+brew "chrismytton/formula/shoreman" # Procfile runner
+brew "httpie"                       # HTTP client
+brew "yq"                           # YAML processor
+brew "jq"                           # JSON processor
+brew "tmux"                         # for SSH sessions / remote work
+brew "vim"                          # fallback editor
+brew "presenterm"                   # terminal slideshow tool
+brew "d2"                           # diagram scripting language
+brew "ccusage"                      # CLI tool for analyzing Claude Code usage from local JSONL files
+brew "ctop"                         # Top-like interface for container metrics
 
 # === Languages & runtimes ===
 brew "go"
