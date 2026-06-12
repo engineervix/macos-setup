@@ -20,6 +20,23 @@ fi
 log "Updating Homebrew..."
 brew update
 
+log "Adding third-party taps..."
+brew tap FelixKratz/formulae
+brew tap nikitabobko/tap
+brew tap mediosz/tap
+brew tap hashicorp/tap
+brew tap chrismytton/formula
+
+log "Trusting third-party formulae and casks..."
+brew trust --formula \
+    chrismytton/formula/shoreman \
+    hashicorp/tap/terraform \
+    felixkratz/formulae/sketchybar \
+    felixkratz/formulae/borders
+brew trust --cask \
+    nikitabobko/tap/aerospace \
+    mediosz/tap/swipeaerospace
+
 log "Running Brewfile..."
 HOMEBREW_BUNDLE_NO_LOCK=1 brew bundle --file="${SCRIPT_DIR}/Brewfile" -v
 
