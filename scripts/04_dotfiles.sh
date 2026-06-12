@@ -115,6 +115,20 @@ else
 fi
 
 # -----------------------------------------------------------------------------
+# Yazi — config symlink + Catppuccin Mocha flavor
+# -----------------------------------------------------------------------------
+log "Symlinking Yazi config..."
+mkdir -p "$HOME/.config"
+link "${SCRIPT_DIR}/conf/yazi" "$HOME/.config/yazi"
+
+log "Installing Yazi Catppuccin Mocha flavor..."
+if command -v ya &>/dev/null; then
+    ya pkg add yazi-rs/flavors:catppuccin-mocha
+else
+    warn "ya (yazi CLI) not found — skipping flavor install. Run 'ya pkg add yazi-rs/flavors:catppuccin-mocha' manually."
+fi
+
+# -----------------------------------------------------------------------------
 # Vim configuration
 # -----------------------------------------------------------------------------
 log "Configuring Vim..."
