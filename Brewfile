@@ -45,6 +45,8 @@ brew "wget"
 brew "pv"                # pipe viewer
 brew "dos2unix"
 brew "trash"             # replaces `gio trash`
+brew "sevenzip"          # archive extraction and preview (yazi dependency)
+brew "yazi"              # terminal file manager
 
 # === Git & version control ===
 brew "git"
