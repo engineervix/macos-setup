@@ -40,6 +40,7 @@ brew "fastfetch"         # system info
 
 # === File & archive tools ===
 brew "tree"
+brew "file-formula"      # keg-only: newer `file` cmd (macOS ships an older version)
 brew "wget"
 brew "pv"                # pipe viewer
 brew "dos2unix"
@@ -115,6 +116,7 @@ brew "unpaper"
 
 # === Image & media ===
 brew "imagemagick"
+brew "resvg"             # SVG rendering / conversion
 brew "ffmpeg"
 brew "mpv"
 brew "yt-dlp"
