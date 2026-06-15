@@ -13,12 +13,14 @@ after-startup-command = [
     'exec-and-forget borders',
 ]
 
-# Notify SketchyBar when the active workspace changes
+# Notify SketchyBar when the active workspace changes.
+# FOCUSED_WORKSPACE must match the env var read by the SketchyBar aerospace plugin.
 exec-on-workspace-change = ['/bin/bash', '-c',
     'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
 ]
 
 start-at-login = true
+auto-reload-config = true  # requires one manual reload to activate (service mode esc, or CLI)
 
 # Mouse warps to centre only when switching monitors (avoids disruptive mid-window teleport on keyboard nav)
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
@@ -54,6 +56,7 @@ cmd-alt-h = []
 # --- Launch & close ---
 alt-q = 'exec-and-forget open -a Kitty'    # Super+Q → terminal
 alt-c = 'close'                             # Super+C → kill window
+# osascript workaround — AeroSpace cannot invoke Spotlight directly
 alt-r = 'exec-and-forget osascript -e "tell application \"System Events\" to keystroke space using {command down}"'  # Super+R → Spotlight
 alt-e = 'exec-and-forget open -a Finder'   # Super+E → file manager
 
@@ -62,13 +65,14 @@ alt-shift-s = 'exec-and-forget screencapture -i -c'
 
 # --- Layout ---
 alt-v = 'layout floating tiling'           # Super+V → toggle float
-alt-p = 'layout tiles horizontal vertical' # Super+P → cycle tile layout
+alt-p = 'layout tiles horizontal vertical' # Super+P → h_tiles ↔ v_tiles (multi-arg: applies first non-matching layout; falls back to tiles when in accordion)
 
 # --- Focus ---
 alt-h     = 'focus left'
 alt-j     = 'focus down'
 alt-k     = 'focus up'
 alt-l     = 'focus right'
+# alt+up/down only — left/right omitted to preserve macOS Option+Arrow word-navigation
 alt-down  = 'focus down'
 alt-up    = 'focus up'
 
@@ -144,15 +148,13 @@ alt-shift-k = ['join-with up',    'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
 # =============================================================================
-# App → workspace assignments (mirrors Hyprland rules.conf)
+# App → workspace assignments — fires on every new window, not only at startup
 # =============================================================================
 
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome'
-if.during-aerospace-startup = true
 run = 'move-node-to-workspace 1'
 
 [[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
-if.during-aerospace-startup = true
 run = 'move-node-to-workspace 3'
