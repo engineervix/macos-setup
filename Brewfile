@@ -174,6 +174,7 @@ cask "orbstack"          # Docker Desktop replacement
 cask "meld"              # visual diff
 
 # === System utilities ===
+cask "espanso"           # text expander — system-wide snippets (€, §, etc.)
 cask "stats"             # menu bar system monitor
 cask "aldente"           # battery charge limiter
 cask "localsend"         # local network file sharing

@@ -115,6 +115,12 @@ else
 fi
 
 # -----------------------------------------------------------------------------
+# Espanso — config symlink
+# -----------------------------------------------------------------------------
+log "Symlinking Espanso config..."
+link "${SCRIPT_DIR}/conf/espanso" "$HOME/Library/Application Support/espanso"
+
+# -----------------------------------------------------------------------------
 # Yazi — config symlink + Catppuccin Mocha flavor
 # -----------------------------------------------------------------------------
 log "Symlinking Yazi config..."
