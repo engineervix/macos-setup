@@ -16,6 +16,8 @@ matches:
     replace: "€"
   - trigger: ";;sec"
     replace: "§"
+  - trigger: ";;hash"
+    replace: "#"
 
   # Simple text replacement
   - trigger: ":espanso"
