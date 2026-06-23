@@ -20,7 +20,6 @@ exec-on-workspace-change = ['/bin/bash', '-c',
 ]
 
 start-at-login = true
-auto-reload-config = true  # requires one manual reload to activate (service mode esc, or CLI)
 
 # Mouse warps to centre only when switching monitors (avoids disruptive mid-window teleport on keyboard nav)
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
