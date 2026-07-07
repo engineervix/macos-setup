@@ -76,6 +76,7 @@ brew "presenterm"                   # terminal slideshow tool
 brew "d2"                           # diagram scripting language
 brew "ccusage"                      # CLI tool for analyzing Claude Code usage from local JSONL files
 brew "ctop"                         # Top-like interface for container metrics
+brew "entr"                         # run commands when files change
 
 # === Languages & runtimes ===
 brew "go"
@@ -109,6 +110,7 @@ brew "restic"
 
 # === Document & PDF processing ===
 brew "pandoc"
+brew "pandoc-crossref"    # cross-references (figures, tables, equations) for pandoc
 brew "pdftk-java"
 brew "ghostscript"
 brew "img2pdf"
