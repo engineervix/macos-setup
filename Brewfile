@@ -54,6 +54,7 @@ brew "git-lfs"
 brew "gh"
 brew "glab"
 brew "act"               # run GitHub Actions locally
+brew "actionlint"        # lint GitHub Actions workflow files
 brew "lefthook"          # Git hooks manager
 
 # === Security & scanning ===
