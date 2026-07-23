@@ -69,8 +69,6 @@ brew "trivy"             # vulnerability scanner
 # === Dev utilities ===
 brew "cmake"                        # build system (required for YouCompleteMe)
 brew "just"                         # task runner
-brew "task"                         # task runner (go-task)
-brew "timewarrior"                  # time tracking
 brew "chrismytton/formula/shoreman" # Procfile runner
 brew "httpie"                       # HTTP client
 brew "yq"                           # YAML processor
@@ -82,6 +80,10 @@ brew "d2"                           # diagram scripting language
 brew "ccusage"                      # CLI tool for analyzing Claude Code usage from local JSONL files
 brew "ctop"                         # Top-like interface for container metrics
 brew "entr"                         # run commands when files change
+
+# === Task & time tracking ===
+brew "task"                         # Taskwarrior — CLI task manager
+brew "timewarrior"                  # Timewarrior — time tracking, hooked to Taskwarrior (see 04_dotfiles.sh)
 
 # === Languages & runtimes ===
 brew "go"

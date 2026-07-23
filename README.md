@@ -21,6 +21,7 @@ See [`docs/notes/mac-migration-plan.md`](./docs/notes/mac-migration-plan.md) for
   - [SketchyBar](#sketchybar)
   - [SwipeAeroSpace](#swipeaerospace)
   - [Kitty](#kitty)
+  - [Taskwarrior + Timewarrior](#taskwarrior--timewarrior)
   - [pyenv](#pyenv)
   - [VS Code](#vs-code)
   - [Neovim](#neovim)
@@ -68,7 +69,7 @@ The script runs four modular phases in sequence:
 | 1     | `01_preflight.sh` | Checks Xcode CLI tools; applies macOS system defaults                                   |
 | 2     | `02_homebrew.sh`  | Installs Homebrew; runs `Brewfile`                                                      |
 | 3     | `03_tooling.sh`   | Installs Volta/Node/npm, Rustup, Claude Code, Go tools, pipx packages, Neovim config, fzf, git-delta |
-| 4     | `04_dotfiles.sh`  | Clones dotfiles repo; symlinks `zshrc`, `aerospace.toml`, Starship, Kitty, and SketchyBar config; starts SketchyBar service |
+| 4     | `04_dotfiles.sh`  | Clones dotfiles repo; symlinks `zshrc`, `aerospace.toml`, Starship, Kitty, SketchyBar config, and the Taskwarrior→Timewarrior hook; starts SketchyBar service |
 
 Safe to re-run — all steps are idempotent.
 
@@ -112,6 +113,19 @@ Config is symlinked automatically from `~/dotfiles/.config/kitty`. If the font d
 ```
 font_family JetBrainsMonoNL NFM
 ```
+
+### Taskwarrior + Timewarrior
+
+Both are installed by the Brewfile. The `on-modify.timewarrior` hook is symlinked from `~/dotfiles/.task/hooks` (same shared-dotfiles pattern as Starship/Kitty) into `~/.task/hooks`, so starting or stopping a task automatically starts/stops the matching Timewarrior interval, tagged with the task's description, project, and tags.
+
+On first use, each tool needs one manual step — they prompt to create their config/data files on first run, and that prompt requires a real terminal (won't work over a piped/non-interactive shell):
+
+```bash
+task   # "Would you like a sample ~/.taskrc created?" → yes
+timew  # "Create new config...?" / "Create new database...?" → yes
+```
+
+After that, `task start <id>` / `task stop <id>` track time automatically — no further setup needed.
 
 ### pyenv
 

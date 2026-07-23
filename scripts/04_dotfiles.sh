@@ -82,6 +82,14 @@ warn "If fonts don't render correctly in Kitty, change kitty.conf:"
 warn "  font_family JetBrainsMonoNL NFM"
 
 # -----------------------------------------------------------------------------
+# Taskwarrior → Timewarrior hook
+# -----------------------------------------------------------------------------
+log "Symlinking Taskwarrior hooks..."
+mkdir -p "$HOME/.task"
+link "$DOTFILES_DIR/.task/hooks" "$HOME/.task/hooks"
+chmod +x "$HOME/.task/hooks/"* 2>/dev/null || true
+
+# -----------------------------------------------------------------------------
 # JankyBorders — config symlink + service start
 # -----------------------------------------------------------------------------
 log "Symlinking JankyBorders config..."
