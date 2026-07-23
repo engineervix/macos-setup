@@ -98,14 +98,6 @@ export LDFLAGS="${LDFLAGS} -L/opt/homebrew/lib"
 # =============== Perl ===============
 eval "$(perl "-I${HOME}/perl5/lib/perl5" "-Mlocal::lib=${HOME}/perl5")"
 
-# =============== Antigravity ===============
-
-# Added by Antigravity IDE
-export PATH="$HOME/.antigravity-ide/antigravity-ide/bin:$PATH"
-
-# Added by Antigravity CLI installer
-export PATH="$HOME/.local/bin:$PATH"
-
 # =============== Virtualenvwrapper ===============
 export WORKON_HOME="$HOME/.virtualenvs"
 export VIRTUALENVWRAPPER_PYTHON="$HOMEBREW_PREFIX/bin/python3"
