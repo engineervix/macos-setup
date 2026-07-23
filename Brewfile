@@ -9,6 +9,7 @@ tap "nikitabobko/tap"       # AeroSpace
 tap "mediosz/tap"           # SwipeAeroSpace
 tap "hashicorp/tap"         # Terraform
 tap "chrismytton/formula"   # shoreman
+tap "agavra/tap"            # tuicr
 
 # === Shell ===
 brew "zsh"
@@ -56,6 +57,7 @@ brew "glab"
 brew "act"               # run GitHub Actions locally
 brew "actionlint"        # lint GitHub Actions workflow files
 brew "lefthook"          # Git hooks manager
+brew "agavra/tap/tuicr"  # terminal UI for reviewing AI-generated diffs like a GitHub PR
 
 # === Security & scanning ===
 brew "shellcheck"
