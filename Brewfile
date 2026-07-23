@@ -163,7 +163,6 @@ cask "ungoogled-chromium"
 
 # === Editors & IDEs ===
 brew "neovim"
-cask "visual-studio-code"
 cask "zed"
 # cask "sublime-text"
 # cask "android-studio"
