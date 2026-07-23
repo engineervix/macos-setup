@@ -18,7 +18,6 @@ nav_order: 2
   - [Brewfile cask names](#brewfile-cask-names)
   - [zshrc: GDAL path](#zshrc-gdal-path)
   - [zshrc: Perl local::lib](#zshrc-perl-locallib)
-  - [zshrc: Antigravity PATH](#zshrc-antigravity-path)
   - [Android SDK paths](#android-sdk-paths)
   - [git-delta: dark mode assumption](#git-delta-dark-mode-assumption)
 - [Testing order (recommended)](#testing-order-recommended)
@@ -82,14 +81,6 @@ eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
 ```
 
 This will fail silently if `$HOME/perl5` doesn't exist. That's fine — it only matters if you use Perl. Verify after setup if you use Perl packages.
-
-### zshrc: Antigravity PATH
-
-```zsh
-export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
-```
-
-This path is hardcoded based on what was in the current Mac zshrc. If Antigravity is not installed, this silently adds a non-existent directory to PATH (harmless). Re-install Antigravity via its own installer if needed.
 
 ### Android SDK paths
 

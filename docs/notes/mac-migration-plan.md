@@ -282,7 +282,6 @@ These cannot be managed by Homebrew. Document them here so nothing gets forgotte
 | -------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Ableton Live 12 Lite | ableton.com | Lite license comes with hardware; activate via Ableton account                                                                                    |
 | Splice INSTRUMENT    | splice.com  | Plugin manager; requires Splice account                                                                                                           |
-| Antigravity          | custom      | Installed to `~/.antigravity/antigravity/bin/` via its own installer; re-run the original install script and ensure the PATH entry is in `.zshrc` |
 
 ### Commercial / licensed
 
@@ -503,9 +502,6 @@ if [[ "$(uname)" == "Darwin" ]]; then
   # Homebrew Perl
   eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
 
-  # Antigravity
-  export PATH="/Users/victor/.antigravity/antigravity/bin:$PATH"
-
   # Remove xdg-open alias — macOS `open` is native
   unalias open 2>/dev/null
 
@@ -666,5 +662,5 @@ Since this is a fresh Mac setup, rollback is straightforward:
 12. [ ] Clone Neovim config (`engineervix/kickstart.nvim`, branch `custom`)
 13. [ ] Set up pyenv + virtualenvwrapper; install pipx packages
 14. [ ] Verify OrbStack: `docker ps`, `docker compose version`
-15. [ ] Configure Zed and VS Code (Settings Sync)
-16. [ ] Manual installs: Office 365, Ableton, Vital, Splice, BricsCAD, NTFS for Mac, Sweet Home 3D, Antigravity
+15. [ ] Configure Zed
+16. [ ] Manual installs: Office 365, Ableton, Vital, Splice, BricsCAD, NTFS for Mac, Sweet Home 3D

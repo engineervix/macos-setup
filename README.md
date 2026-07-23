@@ -159,7 +159,6 @@ These apps have no Homebrew cask. See the migration plan for details.
 | BricsCAD             | bricsys.com                   | Commercial CAD; requires license key                 |
 | NTFS for Mac         | Paragon or similar            | Commercial; needed for NTFS read/write               |
 | Sweet Home 3D        | sweethome3d.com               | Free; no cask available                              |
-| Antigravity          | custom installer              | Re-run original installer; PATH entry is in `.zshrc` |
 
 ## Keybindings
 

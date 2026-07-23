@@ -61,13 +61,13 @@ Tested and iteratively updated on a real Mac. See `docs/notes/review.md` for kno
 - `alt` not `cmd` as AeroSpace modifier — `cmd` conflicts with standard macOS shortcuts (Cmd+C, Cmd+V, Cmd+H, Cmd+W, etc.)
 - Brewfile is the canonical list of everything — run `brew bundle` to sync
 - `conf/` files are symlinked, not copied — edit in repo, changes are live immediately
-- The Mac `zshrc` preserves all Mac-specific paths: Homebrew, GNU coreutils/sed, PostgreSQL@16, Android SDK, GDAL, Perl, Antigravity
+- The Mac `zshrc` preserves all Mac-specific paths: Homebrew, GNU coreutils/sed, PostgreSQL@16, Android SDK, GDAL, Perl
 
 ### What the script automates vs. what's manual
 
 **Automated:** Homebrew, all packages, Volta/Node/npm globals, Rustup, Claude Code (native installer), Go tools, pipx, Neovim clone, dotfiles repo clone (starship + Kitty configs symlinked), git-delta config, fzf keybindings, macOS defaults, zshrc + aerospace.toml + SketchyBar config symlinks, SketchyBar service start (Catppuccin Mocha config included), JankyBorders launch via AeroSpace startup.
 
-**Manual:** Maccy hotkey setup, SwipeAeroSpace Accessibility permission, VS Code Settings Sync, pyenv Python install, all licensed/manual app installs (Office 365, Ableton, Vital, Splice, BricsCAD, NTFS for Mac, Sweet Home 3D, Antigravity).
+**Manual:** Maccy hotkey setup, SwipeAeroSpace Accessibility permission, pyenv Python install, all licensed/manual app installs (Office 365, Ableton, Vital, Splice, BricsCAD, NTFS for Mac, Sweet Home 3D).
 
 ## Conventions
 
