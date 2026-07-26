@@ -17,6 +17,7 @@ brew "starship"
 brew "zsh-syntax-highlighting"
 brew "zsh-autosuggestions"
 brew "zsh-completions"
+brew "carapace"          # multi-shell completion generator
 
 # === GNU coreutils (replace macOS BSD versions) ===
 brew "coreutils"         # gls, gdate, etc. — gnubin added to PATH in .zshrc

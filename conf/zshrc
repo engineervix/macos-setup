@@ -127,6 +127,12 @@ else
   compinit -C
 fi
 
+# carapace: multi-shell completion generator (must load after compinit)
+if command -v carapace &>/dev/null; then
+  export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'
+  source <(carapace _carapace zsh)
+fi
+
 # =============== Aliases ===============
 # General
 alias ls='eza --icons'
