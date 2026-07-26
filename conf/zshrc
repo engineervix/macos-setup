@@ -1,6 +1,7 @@
 # shellcheck shell=bash
 # =============== Keybindings ===============
-bindkey -e  # emacs key bindings
+# bindkey -e  # emacs key bindings
+bindkey -v  # vi key bindings
 # Word movement (both Ctrl+Arrow and Alt+Arrow codes for Kitty on macOS)
 bindkey '^[[1;5C' vi-forward-word    # Ctrl+Right (Linux/Kitty)
 bindkey '^[[1;5D' vi-backward-word   # Ctrl+Left
