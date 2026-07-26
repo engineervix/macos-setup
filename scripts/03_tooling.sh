@@ -148,6 +148,8 @@ git config --global core.pager delta
 git config --global interactive.diffFilter 'delta --color-only'
 git config --global delta.navigate true
 git config --global delta.dark true
+git config --global delta.side-by-side true
 git config --global merge.conflictStyle zdiff3
+git config --global pager.diff diffnav
 
 log "Development tooling setup complete."
