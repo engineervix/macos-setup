@@ -86,6 +86,16 @@ if ! command -v gopls &>/dev/null; then
 fi
 
 # =============================================================================
+# GitHub CLI extensions
+# =============================================================================
+log "Installing GitHub CLI extensions..."
+for ext in dlvhdr/gh-dash agynio/gh-pr-review; do
+    if ! gh extension list 2>/dev/null | grep -q "$(basename "$ext")"; then
+        gh extension install "$ext"
+    fi
+done
+
+# =============================================================================
 # Python tooling via pipx
 # =============================================================================
 log "Installing Python tools via pipx..."
