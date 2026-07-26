@@ -59,6 +59,7 @@ brew "act"               # run GitHub Actions locally
 brew "actionlint"        # lint GitHub Actions workflow files
 brew "lefthook"          # Git hooks manager
 brew "agavra/tap/tuicr"  # terminal UI for reviewing AI-generated diffs like a GitHub PR
+brew "diffnav"           # terminal UI for browsing git diffs
 
 # === Security & scanning ===
 brew "shellcheck"
