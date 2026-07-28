@@ -165,6 +165,7 @@ brew "sketchybar"
 brew "borders"           # JankyBorders — coloured focus border for active window
 cask "swipeaerospace"    # 3-finger trackpad swipe for AeroSpace workspace switching
 cask "maccy"             # clipboard manager (complements Spotlight clipboard history)
+cask "karabiner-elements" # Caps Lock -> Cmd+Ctrl+Option, the dedicated AeroSpace modifier
 
 # === Browsers ===
 cask "google-chrome"

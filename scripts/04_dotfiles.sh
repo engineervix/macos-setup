@@ -150,6 +150,15 @@ mkdir -p "$HOME/.config"
 link "${SCRIPT_DIR}/conf/atuin" "$HOME/.config/atuin"
 
 # -----------------------------------------------------------------------------
+# Karabiner-Elements — config symlink
+# -----------------------------------------------------------------------------
+# Directory-level symlink required: Karabiner-Elements won't auto-reload if
+# karabiner.json itself is a symlink, only if the containing directory is.
+log "Symlinking Karabiner-Elements config..."
+mkdir -p "$HOME/.config"
+link "${SCRIPT_DIR}/conf/karabiner" "$HOME/.config/karabiner"
+
+# -----------------------------------------------------------------------------
 # Vim configuration
 # -----------------------------------------------------------------------------
 log "Configuring Vim..."
