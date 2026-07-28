@@ -351,6 +351,10 @@ export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border --info=inline'
 export FZF_CTRL_T_OPTS="--preview 'bat --color=always --line-range :100 {}'"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --icons --level=2 {}'"
 
+# =============== Atuin ===============
+# Must load after the FZF block above — both bind Ctrl-R, atuin should win.
+command -v atuin &>/dev/null && eval "$(atuin init zsh)"
+
 # =============== Starship ===============
 eval "$(starship init zsh)"
 

@@ -18,6 +18,7 @@ brew "zsh-syntax-highlighting"
 brew "zsh-autosuggestions"
 brew "zsh-completions"
 brew "carapace"          # multi-shell completion generator
+brew "atuin"             # SQLite-backed shell history search
 
 # === GNU coreutils (replace macOS BSD versions) ===
 brew "coreutils"         # gls, gdate, etc. — gnubin added to PATH in .zshrc
