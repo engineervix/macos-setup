@@ -119,6 +119,11 @@ fpath=(~/.zfunc "${fpath[@]}")
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+# Required by fzf-tab: let it capture the unambiguous-prefix case instead of
+# zsh showing its own completion menu.
+zstyle ':completion:*' menu no
+# fzf-tab: preview directory contents with eza when completing cd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
 
 autoload -Uz compinit
 if [[ ! -f ~/.zcompdump ]] || [[ -n "$(find ~/.zcompdump -mmin +1440 2>/dev/null)" ]]; then
@@ -354,6 +359,14 @@ export FZF_ALT_C_OPTS="--preview 'eza --tree --icons --level=2 {}'"
 # =============== Atuin ===============
 # Must load after the FZF block above — both bind Ctrl-R, atuin should win.
 command -v atuin &>/dev/null && eval "$(atuin init zsh)"
+
+# =============== FZF-tab ===============
+# Must load after the FZF block above (fzf's own shell integration also binds
+# Tab for its `**`-trigger completion) and before the zsh-syntax-highlighting /
+# zsh-autosuggestions block below — fzf-tab needs to be the last thing to bind
+# Tab. See fzf-tab's README "Compatibility with other plugins".
+[[ -f "$HOMEBREW_PREFIX/share/fzf-tab/fzf-tab.zsh" ]] && \
+  source "$HOMEBREW_PREFIX/share/fzf-tab/fzf-tab.zsh"
 
 # =============== Starship ===============
 eval "$(starship init zsh)"
