@@ -1,6 +1,14 @@
 # =============================================================================
-# AeroSpace config — mirrors Hyprland keybindings ($mainMod = alt)
+# AeroSpace config — mirrors Hyprland keybindings ($mainMod = Caps Lock, held)
 # Docs: https://nikitabobko.github.io/AeroSpace/guide
+#
+# The modifier is Cmd+Ctrl+Option (cmd-ctrl-alt- below), sent by holding Caps
+# Lock — see conf/karabiner/karabiner.json. Plain Alt alone is deliberately
+# left untouched here: it collided with several terminal tools that also
+# default to Alt-based bindings (fzf's Alt-C cd-picker, forgit's Alt-E/W/K/P,
+# macOS's own Option+letter special characters). Shift stays a free 5th
+# modifier, exactly as before, so cmd-ctrl-alt-h (focus) and
+# cmd-ctrl-alt-shift-h (move) remain distinct.
 # =============================================================================
 
 config-version = 2
@@ -53,67 +61,67 @@ cmd-h     = []
 cmd-alt-h = []
 
 # --- Launch & close ---
-alt-q = 'exec-and-forget open -a Kitty'    # Super+Q → terminal
-alt-c = 'close'                             # Super+C → kill window
+cmd-ctrl-alt-q = 'exec-and-forget open -a Kitty'    # Super+Q → terminal
+cmd-ctrl-alt-c = 'close'                             # Super+C → kill window
 # osascript workaround — AeroSpace cannot invoke Spotlight directly
-alt-r = 'exec-and-forget osascript -e "tell application \"System Events\" to keystroke space using {command down}"'  # Super+R → Spotlight
-alt-e = 'exec-and-forget open -a Finder'   # Super+E → file manager
+cmd-ctrl-alt-r = 'exec-and-forget osascript -e "tell application \"System Events\" to keystroke space using {command down}"'  # Super+R → Spotlight
+cmd-ctrl-alt-e = 'exec-and-forget open -a Finder'   # Super+E → file manager
 
 # --- Screenshot to clipboard (mirrors Super+Print → grim -g slurp | wl-copy) ---
-alt-shift-s = 'exec-and-forget screencapture -i -c'
+cmd-ctrl-alt-shift-s = 'exec-and-forget screencapture -i -c'
 
 # --- Layout ---
-alt-v = 'layout floating tiling'           # Super+V → toggle float
-alt-p = 'layout tiles horizontal vertical' # Super+P → h_tiles ↔ v_tiles (multi-arg: applies first non-matching layout; falls back to tiles when in accordion)
+cmd-ctrl-alt-v = 'layout floating tiling'           # Super+V → toggle float
+cmd-ctrl-alt-p = 'layout tiles horizontal vertical' # Super+P → h_tiles ↔ v_tiles (multi-arg: applies first non-matching layout; falls back to tiles when in accordion)
 
 # --- Focus ---
-alt-h     = 'focus left'
-alt-j     = 'focus down'
-alt-k     = 'focus up'
-alt-l     = 'focus right'
+cmd-ctrl-alt-h     = 'focus left'
+cmd-ctrl-alt-j     = 'focus down'
+cmd-ctrl-alt-k     = 'focus up'
+cmd-ctrl-alt-l     = 'focus right'
 # alt+up/down only — left/right omitted to preserve macOS Option+Arrow word-navigation
-alt-down  = 'focus down'
-alt-up    = 'focus up'
+cmd-ctrl-alt-down  = 'focus down'
+cmd-ctrl-alt-up    = 'focus up'
 
 # --- Move windows ---
-alt-shift-h     = 'move left'
-alt-shift-j     = 'move down'
-alt-shift-k     = 'move up'
-alt-shift-l     = 'move right'
-alt-shift-down  = 'move down'
-alt-shift-up    = 'move up'
+cmd-ctrl-alt-shift-h     = 'move left'
+cmd-ctrl-alt-shift-j     = 'move down'
+cmd-ctrl-alt-shift-k     = 'move up'
+cmd-ctrl-alt-shift-l     = 'move right'
+cmd-ctrl-alt-shift-down  = 'move down'
+cmd-ctrl-alt-shift-up    = 'move up'
 
 # --- Workspaces (alt+1-0) ---
-alt-1 = 'workspace 1'
-alt-2 = 'workspace 2'
-alt-3 = 'workspace 3'
-alt-4 = 'workspace 4'
-alt-5 = 'workspace 5'
-alt-6 = 'workspace 6'
-alt-7 = 'workspace 7'
-alt-8 = 'workspace 8'
-alt-9 = 'workspace 9'
-alt-0 = 'workspace 10'
+cmd-ctrl-alt-1 = 'workspace 1'
+cmd-ctrl-alt-2 = 'workspace 2'
+cmd-ctrl-alt-3 = 'workspace 3'
+cmd-ctrl-alt-4 = 'workspace 4'
+cmd-ctrl-alt-5 = 'workspace 5'
+cmd-ctrl-alt-6 = 'workspace 6'
+cmd-ctrl-alt-7 = 'workspace 7'
+cmd-ctrl-alt-8 = 'workspace 8'
+cmd-ctrl-alt-9 = 'workspace 9'
+cmd-ctrl-alt-0 = 'workspace 10'
 
 # --- Move window to workspace and follow (alt+shift+1-0) ---
-alt-shift-1 = ['move-node-to-workspace 1',  'workspace 1']
-alt-shift-2 = ['move-node-to-workspace 2',  'workspace 2']
-alt-shift-3 = ['move-node-to-workspace 3',  'workspace 3']
-alt-shift-4 = ['move-node-to-workspace 4',  'workspace 4']
-alt-shift-5 = ['move-node-to-workspace 5',  'workspace 5']
-alt-shift-6 = ['move-node-to-workspace 6',  'workspace 6']
-alt-shift-7 = ['move-node-to-workspace 7',  'workspace 7']
-alt-shift-8 = ['move-node-to-workspace 8',  'workspace 8']
-alt-shift-9 = ['move-node-to-workspace 9',  'workspace 9']
-alt-shift-0 = ['move-node-to-workspace 10', 'workspace 10']
+cmd-ctrl-alt-shift-1 = ['move-node-to-workspace 1',  'workspace 1']
+cmd-ctrl-alt-shift-2 = ['move-node-to-workspace 2',  'workspace 2']
+cmd-ctrl-alt-shift-3 = ['move-node-to-workspace 3',  'workspace 3']
+cmd-ctrl-alt-shift-4 = ['move-node-to-workspace 4',  'workspace 4']
+cmd-ctrl-alt-shift-5 = ['move-node-to-workspace 5',  'workspace 5']
+cmd-ctrl-alt-shift-6 = ['move-node-to-workspace 6',  'workspace 6']
+cmd-ctrl-alt-shift-7 = ['move-node-to-workspace 7',  'workspace 7']
+cmd-ctrl-alt-shift-8 = ['move-node-to-workspace 8',  'workspace 8']
+cmd-ctrl-alt-shift-9 = ['move-node-to-workspace 9',  'workspace 9']
+cmd-ctrl-alt-shift-0 = ['move-node-to-workspace 10', 'workspace 10']
 
 # --- Workspace navigation ---
-alt-tab       = 'workspace-back-and-forth'                     # Super+Tab → toggle last workspace
-alt-shift-tab = 'move-workspace-to-monitor --wrap-around next' # send workspace to next monitor
+cmd-ctrl-alt-tab       = 'workspace-back-and-forth'                     # Super+Tab → toggle last workspace
+cmd-ctrl-alt-shift-tab = 'move-workspace-to-monitor --wrap-around next' # send workspace to next monitor
 
 # --- Mode switches ---
-alt-w               = 'mode resize'
-alt-shift-semicolon = 'mode service'
+cmd-ctrl-alt-w               = 'mode resize'
+cmd-ctrl-alt-shift-semicolon = 'mode service'
 
 # =============================================================================
 # Resize mode — enter with alt-w, exit with enter/esc
@@ -141,10 +149,10 @@ esc       = ['reload-config', 'mode main']
 r         = ['flatten-workspace-tree', 'mode main']          # reset layout
 f         = ['layout floating tiling', 'mode main']          # toggle float
 backspace = ['close-all-windows-but-current', 'mode main']
-alt-shift-h = ['join-with left',  'mode main']
-alt-shift-j = ['join-with down',  'mode main']
-alt-shift-k = ['join-with up',    'mode main']
-alt-shift-l = ['join-with right', 'mode main']
+cmd-ctrl-alt-shift-h = ['join-with left',  'mode main']
+cmd-ctrl-alt-shift-j = ['join-with down',  'mode main']
+cmd-ctrl-alt-shift-k = ['join-with up',    'mode main']
+cmd-ctrl-alt-shift-l = ['join-with right', 'mode main']
 
 # =============================================================================
 # App → workspace assignments — fires on every new window, not only at startup
