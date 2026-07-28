@@ -147,7 +147,7 @@ fi
 # -----------------------------------------------------------------------------
 log "Symlinking Atuin config..."
 mkdir -p "$HOME/.config"
-link "${SCRIPT_DIR}/conf/atuin" "$HOME/.config/atuin"
+link "$DOTFILES_DIR/.config/atuin" "$HOME/.config/atuin"
 
 # -----------------------------------------------------------------------------
 # Karabiner-Elements — config symlink
