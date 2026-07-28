@@ -356,16 +356,6 @@ export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border --info=inline'
 export FZF_CTRL_T_OPTS="--preview 'bat --color=always --line-range :100 {}'"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --icons --level=2 {}'"
 
-# fzf's default Alt-C (cd-widget) collides with AeroSpace's `alt-c = 'close'`
-# (conf/aerospace.toml) — the keystroke is captured by the window manager and
-# never reaches the shell. Rebind the widget to Ctrl-F instead, which is
-# unbound in both vi keymaps (Ctrl-G, the next free-looking option, is
-# already `list-expand`).
-bindkey -M viins -r '\ec'
-bindkey -M vicmd -r '\ec'
-bindkey -M viins '^F' fzf-cd-widget
-bindkey -M vicmd '^F' fzf-cd-widget
-
 # =============== Atuin ===============
 # Must load after the FZF block above — both bind Ctrl-R, atuin should win.
 command -v atuin &>/dev/null && eval "$(atuin init zsh)"
