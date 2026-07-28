@@ -135,7 +135,7 @@ fi
 
 # =============== Aliases ===============
 # General
-alias ls='eza --icons'
+alias ls='eza --icons=auto'
 alias ll='eza -la --icons --git'
 alias la='eza -lah --icons --git'
 alias cat='bat'
