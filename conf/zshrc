@@ -368,6 +368,12 @@ command -v atuin &>/dev/null && eval "$(atuin init zsh)"
 [[ -f "$HOMEBREW_PREFIX/share/fzf-tab/fzf-tab.zsh" ]] && \
   source "$HOMEBREW_PREFIX/share/fzf-tab/fzf-tab.zsh"
 
+# =============== Forgit ===============
+# Must load after the git aliases defined earlier in this file — forgit's
+# aliases (ga, gd, gco, gcb, gss) intentionally win over the plain git ones.
+[[ -f "$HOMEBREW_PREFIX/share/forgit/forgit.plugin.zsh" ]] && \
+  source "$HOMEBREW_PREFIX/share/forgit/forgit.plugin.zsh"
+
 # =============== Starship ===============
 eval "$(starship init zsh)"
 

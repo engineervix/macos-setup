@@ -20,6 +20,7 @@ brew "zsh-completions"
 brew "carapace"          # multi-shell completion generator
 brew "atuin"             # SQLite-backed shell history search
 brew "fzf-tab"           # fzf-driven Tab completion menu
+brew "forgit"            # fzf-driven interactive git commands
 
 # === GNU coreutils (replace macOS BSD versions) ===
 brew "coreutils"         # gls, gdate, etc. — gnubin added to PATH in .zshrc
