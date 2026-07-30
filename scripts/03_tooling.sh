@@ -152,4 +152,15 @@ git config --global delta.side-by-side true
 git config --global merge.conflictStyle zdiff3
 git config --global pager.diff diffnav
 
+# difftastic as an opt-in difftool (invoked via `git difftool`) — does not
+# touch core.pager/pager.diff above, so delta/diffnav stay the defaults.
+git config --global diff.tool difftastic
+git config --global difftool.difftastic.cmd 'difft "$LOCAL" "$REMOTE"'
+
+# =============================================================================
+# tealdeer (tldr) page cache
+# =============================================================================
+log "Populating tealdeer's tldr page cache..."
+tldr --update 2>/dev/null || true
+
 log "Development tooling setup complete."

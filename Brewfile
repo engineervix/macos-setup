@@ -34,6 +34,8 @@ brew "ripgrep"
 brew "fzf"
 brew "zoxide"
 brew "git-delta"
+brew "difftastic"     # difft — syntax-aware structural diff (complements delta, not a replacement)
+brew "tealdeer"       # tldr — fast, example-driven cheat sheets
 brew "lazygit"
 brew "btop"
 brew "htop"
@@ -84,7 +86,11 @@ brew "presenterm"                   # terminal slideshow tool
 brew "d2"                           # diagram scripting language
 brew "ccusage"                      # CLI tool for analyzing Claude Code usage from local JSONL files
 brew "ctop"                         # Top-like interface for container metrics
+brew "lazydocker"                   # TUI for interactive container management (logs, exec, compose) — pairs with ctop
 brew "entr"                         # run commands when files change
+brew "hyperfine"                    # statistical CLI benchmarking
+brew "tokei"                        # fast code line-counter / stats per language
+brew "glow"                         # render Markdown in the terminal
 
 # === Task & time tracking ===
 brew "task"                         # Taskwarrior — CLI task manager
