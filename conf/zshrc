@@ -402,6 +402,9 @@ eval "$(starship init zsh)"
 # Keep secrets and machine-specific config in .zshrc.local (not tracked by git)
 [ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
 
+# =============== Glow ===============
+export GLOW_STYLE="$HOME/Library/Preferences/glow/catppuccin-mocha.json"
+
 # =============== Zoxide ===============
 eval "$(zoxide init zsh)"
 

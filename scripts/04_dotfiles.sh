@@ -143,6 +143,13 @@ else
 fi
 
 # -----------------------------------------------------------------------------
+# Glow — config symlink + Catppuccin Mocha style
+# -----------------------------------------------------------------------------
+log "Symlinking Glow config..."
+mkdir -p "$HOME/Library/Preferences"
+link "${SCRIPT_DIR}/conf/glow" "$HOME/Library/Preferences/glow"
+
+# -----------------------------------------------------------------------------
 # Atuin — config symlink
 # -----------------------------------------------------------------------------
 log "Symlinking Atuin config..."
