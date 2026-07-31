@@ -155,6 +155,7 @@ git config --global pager.diff diffnav
 # difftastic as an opt-in difftool (invoked via `git difftool`) — does not
 # touch core.pager/pager.diff above, so delta/diffnav stay the defaults.
 git config --global diff.tool difftastic
+# shellcheck disable=SC2016 # $LOCAL/$REMOTE are expanded by git, not the shell
 git config --global difftool.difftastic.cmd 'difft "$LOCAL" "$REMOTE"'
 
 # =============================================================================
