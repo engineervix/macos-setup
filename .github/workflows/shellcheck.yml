@@ -31,6 +31,10 @@ jobs:
         with:
           scandir: "."
           format: gcc
+          # conf/zshrc is a zsh script; shellcheck has no zsh dialect and
+          # misparses zsh-only syntax (e.g. ${(s.:.)VAR}) as hard errors.
+          # Lint it manually with `shellcheck conf/zshrc` instead.
+          ignore_names: zshrc
 
       - name: ShellCheck Results
         if: failure()
