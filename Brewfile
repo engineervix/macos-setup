@@ -95,6 +95,7 @@ brew "glow"                         # render Markdown in the terminal
 # === Task & time tracking ===
 brew "task"                         # Taskwarrior — CLI task manager
 brew "timewarrior"                  # Timewarrior — time tracking, hooked to Taskwarrior (see 04_dotfiles.sh)
+cask "activitywatch"                # automatic activity/time tracker
 
 # === Languages & runtimes ===
 brew "go"

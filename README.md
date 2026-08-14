@@ -18,6 +18,7 @@ See [`docs/notes/mac-migration-plan.md`](./docs/notes/mac-migration-plan.md) for
 - [Prerequisites](#prerequisites)
 - [Post-Installation](#post-installation)
   - [Maccy (Clipboard Manager)](#maccy-clipboard-manager)
+  - [ActivityWatch](#activitywatch)
   - [SketchyBar](#sketchybar)
   - [SwipeAeroSpace](#swipeaerospace)
   - [Kitty](#kitty)
@@ -88,6 +89,16 @@ These steps require a GUI or credentials and cannot be automated.
 Maccy is installed by the Brewfile. On first launch, set a hotkey in Maccy preferences — suggested `cmd+shift+v` (`alt+h` is taken by AeroSpace focus-left). Adjust history size and ignored apps to taste.
 
 Spotlight also has built-in clipboard history (`Cmd+Space` then `⌘4`), synced across devices via iCloud.
+
+### ActivityWatch
+
+Installed by the Brewfile as `cask "activitywatch"` — the official app, not a manual `.dmg` drag. A Homebrew cask for a GUI app *is* the `.dmg` install, just scripted and upgradable with `brew upgrade --cask activitywatch`, so this isn't a departure from the upstream-recommended install method.
+
+Note this is the standard ActivityWatch distribution (`aw-qt` + the official watchers), not `awatcher` (the Rust replacement used on Linux) — `awatcher` only supports Linux, so there's no equivalent choice to make here.
+
+One manual step, same as Maccy above: add it to **Login Items** (`System Settings → General → Login Items & Extensions`) so it starts on login — the app itself doesn't register for autostart.
+
+Optional follow-ups once the base install is confirmed working: the `aw-watcher-web` browser extension and the `aw-watcher.nvim` one for Neovim if you haven't already done that.
 
 ### SketchyBar
 
