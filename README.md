@@ -22,6 +22,7 @@ See [`docs/notes/mac-migration-plan.md`](./docs/notes/mac-migration-plan.md) for
   - [SketchyBar](#sketchybar)
   - [SwipeAeroSpace](#swipeaerospace)
   - [Kitty](#kitty)
+  - [Yazi](#yazi)
   - [Taskwarrior + Timewarrior](#taskwarrior--timewarrior)
   - [pyenv](#pyenv)
   - [VS Code](#vs-code)
@@ -124,6 +125,12 @@ Config is symlinked automatically from `~/dotfiles/.config/kitty`. If the font d
 ```
 font_family JetBrainsMonoNL NFM
 ```
+
+### Yazi
+
+Config is symlinked automatically from `~/dotfiles/.config/yazi` — same shared-dotfiles pattern as Kitty/Starship/Atuin, so there's no `conf/yazi/` in this repo. The Catppuccin Mocha flavor installs automatically via `ya pkg install`.
+
+`keymap.toml` binds `'` / `\` to open the current directory in a new Kitty split (hsplit/vsplit), reusing Kitty's `allow_remote_control` setup above. If this Mac's `~/.config/yazi` is ever pointing somewhere other than `~/dotfiles/.config/yazi`, re-run `install.sh` — Phase 4 fixes the symlink.
 
 ### Taskwarrior + Timewarrior
 
