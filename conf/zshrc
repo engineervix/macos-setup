@@ -146,6 +146,7 @@ fi
 
 # =============== Aliases ===============
 # General
+alias v='nvim'
 alias ls='eza --icons=auto'
 alias ll='eza -la --icons --git'
 alias la='eza -lah --icons --git'
