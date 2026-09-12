@@ -158,6 +158,7 @@ alias cd='z'
 alias ts='date +"%Y-%m-%d-%H-%M-%S"'
 alias pipup='pip install --upgrade pip'
 alias google-chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
+alias chromium="/Applications/Chromium.app/Contents/MacOS/Chromium"
 
 # Safety
 alias rm='rm -i'
