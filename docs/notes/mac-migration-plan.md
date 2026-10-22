@@ -186,9 +186,6 @@ brew "proj"
 # === Presentation ===
 brew "marp-cli"          # Markdown presentations (same as Linux)
 
-# === AI CLIs ===
-brew "gemini-cli"
-
 # === Notifications ===
 brew "terminal-notifier"
 

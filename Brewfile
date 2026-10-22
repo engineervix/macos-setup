@@ -153,9 +153,6 @@ brew "proj"
 # === Presentation & docs ===
 brew "marp-cli"
 
-# === AI CLIs ===
-brew "gemini-cli"
-
 # === Notifications ===
 brew "terminal-notifier"
 
