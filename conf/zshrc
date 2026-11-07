@@ -58,9 +58,6 @@ export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
 export PATH="/Library/TeX/texbin:$PATH"
 
-# =============== Volta ===============
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
 
 # =============== Rust ===============
 [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
@@ -419,3 +416,6 @@ export GLOW_STYLE="$HOME/Library/Preferences/glow/catppuccin-mocha.json"
 # =============== Zoxide ===============
 eval "$(zoxide init zsh)"
 
+# =============== vite-plus ===============
+# Vite+ bin (https://viteplus.dev)
+. "$HOME/.config/vite-plus/env"

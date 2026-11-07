@@ -7,44 +7,47 @@
 log "--- [Phase 3: Development Tooling] ---"
 
 # =============================================================================
-# Node.js via Volta
+# Node.js via Vite+ (vp, installed by the Brewfile)
 # =============================================================================
-log "Installing Volta for Node.js version management..."
-if ! command -v volta &>/dev/null; then
-    curl https://get.volta.sh | bash
-    export VOLTA_HOME="$HOME/.volta"
-    export PATH="$VOLTA_HOME/bin:$PATH"
-else
-    info "Volta already installed."
-    export VOLTA_HOME="$HOME/.volta"
-    export PATH="$VOLTA_HOME/bin:$PATH"
-fi
+log "Setting up Vite+ for Node.js and package manager management..."
+# First run does the setup: shims, shell integration, management preferences.
+# The env vars answer its prompts so Vite+ manages Node and npm/pnpm/yarn/bun.
+# It appends `. "$HOME/.config/vite-plus/env"` to ~/.zshenv, ~/.profile and
+# ~/.zshrc (through the symlink, so conf/zshrc) unless the line is already there.
+VP_NODE_MANAGER=yes VP_PM_MANAGER=yes vp help >/dev/null
 
-if ! volta list node 2>/dev/null | grep -q 'node'; then
-    log "Installing Node.js LTS and npm via Volta..."
-    volta install node
-    volta install npm@latest
-fi
+# Only packages whose projects document npm as the install method. The rest
+# (gitlab-ci-local, heroku, hunk, jscpd, rover) come from the Brewfile.
+# pnpm is absent on purpose: Vite+ ships its own pnpm shim.
+NPM_GLOBALS=(
+    @vtsls/language-server
+    bibtex-tidy
+    ccusage
+    commit-and-tag-version
+    doctoc
+    eslint
+    eslint-config-prettier
+    mdpdf
+    neovim
+    pa11y
+    prettier
+    pyright
+    serve
+    stylelint
+    subfont
+    svgo
+    typescript
+)
 
-log "Installing global npm packages..."
-if ! volta list 2>/dev/null | grep -q 'prettier'; then
-    volta install \
-        commit-and-tag-version \
-        doctoc \
-        eslint \
-        eslint-config-prettier \
-        gitlab-ci-local \
-        heroku \
-        mdpdf \
-        neovim \
-        pa11y \
-        prettier \
-        pyright \
-        serve \
-        stylelint \
-        svgo \
-        typescript
-fi
+log "Installing global npm packages (each pinned to the current Node LTS)..."
+installed="$(vp list -g --json | jq -r '.[].name')"
+for pkg in "${NPM_GLOBALS[@]}"; do
+    if grep -qxF "$pkg" <<<"$installed"; then
+        info "$pkg already installed."
+    else
+        vp install -g --node lts "$pkg"
+    fi
+done
 
 # =============================================================================
 # Rust via Rustup

@@ -141,7 +141,7 @@ brew "go"
 brew "ruby"
 brew "deno"
 brew "pyenv"
-# Volta (Node): curl https://get.volta.sh | bash
+brew "voidzero-dev/vite-plus/vp"  # Vite+ (Node)
 # Rustup:       curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 # === Python tooling ===
@@ -182,9 +182,6 @@ brew "exiftool"
 # === Geospatial (GIS work) ===
 brew "gdal"
 brew "proj"
-
-# === Presentation ===
-brew "marp-cli"          # Markdown presentations (same as Linux)
 
 # === Notifications ===
 brew "terminal-notifier"
@@ -583,13 +580,13 @@ tar_max() {
 | ------------------------- | ----------------------------------------------------------------------- | --------------------- |
 | Docker / Compose          | OrbStack (CLI-compatible, `docker` and `docker compose` work unchanged) |
 | AWS CLI                   | `brew install awscli`                                                   |
-| Heroku CLI                | `brew install heroku`                                                   |
+| Heroku CLI                | `brew install heroku/brew/heroku` (official tap)                        |
 | pyenv + virtualenvwrapper | `brew install pyenv`, then pip install virtualenvwrapper                |
-| Volta (Node)              | `curl https://get.volta.sh                                              | bash` (same as Linux) |
+| Vite+ (Node)              | `brew install voidzero-dev/vite-plus/vp` (official tap)                  |
 | Rustup                    | `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs              | sh` (same as Linux)   |
 | Go                        | `brew install go`                                                       |
 
-All global npm packages (prettier, eslint, typescript, pyright, etc.) reinstall via `volta install` after Volta is set up.
+Global npm packages (prettier, eslint, typescript, pyright, etc.) install via `vp install -g --node lts`, each pinned to the Node LTS of the day. CLIs whose projects document a Homebrew install (gitlab-ci-local, heroku, hunk, jscpd, rover) come from the Brewfile instead. marp-cli is left out: install it per project when needed. Volta was dropped because it is unmaintained.
 
 ---
 
@@ -628,7 +625,7 @@ Run through these after each phase to confirm nothing is broken before moving on
 - [ ] SketchyBar shows workspaces, clock, CPU, memory, battery
 - [ ] `ll`, `cat`, `find`, `rg` aliases all resolve correctly in a new shell
 - [ ] `docker ps` and `docker compose` work via OrbStack
-- [ ] `python --version` and `node --version` return pyenv/Volta-managed versions
+- [ ] `python --version` and `node --version` return pyenv/Vite+-managed versions
 - [ ] Neovim opens with plugins loaded and Catppuccin Mocha theme
 
 ---
@@ -649,8 +646,8 @@ Since this is a fresh Mac setup, rollback is straightforward:
 1. [ ] Install Xcode from App Store + run `xcode-select --install`
 2. [ ] Install Homebrew
 3. [ ] Create and run `Brewfile`
-4. [ ] Install Volta, Rustup via curl scripts
-5. [ ] Install global npm packages via Volta (`prettier`, `eslint`, `typescript`, `pyright`, etc.)
+4. [ ] Set up Vite+ (`vp`, from the Brewfile); install Rustup via curl script
+5. [ ] Install global npm packages via Vite+ (`prettier`, `eslint`, `typescript`, `pyright`, etc.)
 6. [ ] Configure Aerospace (`~/.aerospace.toml`)
 8. [ ] Configure Raycast (hotkeys, clipboard history)
 9. [ ] Configure SketchyBar (Catppuccin theme + modules) — use Stats.app in the meantime

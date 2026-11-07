@@ -65,7 +65,7 @@ Tested and iteratively updated on a real Mac. See `docs/notes/review.md` for kno
 
 ### What the script automates vs. what's manual
 
-**Automated:** Homebrew, all packages, Volta/Node/npm globals, Rustup, Claude Code (native installer), Go tools, pipx, Neovim clone, dotfiles repo clone (starship + Kitty configs symlinked), git-delta config, fzf keybindings, macOS defaults, zshrc + aerospace.toml + SketchyBar config symlinks, SketchyBar service start (Catppuccin Mocha config included), JankyBorders launch via AeroSpace startup.
+**Automated:** Homebrew, all packages, Vite+ (Node via `vp`, Homebrew tap) + npm globals, Rustup, Claude Code (native installer), Go tools, pipx, Neovim clone, dotfiles repo clone (starship + Kitty configs symlinked), git-delta config, fzf keybindings, macOS defaults, zshrc + aerospace.toml + SketchyBar config symlinks, SketchyBar service start (Catppuccin Mocha config included), JankyBorders launch via AeroSpace startup.
 
 **Manual:** Maccy hotkey setup, SwipeAeroSpace Accessibility permission, pyenv Python install, all licensed/manual app installs (Office 365, Ableton, Vital, Splice, BricsCAD, NTFS for Mac, Sweet Home 3D).
 

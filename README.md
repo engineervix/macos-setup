@@ -70,7 +70,7 @@ The script runs four modular phases in sequence:
 | :---- | :---------------- | :-------------------------------------------------------------------------------------- |
 | 1     | `01_preflight.sh` | Checks Xcode CLI tools; applies macOS system defaults                                   |
 | 2     | `02_homebrew.sh`  | Installs Homebrew; runs `Brewfile`                                                      |
-| 3     | `03_tooling.sh`   | Installs Volta/Node/npm, Rustup, Claude Code, Go tools, pipx packages, Neovim config, fzf, git-delta |
+| 3     | `03_tooling.sh`   | Sets up Vite+ (Node/npm globals), Rustup, Claude Code, Go tools, pipx packages, Neovim config, fzf, git-delta |
 | 4     | `04_dotfiles.sh`  | Clones dotfiles repo; symlinks `zshrc`, `aerospace.toml`, Starship, Kitty, SketchyBar config, and the Taskwarrior→Timewarrior hook; starts SketchyBar service |
 
 Safe to re-run — all steps are idempotent.

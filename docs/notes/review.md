@@ -110,7 +110,7 @@ source scripts/01_preflight.sh
 # Run with caution if Homebrew already installed; brew bundle is safe to re-run
 source scripts/02_homebrew.sh
 
-# Phase 3 — tooling (Volta, Rustup, npm, Neovim, etc.):
+# Phase 3 — tooling (Vite+, Rustup, npm, Neovim, etc.):
 # Safe to run; all steps check if already installed
 source scripts/03_tooling.sh
 
@@ -147,5 +147,5 @@ SCRIPT_DIR="$(pwd)" source scripts/01_preflight.sh
 - **`conf/zshrc`: `alias cd='z'`** — this replaces the built-in `cd` with zoxide globally. If you find this breaks anything, remove the alias and use `z` explicitly.
 - **`conf/zshrc`: `alias diff='...'`** — this shadows the system `diff`. The function uses `delta` for output; ensure that's desirable.
 - **`conf/aerospace.toml`** — the window app assignments (Chrome → workspace 1, Slack → workspace 3) may conflict with your actual usage pattern. Adjust `on-window-detected` entries to match how you work.
-- **npm global packages** — the list in `03_tooling.sh` is taken from the Linux setup. Review and trim if some of those packages are no longer needed.
+- **npm global packages** — the list in `03_tooling.sh` follows the Linux setup, minus the CLIs whose projects document a Homebrew install (those are in the Brewfile). Review and trim if some of those packages are no longer needed.
 - **Homebrew Caskroom `.pkg` files** — when Homebrew installs a cask via a `.pkg` (e.g. `mactex-no-gui`, `android-studio`), it permanently keeps the original installer in `/opt/homebrew/Caskroom/`. `brew cleanup` deliberately ignores these. For large casks this adds up fast (e.g. mactex-no-gui alone is ~5 GB installer + ~9 GB install). After running `brew bundle`, manually remove unneeded `.pkg` files from the Caskroom directory to reclaim space.

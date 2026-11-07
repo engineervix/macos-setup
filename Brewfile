@@ -10,6 +10,8 @@ tap "mediosz/tap"           # SwipeAeroSpace
 tap "hashicorp/tap"         # Terraform
 tap "chrismytton/formula"   # shoreman
 tap "agavra/tap"            # tuicr
+tap "heroku/brew"           # Heroku CLI (official tap)
+tap "voidzero-dev/vite-plus", "https://github.com/voidzero-dev/vite-plus"  # Vite+ (vp)
 
 # === Shell ===
 brew "zsh"
@@ -65,6 +67,8 @@ brew "actionlint"        # lint GitHub Actions workflow files
 brew "lefthook"          # Git hooks manager
 brew "agavra/tap/tuicr"  # terminal UI for reviewing AI-generated diffs like a GitHub PR
 brew "diffnav"           # terminal UI for browsing git diffs
+brew "hunk"              # review-first terminal diff viewer
+brew "gitlab-ci-local"   # run GitLab CI pipelines locally
 
 # === Security & scanning ===
 brew "shellcheck"
@@ -84,13 +88,13 @@ brew "tmux"                         # for SSH sessions / remote work
 brew "vim"                          # fallback editor
 brew "presenterm"                   # terminal slideshow tool
 brew "d2"                           # diagram scripting language
-brew "ccusage"                      # CLI tool for analyzing Claude Code usage from local JSONL files
 brew "ctop"                         # Top-like interface for container metrics
 brew "lazydocker"                   # TUI for interactive container management (logs, exec, compose) — pairs with ctop
 brew "entr"                         # run commands when files change
 brew "hyperfine"                    # statistical CLI benchmarking
 brew "tokei"                        # fast code line-counter / stats per language
 brew "glow"                         # render Markdown in the terminal
+brew "jscpd"                        # copy/paste detector
 
 # === Task & time tracking ===
 brew "task"                         # Taskwarrior — CLI task manager
@@ -103,7 +107,7 @@ brew "ruby"
 brew "cpanminus"          # non-interactive CPAN client (used to bootstrap local::lib)
 brew "deno"
 brew "pyenv"
-# Volta (Node): installed via curl script in 03_tooling.sh
+brew "voidzero-dev/vite-plus/vp" # Vite+: Node.js + package managers; npm globals in 03_tooling.sh
 # Rustup:       installed via curl script in 03_tooling.sh
 
 # === Python tooling ===
@@ -124,6 +128,8 @@ brew "postgresql@16"
 brew "awscli"
 brew "azure-cli"
 brew "hashicorp/tap/terraform"
+brew "heroku/brew/heroku"
+brew "rover"             # Apollo GraphQL CLI
 brew "rclone"
 brew "restic"
 
@@ -149,9 +155,6 @@ cask "keycastr"          # show keystrokes on screen during recordings
 # === Geospatial (GIS) ===
 brew "gdal"
 brew "proj"
-
-# === Presentation & docs ===
-brew "marp-cli"
 
 # === Notifications ===
 brew "terminal-notifier"
