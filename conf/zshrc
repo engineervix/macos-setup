@@ -161,6 +161,11 @@ alias pipup='pip install --upgrade pip'
 alias google-chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 alias chromium="/Applications/Chromium.app/Contents/MacOS/Chromium"
 
+# Copy cwd to clipboard with ~ for $HOME. Escape first, then swap the prefix
+# (escaping after would turn ~ into \~). Paste unquoted: "~" doesn't expand
+# inside quotes.
+cpwd() { local p=${(q)PWD}; print -rn -- "${p/#${(q)HOME}/~}" | pbcopy }
+
 # Safety
 alias rm='rm -i'
 alias cp='cp -i'
