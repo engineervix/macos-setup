@@ -161,9 +161,9 @@ brew "terminal-notifier"
 
 # === Fonts ===
 cask "font-jetbrains-mono-nerd-font"
-cask "font-cascadia-code"
-cask "font-cascadia-code-pl"
 cask "font-fantasque-sans-mono-nerd-font"
+cask "font-maple-mono-nf"
+cask "font-caskaydia-cove-nerd-font"
 
 # === Terminal & WM ===
 cask "kitty"

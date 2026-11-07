@@ -188,8 +188,6 @@ brew "terminal-notifier"
 
 # === Fonts ===
 cask "font-jetbrains-mono-nerd-font"
-cask "font-cascadia-code"
-cask "font-cascadia-code-pl"
 cask "font-fantasque-sans-mono-nerd-font"
 
 # === Terminal & WM ===
