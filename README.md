@@ -91,6 +91,15 @@ Maccy is installed by the Brewfile. On first launch, set a hotkey in Maccy prefe
 
 Spotlight also has built-in clipboard history (`Cmd+Space` then `⌘4`), synced across devices via iCloud.
 
+### Kitty quick access terminal
+
+A drop-down kitty, toggled with one key ([docs](https://sw.kovidgoyal.net/kitty/kittens/quick-access-terminal/)). Needs kitty 0.42 or newer.
+
+1. Run `kitten quick-access-terminal` in kitty, then close the window with `ctrl+d`.
+2. In System Settings → Keyboard → Keyboard Shortcuts → Services → General, set a shortcut for **Quick access to kitty** (here: Caps Lock+T).
+
+If the entry is missing, open `/Applications/kitty.app/Contents/kitty-quick-access.app` once and exit with `ctrl+d` ([kitty#8843](https://github.com/kovidgoyal/kitty/discussions/8843)).
+
 ### ActivityWatch
 
 Installed by the Brewfile as `cask "activitywatch"` — the official app, not a manual `.dmg` drag. A Homebrew cask for a GUI app *is* the `.dmg` install, just scripted and upgradable with `brew upgrade --cask activitywatch`, so this isn't a departure from the upstream-recommended install method.
@@ -219,6 +228,7 @@ These apps have no Homebrew cask. See the migration plan for details.
 | :--------------------- | :------------------------------ | :------------------ |
 | App launcher           | `Cmd+Space` or `alt+r`          | `Super+R`           |
 | Clipboard history      | `cmd+shift+v` (set in Maccy)    | `Super+H`           |
+| Quick access terminal  | `Caps Lock+T` (set in Services) | `Super+T`           |
 | Spotlight clipboard    | `Cmd+Space` → `⌘4`             | —                   |
 | Full screenshot → file | `Cmd+Shift+3`                   | `Print`             |
 | Region → file          | `Cmd+Shift+4`                   | `Super+Shift+Print` |
