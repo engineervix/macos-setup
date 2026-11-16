@@ -62,6 +62,7 @@ echo
 warn "Manual steps still required (see mac-migration-plan.md):"
 warn "  - Maccy: set hotkey (suggested: cmd+shift+v) and configure history size"
 warn "  - Kitty: copy ~/.config/kitty from Linux dotfiles"
+warn "  - Kitty: set the Services shortcut for \"Quick access to kitty\" (see README)"
 warn "  - VS Code: sign in to Settings Sync"
 warn "  - pyenv: install your Python version (pyenv install <version>)"
 warn "  - Manual installs: Office 365, Ableton, Vital, Splice, BricsCAD, NTFS for Mac"
