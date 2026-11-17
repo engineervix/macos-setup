@@ -27,8 +27,8 @@ HISTFILE=~/.zsh_history
 HISTSIZE=100000
 SAVEHIST=100000
 setopt extended_history
-setopt appendhistory
-setopt incappendhistory
+# No appendhistory (on by default) or incappendhistory: sharehistory above already
+# appends each command as it's entered, and zsh says to turn the latter off.
 setopt histignorealldups
 setopt histignoredups
 setopt histignorespace
@@ -114,6 +114,9 @@ if [ -f "$HOME/bin/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/bin/google-cl
 if [ -f "$HOME/bin/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/bin/google-cloud-sdk/completion.zsh.inc"; fi
 
 # =============== Completions ===============
+# typeset -U: no duplicate fpath entries. An exported FPATH is inherited by nested
+# shells, and the entries pile up.
+typeset -U fpath
 FPATH="$(brew --prefix)/share/zsh-completions:$FPATH"
 fpath=(~/.zfunc "${fpath[@]}")
 
