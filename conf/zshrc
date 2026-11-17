@@ -184,6 +184,9 @@ alias top='btop'
 alias cd='z'
 alias ts='date +"%Y-%m-%d-%H-%M-%S"'
 alias pipup='pip install --upgrade pip'
+alias lsv='lsvirtualenv -b'
+alias lzg='lazygit'
+alias lzd='lazydocker'
 alias google-chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 alias chromium="/Applications/Chromium.app/Contents/MacOS/Chromium"
 
@@ -191,6 +194,17 @@ alias chromium="/Applications/Chromium.app/Contents/MacOS/Chromium"
 # (escaping after would turn ~ into \~). Paste unquoted: "~" doesn't expand
 # inside quotes.
 cpwd() { local p=${(q)PWD}; print -rn -- "${p/#${(q)HOME}/~}" | pbcopy }
+
+# Allow having invoke tasks.py in a `utils` subdir, and avoid having to type `-r utils` each time
+inv() {
+  if [[ -f utils/tasks.py ]]; then
+    command inv -r utils "$@"
+  else
+    command inv "$@"
+  fi
+}
+
+invoke() { inv "$@" }
 
 # Safety
 alias rm='rm -i'
