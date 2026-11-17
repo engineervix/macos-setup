@@ -125,8 +125,12 @@ zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}
 zstyle ':completion:*' menu no
 # fzf-tab: colorize filenames in the completion list itself using LS_COLORS
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-# fzf-tab: preview directory contents with eza when completing cd
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+# fzf-tab: preview directory contents with eza when completing cd. cd is an alias
+# for z (see Aliases), and fzf-tab sees the context as `z`, so match both.
+zstyle ':fzf-tab:complete:(cd|z):*' fzf-preview 'eza -1 --color=always $realpath'
+# fzf-tab builds its group headers from this string and pads them by length, so
+# escape codes in it throw the layout off. Keep it plain.
+zstyle ':completion:*:descriptions' format '[%d]'
 
 autoload -Uz compinit
 if [[ ! -f ~/.zcompdump ]] || [[ -n "$(find ~/.zcompdump -mmin +1440 2>/dev/null)" ]]; then
