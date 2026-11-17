@@ -532,20 +532,13 @@ compress_audio() {
     ...
 }
 
-days_until() {
-    # Days until a given date
-    # Usage: days_until "25 Dec 2025"
-    # Uses gdate on macOS (via coreutils), date on Linux
-    ...
-}
-
 wget_entire_site() {
     wget --continue --mirror --convert-links --adjust-extension \
          --page-requisites --no-parent "$1"
 }
 ```
 
-`days_until` already uses `gdate`/`date` detection so it's cross-platform. `compress_audio` and `wget_entire_site` work on both — consider adding them to the shared Linux dotfiles too.
+`days_until` was replaced by the shared `date_until` (weeks and days, past or future dates, e.g. `date_until 'next friday'`). It uses `date -d`, which works on the Mac because coreutils' `gnubin` comes first on `PATH`. `compress_audio` and `wget_entire_site` work on both — consider adding them to the shared Linux dotfiles too.
 
 ### tar_max is already Mac-aware
 

@@ -310,6 +310,34 @@ mkdir_date() {
   mkdir -p "$(date '+%Y-%h-%d-%a')"
 }
 
+# Needs GNU date: coreutils' gnubin is first on PATH above, so `date -d` works.
+date_until() {
+  if [ $# -eq 0 ]; then
+    echo "usage: date_until <date>   e.g. date_until 2026-12-25 or date_until 'next friday'" >&2
+    return 1
+  fi
+
+  local target today diff abs weeks rem
+  target=$(date -d "$*" +%F 2>/dev/null) || { echo "Can't parse date: $*" >&2; return 1; }
+  today=$(date +%F)
+
+  # Compare calendar dates at UTC midnight so DST shifts don't skew the count
+  diff=$(( ( $(date -u -d "$target" +%s) - $(date -u -d "$today" +%s) ) / 86400 ))
+  abs=${diff#-}
+  weeks=$(( abs / 7 ))
+  rem=$(( abs % 7 ))
+
+  local detail=""
+  if [ "$abs" -ge 7 ]; then
+    detail=" ($weeks week$([ "$weeks" -ne 1 ] && echo s), $rem day$([ "$rem" -ne 1 ] && echo s))"
+  fi
+
+  if   [ "$diff" -gt 0 ]; then echo "$target is $abs day$([ "$abs" -ne 1 ] && echo s) away$detail"
+  elif [ "$diff" -lt 0 ]; then echo "$target was $abs day$([ "$abs" -ne 1 ] && echo s) ago$detail"
+  else echo "$target is today"
+  fi
+}
+
 kill_spaces() {
   command find . -name "*.$1" -type f -print0 | while IFS= read -r -d $'\0' f; do mv -v "$f" "${f// /_}"; done
 }
@@ -369,20 +397,6 @@ compress_audio() {
     return 1
   fi
   ffmpeg -i "$input_file" -codec:a libmp3lame -q:a 7 "$output_file"
-}
-
-days_until() {
-  local date_cmd
-  date_cmd="$(command -v gdate || command -v date)"
-  local target
-  target="$($date_cmd -d "$1" +%s 2>/dev/null)"
-  if [ -z "$target" ]; then
-    echo "Error: invalid date format"
-    return 1
-  fi
-  local now
-  now="$($date_cmd +%s)"
-  echo "$target $now" | awk '{diff=($1-$2)/86400; printf "%.0f days from now\n", diff}'
 }
 
 wget_entire_site() {

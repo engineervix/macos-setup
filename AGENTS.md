@@ -82,4 +82,4 @@ Tested and iteratively updated on a real Mac. See `docs/notes/review.md` for kno
 - The migration plan (`docs/notes/mac-migration-plan.md`) is the source of truth for strategy decisions. Update it when decisions change.
 - `docs/notes/review.md` tracks open questions and items needing verification after the initial session.
 - The Linux dotfiles `.zshrc` is at `dotfiles/.zshrc` — if you add a new cross-platform function there, also add it to `conf/zshrc`.
-- The Mac `.zshrc` has three Mac-only functions not in the Linux dotfiles: `compress_audio`, `days_until`, `wget_entire_site`. These are worth promoting to the shared dotfiles eventually.
+- The Mac `.zshrc` has two Mac-only functions not in the Linux dotfiles: `compress_audio` and `wget_entire_site`. These are worth promoting to the shared dotfiles eventually. (`days_until` was replaced by the shared `date_until`.)
