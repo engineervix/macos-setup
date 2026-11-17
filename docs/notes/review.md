@@ -138,6 +138,13 @@ SCRIPT_DIR="$(pwd)" source scripts/01_preflight.sh
 - **virtualenvwrapper** — depends on a pyenv-managed Python being set as global. Run the virtualenvwrapper setup after pyenv is configured.
 - ~~**Starship config**~~ — **resolved**: `04_dotfiles.sh` now clones `engineervix/dotfiles.git` to `~/dotfiles` automatically before symlinking.
 - ~~**Kitty config**~~ — **resolved**: same as above.
+- **zsh completion changes (backslash patch, case-insensitive matching, `CARAPACE_EXCLUDES`, no `CARAPACE_BRIDGES`, `cd` preview, group headers, `date_until`, direnv)** — synced from the Linux `.zshrc`, written and tested on Linux, **not yet run on a Mac**. Homebrew ships the same versions that were tested (`fzf-tab` 1.3.0, `carapace` 1.8.2). To verify after `brew bundle` and a new terminal:
+  - No `fzf-tab patch:` warning at startup.
+  - `command grep -n compinit /etc/zshrc` prints nothing (`grep` is aliased to `rg` in this zshrc). Apple's open-source `/etc/zshrc` has no `compinit`, so it should print nothing. If it prints a call, macOS has the same problem openSUSE had: a global `compinit` runs before `~/.zshrc` with only the default `fpath`, and the `compinit -C` in `conf/zshrc` then reuses that dump, so completions from dirs added later are missed. The fix there was `skip_global_compinit=1` in `~/.zshenv`.
+  - In a folder with `Foo` and `Big Doc.md`: `cat fo<Tab>` → `Foo` and `cat oo<Tab>` → `Foo` (zsh's own completer, which also matches inside names); `wc big<Tab>` → `Big\ Doc.md` with a **single** backslash (`wc` goes through carapace, so this is the test of the backslash patch; `cat` and `mv` are excluded from carapace and would pass without it); `uv` and `docker` still complete (carapace).
+  - `git <Tab>` shows `[main commands]`-style headings, and `cd <Tab>` shows a directory preview (press Tab again if the folders share a prefix).
+  - `date_until 'next friday'` prints a day count (needs GNU `date` from coreutils).
+  - Open item: carapace's `git add` misses untracked files inside untracked directories and untracked names with spaces (TODO in `conf/zshrc`).
 
 ---
 

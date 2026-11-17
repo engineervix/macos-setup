@@ -27,8 +27,8 @@ HISTFILE=~/.zsh_history
 HISTSIZE=100000
 SAVEHIST=100000
 setopt extended_history
-setopt appendhistory
-setopt incappendhistory
+# No appendhistory (on by default) or incappendhistory: sharehistory above already
+# appends each command as it's entered, and zsh says to turn the latter off.
 setopt histignorealldups
 setopt histignoredups
 setopt histignorespace
@@ -114,6 +114,9 @@ if [ -f "$HOME/bin/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/bin/google-cl
 if [ -f "$HOME/bin/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/bin/google-cloud-sdk/completion.zsh.inc"; fi
 
 # =============== Completions ===============
+# typeset -U: no duplicate fpath entries. An exported FPATH is inherited by nested
+# shells, and the entries pile up.
+typeset -U fpath
 FPATH="$(brew --prefix)/share/zsh-completions:$FPATH"
 fpath=(~/.zfunc "${fpath[@]}")
 
@@ -125,8 +128,12 @@ zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}
 zstyle ':completion:*' menu no
 # fzf-tab: colorize filenames in the completion list itself using LS_COLORS
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-# fzf-tab: preview directory contents with eza when completing cd
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+# fzf-tab: preview directory contents with eza when completing cd. cd is an alias
+# for z (see Aliases), and fzf-tab sees the context as `z`, so match both.
+zstyle ':fzf-tab:complete:(cd|z):*' fzf-preview 'eza -1 --color=always $realpath'
+# fzf-tab builds its group headers from this string and pads them by length, so
+# escape codes in it throw the layout off. Keep it plain.
+zstyle ':completion:*:descriptions' format '[%d]'
 
 autoload -Uz compinit
 if [[ ! -f ~/.zcompdump ]] || [[ -n "$(find ~/.zcompdump -mmin +1440 2>/dev/null)" ]]; then
@@ -137,7 +144,29 @@ fi
 
 # carapace: multi-shell completion generator (must load after compinit)
 if command -v carapace &>/dev/null; then
-  export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'
+  # No CARAPACE_BRIDGES on purpose. Shell bridges put carapace in front of zsh's own
+  # completers for ~1800 more commands and only hand the request back to zsh. fish
+  # and inshellisense aren't in the Brewfile anyway. Set it (e.g. 'zsh,bash') if a
+  # command you need has no zsh completer but has others.
+  # Make carapace ignore case, so `fo<Tab>` finds `Foo`. It also needs the
+  # matcher-list zstyle above, or zsh throws carapace's values away again.
+  # carapace only matches from the start of a name: `oo<Tab>` won't find `Foo`.
+  export CARAPACE_MATCH=1
+  # Leave commands that mostly take file paths to zsh. Its completers match inside
+  # names (`oo<Tab>` finds `Foo`), which carapace's can't, and they skip the
+  # carapace + fzf-tab `\\` bug. Everything else stays with carapace, git included:
+  # zsh's _git is case-sensitive for branch names (`rel<Tab>` misses `Release-1`),
+  # carapace with CARAPACE_MATCH=1 isn't. The list comes from my Linux atuin history.
+  # TODO: carapace's `git add` misses untracked files inside an untracked directory
+  # (`git add newdir/F<Tab>` beeps) and untracked names with spaces (`git add d/Ya<Tab>`
+  # for `Yak yak.txt`); zsh's _git completes both. Look for a carapace-bin fix or issue.
+  # Otherwise give `git` back to zsh, which makes branch names case-sensitive again.
+  _carapace_excludes=(
+    ls cat cp mv rm mkdir touch ln chmod tar du head tree unzip rsync
+    nvim vim bat eza sudo
+  )
+  export CARAPACE_EXCLUDES=${(j:,:)_carapace_excludes}
+  unset _carapace_excludes
   source <(carapace _carapace zsh)
 fi
 
@@ -155,6 +184,9 @@ alias top='btop'
 alias cd='z'
 alias ts='date +"%Y-%m-%d-%H-%M-%S"'
 alias pipup='pip install --upgrade pip'
+alias lsv='lsvirtualenv -b'
+alias lzg='lazygit'
+alias lzd='lazydocker'
 alias google-chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 alias chromium="/Applications/Chromium.app/Contents/MacOS/Chromium"
 
@@ -162,6 +194,17 @@ alias chromium="/Applications/Chromium.app/Contents/MacOS/Chromium"
 # (escaping after would turn ~ into \~). Paste unquoted: "~" doesn't expand
 # inside quotes.
 cpwd() { local p=${(q)PWD}; print -rn -- "${p/#${(q)HOME}/~}" | pbcopy }
+
+# Allow having invoke tasks.py in a `utils` subdir, and avoid having to type `-r utils` each time
+inv() {
+  if [[ -f utils/tasks.py ]]; then
+    command inv -r utils "$@"
+  else
+    command inv "$@"
+  fi
+}
+
+invoke() { inv "$@" }
 
 # Safety
 alias rm='rm -i'
@@ -267,6 +310,34 @@ mkdir_date() {
   mkdir -p "$(date '+%Y-%h-%d-%a')"
 }
 
+# Needs GNU date: coreutils' gnubin is first on PATH above, so `date -d` works.
+date_until() {
+  if [ $# -eq 0 ]; then
+    echo "usage: date_until <date>   e.g. date_until 2026-12-25 or date_until 'next friday'" >&2
+    return 1
+  fi
+
+  local target today diff abs weeks rem
+  target=$(date -d "$*" +%F 2>/dev/null) || { echo "Can't parse date: $*" >&2; return 1; }
+  today=$(date +%F)
+
+  # Compare calendar dates at UTC midnight so DST shifts don't skew the count
+  diff=$(( ( $(date -u -d "$target" +%s) - $(date -u -d "$today" +%s) ) / 86400 ))
+  abs=${diff#-}
+  weeks=$(( abs / 7 ))
+  rem=$(( abs % 7 ))
+
+  local detail=""
+  if [ "$abs" -ge 7 ]; then
+    detail=" ($weeks week$([ "$weeks" -ne 1 ] && echo s), $rem day$([ "$rem" -ne 1 ] && echo s))"
+  fi
+
+  if   [ "$diff" -gt 0 ]; then echo "$target is $abs day$([ "$abs" -ne 1 ] && echo s) away$detail"
+  elif [ "$diff" -lt 0 ]; then echo "$target was $abs day$([ "$abs" -ne 1 ] && echo s) ago$detail"
+  else echo "$target is today"
+  fi
+}
+
 kill_spaces() {
   command find . -name "*.$1" -type f -print0 | while IFS= read -r -d $'\0' f; do mv -v "$f" "${f// /_}"; done
 }
@@ -328,20 +399,6 @@ compress_audio() {
   ffmpeg -i "$input_file" -codec:a libmp3lame -q:a 7 "$output_file"
 }
 
-days_until() {
-  local date_cmd
-  date_cmd="$(command -v gdate || command -v date)"
-  local target
-  target="$($date_cmd -d "$1" +%s 2>/dev/null)"
-  if [ -z "$target" ]; then
-    echo "Error: invalid date format"
-    return 1
-  fi
-  local now
-  now="$($date_cmd +%s)"
-  echo "$target $now" | awk '{diff=($1-$2)/86400; printf "%.0f days from now\n", diff}'
-}
-
 wget_entire_site() {
   wget --continue --mirror --convert-links --adjust-extension --page-requisites --no-parent "$1"
 }
@@ -384,6 +441,28 @@ command -v atuin &>/dev/null && eval "$(atuin init zsh)"
 [[ -f "$HOMEBREW_PREFIX/share/fzf-tab/fzf-tab.zsh" ]] && \
   source "$HOMEBREW_PREFIX/share/fzf-tab/fzf-tab.zsh"
 
+# Workaround for carapace + fzf-tab inserting `File\\ Name` instead of
+# `File\ Name`. carapace escapes the value itself and passes `compadd -Q`, then
+# fzf-tab captures it and escapes it again. This strips one level inside
+# -ftb-compadd, for carapace completions only: zsh's own _files also passes -Q
+# and must keep its `\\`. Same idea as https://github.com/Aloxaf/fzf-tab/pull/584,
+# plus the carapace check (see also fzf-tab#503, carapace#1212). Delete this block
+# once either is merged. enable-fzf-tab already copied -ftb-compadd into `compadd`,
+# so copy it again. Does nothing if fzf-tab isn't installed; if it is but its source
+# changed and the anchor line is gone, it prints a warning and does nothing.
+() {
+  (( $+functions[-ftb-compadd] )) || return
+  local anchor='word=$__hits[i] dscr=$__dscr[i]'
+  # ${words[1]:t}: the command's basename, so `/usr/bin/wc <Tab>` is covered too
+  local ins='(( ${_opts[(I)-Q]} )) && [[ $_comps[${words[1]:t}] == _carapace* ]] && word=${word//\\\\/\\}'
+  local src=$functions[-ftb-compadd]
+  [[ $src == *'word=${word//\\\\/\\}'* ]] && return          # upstream already fixed
+  local -a hit=( ${(M)${(f)src}:#*${anchor}*} )
+  (( $#hit == 1 )) || { print -u2 "fzf-tab patch: anchor found $#hit times"; return 1; }
+  functions[-ftb-compadd]=${src/"$anchor"/$anchor$'\n'$ins}
+  functions[compadd]=$functions[-ftb-compadd]
+}
+
 # =============== Forgit ===============
 # Must load after the git aliases defined earlier in this file — forgit's
 # aliases (ga, gd, gco, gcb, gss) intentionally win over the plain git ones.
@@ -415,6 +494,9 @@ export GLOW_STYLE="$HOME/Library/Preferences/glow/catppuccin-mocha.json"
 
 # =============== Zoxide ===============
 eval "$(zoxide init zsh)"
+
+# =============== direnv ===============
+command -v direnv &>/dev/null && eval "$(direnv hook zsh)"
 
 # =============== vite-plus ===============
 # Vite+ bin (https://viteplus.dev)
