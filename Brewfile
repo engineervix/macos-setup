@@ -80,6 +80,7 @@ brew "trivy"             # vulnerability scanner
 # === Dev utilities ===
 brew "cmake"                        # build system (required for YouCompleteMe)
 brew "just"                         # task runner
+brew "direnv"                       # per-directory env vars (.envrc) — hooked in conf/zshrc
 brew "chrismytton/formula/shoreman" # Procfile runner
 brew "httpie"                       # HTTP client
 brew "yq"                           # YAML processor
