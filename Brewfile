@@ -96,6 +96,7 @@ brew "hyperfine"                    # statistical CLI benchmarking
 brew "tokei"                        # fast code line-counter / stats per language
 brew "glow"                         # render Markdown in the terminal
 brew "jscpd"                        # copy/paste detector
+brew "mercurial"                    # needed for hg+ repos
 
 # === Task & time tracking ===
 brew "task"                         # Taskwarrior — CLI task manager
